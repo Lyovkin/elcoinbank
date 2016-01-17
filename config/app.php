@@ -155,6 +155,23 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\AnnotationServiceProvider::class,
+
+        /*
+         * Debugbar
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+
+        /*
+         * Admin
+         */
+        ZaLaravel\LaravelAdmin\LaravelAdminServiceProvider::class,
+        ZaLaravel\LaravelAdmin\LaravelAdminViewComposerServiceProvider::class,
+
+        /*
+         * User
+         */
+        ZaLaravel\LaravelUser\LaravelUserServiceProvider::class,
 
     ],
 
