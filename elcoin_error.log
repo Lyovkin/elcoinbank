@@ -1,0 +1,14 @@
+2016/01/17 13:45:27 [error] 8868#0: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught UnexpectedValueException: The stream or file "/var/www/elcoinbank/storage/logs/laravel.log" could not be opened: failed to open stream: Permission denied in /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Handler/StreamHandler.php:87
+Stack trace:
+#0 /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Handler/AbstractProcessingHandler.php(37): Monolog\Handler\StreamHandler->write(Array)
+#1 /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Logger.php(289): Monolog\Handler\AbstractProcessingHandler->handle(Array)
+#2 /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Logger.php(565): Monolog\Logger->addRecord(400, Object(UnexpectedValueException), Array)
+#3 /var/www/elcoinbank/vendor/laravel/framework/src/Illuminate/Log/Writer.php(202): Monolog\Logger->error(Object(UnexpectedValueException), Array)
+#4 /var/www/elcoinbank/vendor/laravel/framework/src/Illuminate/Log/Writer.php(113): Illuminate\Log\Writer->writeLog('error', Object(UnexpectedValueExceptio...
+PHP message: PHP Fatal error:  Uncaught UnexpectedValueException: The stream or file "/var/www/elcoinbank/storage/logs/laravel.log" could not be opened: failed to open stream: Permission denied in /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Handler/StreamHandler.php:87
+Stack trace:
+#0 /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Handler/AbstractProcessingHandler.php(37): Monolog\Handler\StreamHandler->write(Array)
+#1 /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Logger.php(289): Monolog\Handler\AbstractProcessingHandler->handle(Array)
+#2 /var/www/elcoinbank/vendor/monolog/monolog/src/Monolog/Logger.php(565): Monolog\Logger->addRecord(400, Object(Symfony\Component\Debug\Exception\FatalErrorException), Array)
+#3 /var/www/elcoinbank/vendor/laravel/framework/src/Illuminate/Log/Writer.php(202): Monolog\Logger->error(Object(Symfony\Component\Debug\Exception\FatalErrorException), Array)
+#4 /var/www/elcoinbank/vendor/larave
