@@ -1,11 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -23,4 +24,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the roles a user has
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role', 'users_roles');
+    }
+
+    /**
+     * Find out if user has a specific role
+     *
+     * $return boolean
+     */
+    public function hasRole($check)
+    {
+        return in_array($check, array_fetch($this->roles->toArray(), 'name'));
+    }
 }
