@@ -11,19 +11,16 @@ class UserTableSeeder extends Seeder{
 
     public function run()
     {
-        $faker = Faker\Factory::create();
-
         DB::table('users')->delete();
 
-        $model = Config::get('auth.model');
-        foreach(range(1, 30) as $index)
-        {
-            $user = $model::create([
-                'email' => $faker->email,
-                'password' => Hash::make('1234'),
-                'name' => $faker->userName,
-                'blocked' => rand(0,1),
-            ]);
-        }
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'blocked' => 0,
+            'balance' => 0,
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('secret'),
+        ]);
+
+        factory(App\Models\User::class, 30)->create();
     }
 }

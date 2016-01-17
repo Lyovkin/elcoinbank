@@ -9,3 +9,5 @@ vendor
 
 elcoin_access.log
 elcoin_error.log
+
+node_modules

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Support\Arr;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -13,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'blocked' => 0, 'balance' => 0,
     ];
 
     /**
@@ -40,6 +41,8 @@ class User extends Authenticatable
      */
     public function hasRole($check)
     {
-        return in_array($check, array_fetch($this->roles->toArray(), 'name'));
+        return in_array($check, array_pluck($this->roles->toArray(), 'name'));
     }
+
+
 }
