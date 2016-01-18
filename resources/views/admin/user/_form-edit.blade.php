@@ -1,41 +1,42 @@
 <div class="form-group">
     {!! Form::label('user_name', 'Имя пользователя', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
-        {!! Form::text('user_name', $user->user_name, ["class"=>"form-control",
-        "placeholder"=>"Логин",'required' => 'required', 'pattern' => '[\w\-._]+' ]) !!}
+        {!! Form::text('user_name', $user->name, ["class"=>"form-control",
+        "placeholder"=>"Логин",'required' => 'required', 'pattern' => '[a-Z]+' ]) !!}
     </div>
 </div>
 
-<div class="form-group">
+{{--<div class="form-group">
     {!! Form::label('name', 'Имя', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
         {!! Form::text('name', $user->profile->name, ["class"=>"form-control", "placeholder"=>"Имя"]) !!}
     </div>
-</div>
+</div>--}}
 
-<div class="form-group">
+{{--<div class="form-group">
     {!! Form::label('last_name', 'Фамилия', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
         {!! Form::text("last_name", $user->profile->last_name, ["class"=>"form-control",
         "placeholder"=>"Фамилия",
         ]) !!}
     </div>
-</div>
+</div>--}}
 
 <div class="form-group">
-    {!! Form::label('email', 'email', ["class"=>"col-sm-3 control-label"]) !!}
+    {!! Form::label('email', 'Email', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
-        <p>{{ $user->email }}</p>
+        {!! Form::text('email', $user->email, ["class"=>"form-control",
+        "placeholder"=>"Email",'required' => 'required', 'pattern' => '[a-Z]+' ]) !!}
     </div>
 </div>
 
-<div class="form-group">
+{{--<div class="form-group">
     {!! Form::label('ads_rise', 'Поднятия', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
         {!! Form::text('ads_rise', $user->ads_rise, ["class"=>"form-control",
         "placeholder"=>"Поднятия"]) !!}
     </div>
-</div>
+</div>--}}
 
 <div class="form-group">
     {!! Form::label('role', 'Роли', ["class"=>"col-sm-3 control-label"]) !!}
@@ -49,7 +50,7 @@
     </div>
 </div>
 
-<div class="form-group">
+{{--<div class="form-group">
     {!! Form::label('city', 'Город', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
         <select name='city' class='form-control'>
@@ -69,8 +70,8 @@
         </select>
         <a href="#" onclick="$('select[name=city]').val('Выберете город');return false;">Убрать</a>
     </div>
-</div>
-<input type="hidden" name="page" value="{{ $page }}">
+{{--</div>--}}{{--
+<input type="hidden" name="page" value="{{ $page }}">--}}
 <div class="form-group">
     <div class="col-sm-offset-3 col-sm-3">
         {!! Form::button('<i class="fa fa-btn fa-save"></i> Сохранить', ['type'=>'submit',

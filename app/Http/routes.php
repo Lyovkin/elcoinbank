@@ -32,6 +32,18 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/admin', function () {
         return redirect()->route('admin.dashboard.index');
     });
+
+    Route::bind('profile', function ($user_name) {
+
+        $user = \App\Models\User::where('name', $user_name)->first();
+        if(!$user)
+        {
+            $user = \App\Models\User::where('user_name', Auth::user()->name)->first();
+        }
+        return \App\Models\Profile::where('user_id', $user->id)->first();
+    });
+
+    Route::resource('profile', 'ProfileController');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
@@ -49,6 +61,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::get('/user/{user}/addBalance',
         array('uses' => 'AdminModifyController@createBalance',
             'as' => 'admin.user.addmoney'));
+
+    Route::post('/user/storeBalance',
+        array('uses' => 'AdminModifyController@storeBalance',
+            'as' => 'admin.user.storebalance'));
 });
 
 

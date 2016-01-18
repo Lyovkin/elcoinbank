@@ -18,12 +18,12 @@
             <div class="panel-heading">
                 Все Пользователи
                 <div class="pull-right">
-                    <div class="btn-toolbar  btn-group-xs" role="toolbar" aria-label="...">
+                    {{--<div class="btn-toolbar  btn-group-xs" role="toolbar" aria-label="...">
                         <a href="{{route('admin.user.create')}}"
                             data-toggle="tooltip"
                             data-original-title="Добавить пользователя"
                             class="btn btn-default btn-mini"><i class="fa fa-plus"></i></a>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
             <!-- /.panel-heading -->
@@ -32,15 +32,15 @@
                     <table class="table table-hover" ng-controller="UsersController">
                         <thead>
                         <tr>
-                            <th>id</th>
+                            <th>ID</th>
                             <th>Логин</th>
                             <th>Email</th>
                             <th>Заблокирован</th>
-                            <th>Баланс</th>
+                            <th>Баланс <i class="fa fa-btc"></i></th>
                             <th>&nbsp;</th>
                         </tr>
 
-                        {{--<tr>
+                        <tr>
                             {!! Form::open(['route'=>['admin.user.index'], 'class'=>'form-horizontal confirm',
                                 'role'=>'form', 'method' => 'GET']) !!}
                             <th>
@@ -63,7 +63,7 @@
                                 </a>
                             </th>
                             {!! Form::close() !!}
-                        </tr>--}}
+                        </tr>
 
                         </thead>
                         <tbody>
@@ -72,13 +72,14 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-
                                 <td>
                                     @if (1 == $user->blocked)
-                                        <i class="fa fa-ban"></i>
+                                        <i class="fa fa-hand-o-down"></i>
+                                    @else
+                                        <i class="fa fa-hand-o-up"></i>
                                     @endif
                                 </td>
-                                <td>{{$user->balance}}</td>
+                                <td>{{$user->balance}} элькоинов</td>
                                 <td>
                                     <a href="{{route('admin.user.edit',['id'=>$user->id])}}" style=" float: right" data-toggle="tooltip" data-original-title="Редактировать"
                                        class="btn btn-primary"><i class="fa fa-pencil"></i></a>
@@ -102,7 +103,7 @@
                                     </div>
 
                                     <a href="{{route('admin.user.addmoney',['id'=>$user->id])}}"  style=" float: right;" data-toggle="tooltip" data-original-title="Модифицировать баланс"
-                                       class="btn btn-success"><i class="fa fa-ruble"></i></a>
+                                       class="btn btn-success"><i class="fa fa-btc"></i></a>
 
                                 </td>
                                 <td>
