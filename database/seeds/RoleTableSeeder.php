@@ -12,8 +12,8 @@ class RoleTableSeeder extends Seeder
 
         Model::unguard();
 
-        \ZaLaravel\LaravelUser\Models\Role::create(['name' => 'admin']);
-        \ZaLaravel\LaravelUser\Models\Role::create(['name' => 'user']);
+        \App\Models\Role::create(['name' => 'admin']);
+        \App\Models\Role::create(['name' => 'user']);
 
         Model::reguard();
     }
