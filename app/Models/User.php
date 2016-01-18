@@ -38,6 +38,8 @@ class User extends Authenticatable
      * Find out if user has a specific role
      *
      * $return boolean
+     * @param $check
+     * @return bool
      */
     public function hasRole($check)
     {

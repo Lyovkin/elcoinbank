@@ -30,14 +30,21 @@
                 <li>
                     <a class="page-scroll" href="">Вопросы</a>
                 </li>
-
+                @if (Auth::guest())
                     <li>
-                        <a class="page-scroll" href="{{ url('/home') }}">Вход</a>
+                        <a class="page-scroll" href="{{ url('/login') }}">Вход</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="{{ url('/register') }}">Регистрация</a>
                     </li>
-
+                @else
+                    <li>
+                        <a class="page-scroll" href="{{ url('/profile') }}">Мой кабинет</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{ url('/logout') }}">Выйти</a>
+                    </li>
+                @endif
 
             </ul>
         </div>
@@ -45,3 +52,4 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+

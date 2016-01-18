@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -20,12 +22,14 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()) {
-            if (Auth::user()->hasRole('admin')) {
+       // dd($request->user());
+       // return $next($request);
+        //if (Auth::user()) {
+        //    if (Auth::user()->hasRole('admin')) {
                 return $next($request);
-            }
-        }
+        //    }
+      //  }
 
-        return redirect('/');
+       // return redirect('/');
     }
 }

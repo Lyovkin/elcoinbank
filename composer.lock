@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a4d3e5138ede4dbeac20a3f1d3a66f42",
-    "content-hash": "841dedebc3620ead79233022b6b2882b",
+    "hash": "63c3bd902dbe43e7d448d2c9560f395e",
+    "content-hash": "76f0deb6228a186907c6493f6a2c255d",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -338,58 +338,6 @@
             "time": "2014-09-09 13:34:57"
         },
         {
-            "name": "fzaninotto/faker",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~1.5"
-            },
-            "suggest": {
-                "ext-intl": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Faker\\": "src/Faker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
-            "description": "Faker is a PHP library that generates fake data for you.",
-            "keywords": [
-                "data",
-                "faker",
-                "fixtures"
-            ],
-            "time": "2015-05-29 06:29:14"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -711,6 +659,60 @@
             "description": "Route Annotations for The Laravel Framework.",
             "homepage": "http://laravelcollective.com",
             "time": "2015-12-23 08:19:59"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "c88b2d59a56ed2290fc5082a1a6099e357c9fdbc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/c88b2d59a56ed2290fc5082a1a6099e357c9fdbc",
+                "reference": "c88b2d59a56ed2290fc5082a1a6099e357c9fdbc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.2.*",
+                "illuminate/routing": "5.2.*",
+                "illuminate/session": "5.2.*",
+                "illuminate/support": "5.2.*",
+                "illuminate/view": "5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "illuminate/database": "5.2.*",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2016-01-16 16:54:49"
         },
         {
             "name": "league/flysystem",
@@ -2151,44 +2153,6 @@
             ],
             "description": "Base admin package for Laravel 5",
             "time": "2015-07-30 18:59:37"
-        },
-        {
-            "name": "za-laravel/laravel-user",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/za-laravel/laravel-user.git",
-                "reference": "517e8b2b3ce521bbbed5118ed6af7966997efddc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/za-laravel/laravel-user/zipball/517e8b2b3ce521bbbed5118ed6af7966997efddc",
-                "reference": "517e8b2b3ce521bbbed5118ed6af7966997efddc",
-                "shasum": ""
-            },
-            "require": {
-                "fzaninotto/faker": "^1.5@dev",
-                "php": ">=5.4.0",
-                "za-laravel/laravel-admin": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ZaLaravel\\LaravelUser\\": "src/ZaLaravel/LaravelUser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aleksandr Zamiatin",
-                    "email": "cawa123@mail.ru"
-                }
-            ],
-            "description": "User functionality package for Laravel 5",
-            "time": "2015-08-21 15:47:35"
         }
     ],
     "packages-dev": [
@@ -2245,6 +2209,58 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2015-05-29 06:29:14"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -3366,8 +3382,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "za-laravel/laravel-admin": 20,
-        "za-laravel/laravel-user": 20
+        "za-laravel/laravel-admin": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

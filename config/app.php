@@ -168,10 +168,8 @@ return [
         ZaLaravel\LaravelAdmin\LaravelAdminServiceProvider::class,
         ZaLaravel\LaravelAdmin\LaravelAdminViewComposerServiceProvider::class,
 
-        /*
-         * User
-         */
-        ZaLaravel\LaravelUser\LaravelUserServiceProvider::class,
+        // Collective HTML FORMS
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -218,6 +216,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

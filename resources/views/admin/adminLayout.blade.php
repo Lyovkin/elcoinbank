@@ -31,8 +31,6 @@
 
     <link rel="stylesheet" href="/pub_admin/css/plugins/bootstrap-tagsinput.css"/>
 
-    <link rel="stylesheet" href="/css/upload.css"/>
-
     <!-- At very end: redefines vendor styles -->
     <link rel="stylesheet" href="/pub_admin/css/board.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -59,7 +57,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('/admin/dashboard') }}">Elcoin Admin</a>
+            <a class="navbar-brand" href="{{ url('/admin/dashboard') }}">Elcoin Admin V 1.0</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -80,7 +78,7 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    {{--<li>
+                    <li>
                         <a class="" href="{{ route('admin.dashboard.index') }}"><i
                                     class="fa fa-dashboard fa-fw"></i> Главная</a>
                     </li>
@@ -88,6 +86,7 @@
                         <a class="" href="{{ route('admin.user.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Пользователи</a>
                     </li>
+                    {{--
                     <li>
                         <a class="" href="{{ route('admin.shops.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Магазины</a>

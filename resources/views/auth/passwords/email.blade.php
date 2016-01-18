@@ -1,8 +1,8 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
 <!-- Main Content -->
 @section('content')
-<div class="container">
+<div class="container" style="padding-top: 170px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i>Отправить ссылку для восстановления
+                                    <i class="fa fa-btn fa-envelope"></i>Отправить ссылку
                                 </button>
                             </div>
                         </div>

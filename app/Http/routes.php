@@ -26,5 +26,29 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/', 'WelcomeController@index');
+
     Route::get('/home', 'HomeController@index');
+
+    Route::get('/admin', function () {
+        return redirect()->route('admin.dashboard.index');
+    });
 });
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+
+    Route::resource('dashboard', 'AdminController');
+
+    Route::model('user', 'App\\Models\\User');
+    Route::resource('user', 'AdminUserController');
+
+    Route::post('user/{user}/block', array(
+        'uses' => 'AdminUserController@block',
+        'as' => 'admin.user.block',
+    ));
+
+    Route::get('/user/{user}/addBalance',
+        array('uses' => 'AdminModifyController@createBalance',
+            'as' => 'admin.user.addmoney'));
+});
+
+
