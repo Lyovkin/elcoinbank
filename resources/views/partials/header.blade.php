@@ -1,5 +1,6 @@
 <div class="container">
     <div class="intro-text">
+        <img src="/img/logo.png">
         <div class="intro-lead-in">Добро пожаловать в Elcoin Bank!</div>
         {{--<div class="intro-lead-in">Мы инвестиционный проект и мы поможем вам заработать!</div>--}}
         <div class="intro-lead-in">Наша задача - приумножать прибыль!</div>

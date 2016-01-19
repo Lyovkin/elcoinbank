@@ -1,3 +1,324 @@
 .navbar-default .nav li a {
     color: #FED136;
 }
+
+/*=============================================================
+    Authour URL: www.designbootstrap.com
+
+    http://www.designbootstrap.com/
+
+    License: MIT
+========================================================  */
+
+/*============================================================
+BACKGROUND COLORS
+============================================================*/
+.db-bk-color-one {
+    background-color: #f55039;
+}
+
+.db-bk-color-two {
+    background-color: #46A6F7;
+}
+
+.db-bk-color-three {
+    background-color: #47887E;
+}
+
+.db-bk-color-six {
+    background-color: #F59B24;
+}
+/*============================================================
+PRICING STYLES
+==========================================================*/
+.db-padding-btm {
+    padding-bottom: 50px;
+}
+.db-button-color-square {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.50);
+    border: none;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.db-button-color-square:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.50);
+    border: none;
+}
+
+
+.db-pricing-eleven {
+    margin-bottom: 30px;
+    margin-top: 50px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    color: #fff;
+    line-height: 30px;
+}
+
+.db-pricing-eleven ul {
+    list-style: none;
+    margin: 0;
+    text-align: center;
+    padding-left: 0px;
+}
+
+.db-pricing-eleven ul li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+.db-pricing-eleven ul li i {
+    margin-right: 5px;
+}
+
+
+.db-pricing-eleven .price {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px 20px 20px 20px;
+    font-size: 60px;
+    font-weight: 900;
+    color: #FFFFFF;
+}
+
+.db-pricing-eleven .price small {
+    color: #B8B8B8;
+    display: block;
+    font-size: 12px;
+    margin-top: 22px;
+}
+
+.db-pricing-eleven .type {
+    background-color: #52E89E;
+    padding: 50px 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.db-pricing-eleven .pricing-footer {
+    padding: 20px;
+}
+
+.db-attached > .col-lg-4,
+.db-attached > .col-lg-3,
+.db-attached > .col-md-4,
+.db-attached > .col-md-3,
+.db-attached > .col-sm-4,
+.db-attached > .col-sm-3 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.db-pricing-eleven.popular {
+    margin-top: 10px;
+}
+
+.db-pricing-eleven.popular .price {
+    padding-top: 80px;
+}
+
+/*
+ // Inspiration taken from Mike | Creative Mints
+ // - Dribbble.com page -> http://drbl.in/ghSU
+
+ Tried to keep it clean and documented. It's not absolutely perfect and I haven't tested it in many of the older browsers,
+ but I will try and tweak it when I see an issue or someone mentions it. Always love the work the designers over at Dribbble.com
+ put together. I wanted to attempt to mimic their photoshop work and provide some fun widgets for you Bootstrappers.
+
+ - Brian Moeller
+
+*/
+
+@font-face {
+    font-family: 'weather';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+    url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+    url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+    url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*-- BS3 Modified Classes --*/
+.panel {
+    border: none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+.panel-body {
+    padding: 20px;
+}
+.panel-heading {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.panel-footer {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+
+
+/*-- Common Use Classes --*/
+.btn-ui {
+    background-color: #E55F3A;
+    border-color: #C54A28;
+    color: #fff;
+}
+.btn-ui:hover {
+    background-color: #E0624C;
+    color: #fff;
+}
+.list-block {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+.list-block ul {
+    display: table-row;
+}
+.list-block li {
+    display: table-cell;
+    margin: 0;
+}
+.pad-left-0 {
+    padding-left: 0px;
+}
+.pad-right-0 {
+    padding-right: 0px;
+}
+.mrg-btm-10 {
+    margin-bottom: 10px;
+}
+.mrg-btm-20 {
+    margin-bottom: 20px;
+}
+
+/*-- Pie Chart Widget --*/
+#pie-chart-widget .panel-body {
+    padding: 0px;
+}
+#pie-chart-widget .panel-footer {
+    background-color: #fff;
+    padding: 0px;
+    margin-top: 20px;
+}
+#pie-chart-widget .panel-footer .btn {
+    border: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 20px 0px;
+    color: #fff;
+    background-color: #776B5F;
+    border-top: 3px solid #6d6257;
+}
+#pie-chart-widget .panel-footer .btn:hover {
+    background-color: #62584C;
+    border-color: #52483F;
+}
+#pie-chart-widget h2 {
+    font-weight: 700;
+    margin: 3px 0 0 0;
+}
+#pie-chart-widget .legend li {
+    background-color: #F5F0EC;
+    padding: 20px 10px;
+}
+#pie-chart-widget .legend li:not(:first-child) {
+    border-left: 1px solid #fff;
+}
+#pie-chart-widget .legend .video {
+    border-top: 4px solid #4DAF7C;
+}
+#pie-chart-widget .legend .audio {
+    border-top: 4px solid #EAC85D;
+}
+#pie-chart-widget .legend .photo {
+    border-top: 4px solid #E25331;
+}
+
+
+/*-- Line Chart Widget --*/
+#myLineChart {
+    background-color: #55BC75;
+    padding: 0px 5px;
+    margin: 0px;
+}
+#myBarChart {
+    margin-top: 10px;
+}
+#line-chart-widget .panel-heading {
+    background-color: #55BC75;
+    color: #fff;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+#line-chart-widget .panel-heading small {
+    color: #fff;
+}
+#line-chart-widget .panel-heading .label {
+    background-color: rgba(0,0,0,0.1);
+    padding: 5px;
+}
+#line-chart-widget .panel-body {
+    padding: 0px;
+}
+#line-chart-widget .panel-footer {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 0px;
+    border-top: none;
+}
+#line-chart-widget .panel-footer li {
+    padding: 10px 0;
+}
+#line-chart-widget h3 {
+    font-weight: 700;
+    margin: 0px;
+}
+#line-chart-widget li {
+    width:50%;
+}
+#line-chart-widget .legend li {
+    background-color: #F5F0EC;
+    padding: 20px 0;
+}
+#line-chart-widget .legend li:not(:first-child) {
+    border-left: 1px solid #fff;
+}
+#line-chart-widget .chart-block>div {
+    margin-top: 20px;
+    width:55%;
+}
+#line-chart-widget .chart-block>div:last-child {
+    padding-left: 15px;
+    width:45%;
+}
+#line-chart-widget .chart-block .change {
+    color:#fff;
+    font-size: 1.6em;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #55BC75;
+    width:100%;
+}
+#line-chart-widget .chart-block .change i {
+    font-size: .6em;
+}
+
+
+
+
+
+
+
+

@@ -19,16 +19,16 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="">Правила</a>
+                    <a class="page-scroll" href="{{ url('/rules') }}">Правила</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="">Условия</a>
+                    <a class="page-scroll" href="{{ url('/conditions') }}">Условия</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="">Новости</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="">Вопросы</a>
+                    <a class="page-scroll" href="{{ url('/faq') }}">Вопросы</a>
                 </li>
                 @if (Auth::guest())
                     <li>
