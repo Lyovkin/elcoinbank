@@ -46,4 +46,5 @@ elixir(function(mix) {
 elixir(function(mix) {
  mix
      .copy(paths.fawesome + 'fonts/**', 'public/fonts')
+     .copy(paths.bootstrap + 'fonts/**', 'public/fonts')
 });

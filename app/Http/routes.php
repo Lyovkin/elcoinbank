@@ -33,15 +33,6 @@ Route::group(['middleware' => 'web'], function () {
         return redirect()->route('admin.dashboard.index');
     });
 
-    Route::bind('profile', function ($user_name) {
-
-        $user = \App\Models\User::where('name', $user_name)->first();
-        if(!$user)
-        {
-            $user = \App\Models\User::where('user_name', Auth::user()->name)->first();
-        }
-        return \App\Models\Profile::where('user_id', $user->id)->first();
-    });
 
     Route::resource('profile', 'ProfileController');
 

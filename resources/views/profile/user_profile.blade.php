@@ -13,29 +13,11 @@
         {{ $data->name }} {{ $data->last_name }}
     </h2>
     <div class="row">
-  <div class="col-md-6 col-sm-6">
-        @if($data->avatar)
-
-                <img class="img-thumbnail" alt="{{ $data->name }} {{ $data->last_name }}" src="{{ url('img', ['profile', $data->avatar->name ]) }}?w=600&h=400&fit=crop">
-        @else
-                <img class="img-thumbnail" alt="{{ $data->name }} {{ $data->last_name }}" src="http://placehold.it/600x400">
-
-        @endif
-
-        </div>
       <div class="col-md-6 col-sm-6">
         <div class="agent-contact-details">
 
           <ul class="list-group">
-            <li class="list-group-item">
-                @if($data->city_id)
-                    <span style="float:right" >{{ $data->city->city_name }}</span>
-                @else
-                    <span style="float:right">Не указан</span>
-                @endif
 
-              Город
-            </li>
             <li class="list-group-item">
 
                 @if($data->phone)
@@ -51,25 +33,7 @@
               Почта
             </li>
             <li class="list-group-item">
-              <div class="social-icons">
-                <a href="{{$data->vkcom}}">
-                  <i class="fa fa-vk">
-                  </i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter">
-                  </i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-google-plus">
-                  </i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-envelope">
-                  </i>
-                </a>
 
-              </div>
             </li>
           </ul>
         </div>

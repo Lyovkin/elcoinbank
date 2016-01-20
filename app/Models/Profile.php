@@ -12,7 +12,7 @@ class Profile extends Model
 {
     protected $table = 'profiles';
 
-    protected $fillable = ['name', 'last_name', 'phone', 'about'];
+    protected $fillable = ['name', 'last_name', 'phone', 'about', 'wallet', 'user_id'];
 
     protected $guarded = ['_token'];
 
