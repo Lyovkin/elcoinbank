@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Условия
+@endsection
+
 @section('content')
     <div class="container" style="padding-top: 170px">
         <p class="h4">

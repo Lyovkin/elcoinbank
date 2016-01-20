@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Сброс пароля
+@endsection
+
 <!-- Main Content -->
 @section('content')
 <div class="container" style="padding-top: 170px;">

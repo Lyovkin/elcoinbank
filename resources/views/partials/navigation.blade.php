@@ -25,7 +25,7 @@
                     <a class="page-scroll" href="{{ url('/conditions') }}">Условия</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="">Новости</a>
+                    <a class="page-scroll" href="{{ url('/news') }}">Новости</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="{{ url('/faq') }}">Вопросы</a>

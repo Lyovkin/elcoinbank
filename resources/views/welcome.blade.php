@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+        Главная
+@endsection
+
 @section('header')
     @include('partials.header')
 @endsection

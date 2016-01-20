@@ -22,5 +22,10 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-
+$factory->define(App\Models\News::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->text(30),
+        'text' => $faker->text(),
+    ];
+});
 

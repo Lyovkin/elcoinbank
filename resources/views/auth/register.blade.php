@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Регистрция
+@endsection
+
 @section('content')
 <div class="container" style="padding-top: 170px;">
     <div class="row">

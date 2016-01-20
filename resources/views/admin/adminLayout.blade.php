@@ -86,11 +86,12 @@
                         <a class="" href="{{ route('admin.user.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Пользователи</a>
                     </li>
-                    {{--
+
                     <li>
-                        <a class="" href="{{ route('admin.shops.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Магазины</a>
+                        <a class="" href="{{ route('admin.news.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Новости</a>
                     </li>
+                    {{--
                     <li>
                         <a class="" href="{{ route('admin.advertisement.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Обьявления</a>

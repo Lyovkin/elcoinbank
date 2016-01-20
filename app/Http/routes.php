@@ -44,11 +44,16 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::resource('profile', 'ProfileController');
+
+    Route::get('news', 'NewsController@index');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'], function () {
 
     Route::resource('dashboard', 'AdminController');
+
+    Route::model('news', 'App\\Models\\News');
+    Route::resource('news', 'AdminNewsController');
 
     Route::model('user', 'App\\Models\\User');
     Route::resource('user', 'AdminUserController');
