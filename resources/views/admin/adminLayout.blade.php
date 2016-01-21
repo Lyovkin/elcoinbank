@@ -91,19 +91,21 @@
                         <a class="" href="{{ route('admin.news.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Новости</a>
                     </li>
+
+                    <li>
+                        <a class="" href="{{ route('admin.request.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Заявки</a>
+                    </li>
+
+                    <li>
+                        <a class="" href="{{ route('admin.percent.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Процент</a>
+                    </li>
+                    <li>
+                        <a class="" href="{{ route('admin.course.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Курс</a>
+                    </li>
                     {{--
-                    <li>
-                        <a class="" href="{{ route('admin.advertisement.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Обьявления</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('admin.type.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Типы обьявлений</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('admin.navigation.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Навигация</a>
-                    </li>
                     <li>
                         <a class="" href="{{ route('admin.banner.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Баннеры</a>

@@ -6,6 +6,7 @@
 
 @endsection
 @section('content')
+
     <div class="container" style="padding-top: 130px;">
         <div class="row">
             <div class="well">

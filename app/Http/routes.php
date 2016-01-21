@@ -37,6 +37,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('profile', 'ProfileController');
 
     Route::get('news', 'NewsController@index');
+
+    Route::post('/request', ['uses'=>'RequestController@store', 'as'=>'request.store']);
+
+    Route::get('/request', ['uses' => 'RequestController@create', 'as' => 'request.create']);
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'], function () {
@@ -61,6 +65,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'
     Route::post('/user/storeBalance',
         array('uses' => 'AdminModifyController@storeBalance',
             'as' => 'admin.user.storebalance'));
+
+    Route::get('/request', ['uses'=>'AdminRequestController@index', 'as' => 'admin.request.index']);
+    Route::delete('/request/{id}', ['uses' => 'AdminRequestController@delete', 'as' => 'admin.request.delete']);
+
+
+
+    Route::resource('percent', 'AdminPercentController');
+
+    Route::resource('course', 'AdminCourseController');
 });
 
 
