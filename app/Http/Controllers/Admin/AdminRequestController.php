@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminRequestController extends Controller
 {
     protected $reqService;
     
-    public function __construct(RequestService $requestService)
+    public function __construct(RequestService $requestService, Auth $auth)
     {
+        $this->middleware('admin');
         $this->reqService = $requestService;
     }
     

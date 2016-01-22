@@ -23,9 +23,11 @@ class ProfileController extends Controller
 {
     /**
      * Construct (the captain style)
+     * @param Auth $auth
      */
-    public function __construct()
+    public function __construct(Auth $auth)
     {
+        $this->middleware('auth');
         if (Auth::user()) {
             $this->profile = Auth::user()->profile;
             $this->user = Auth::user();

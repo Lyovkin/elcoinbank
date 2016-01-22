@@ -14,9 +14,10 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(array('welcome','profile.profile'), 'App\Composers\UserComposer');
-        View::composer('profile.profile', 'App\Composers\PercentComposer');
-        View::composer('profile.profile', 'App\Composers\CourseComposer');
+        View::composer(array('welcome', 'profile.profile'), 'App\Composers\UserComposer');
+        View::composer(['profile.profile', 'request.create'], 'App\Composers\PercentComposer');
+        View::composer(['profile.profile', 'request.create'], 'App\Composers\CourseComposer');
+        View::composer('request.create', 'App\Composers\DaysComposer');
     }
 
     /**

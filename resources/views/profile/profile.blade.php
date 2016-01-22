@@ -8,6 +8,9 @@
 
 @section('content')
     <div class="container" style="padding-top: 130px;">
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
         <h3 class="text-center text-primary">Личный кабинет</h3>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -129,7 +132,7 @@
                                     </li>
                                     <li class="list-group-item">
                   <span>
-                          <a style="color: red;" href="{{--{{route('profiles.payments')}}--}}">История платежей</a>
+                          <a style="color: red;" href="{{  url('/history') }}">История заявок</a>
                       <i class="fa fa-cc-mastercard" style="float: right;"></i> </span>
 
                                     </li>
@@ -137,7 +140,8 @@
                                         <a href=" /profile/{{$data->user->id}}/edit " style="color: red;">  Редактировать профиль</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="{{ route('request.create') }}" style="color: red;"> Отставить заявку для первода</a>
+                                        <a href="{{ route('money.create') }}" style="color: red; font-size: 18px;"> Пополнить баланс</a>
+                                        <i class="fa fa-diamond" style="float: right;"></i>
                                     </li>
                                 </ul>
                             </div>

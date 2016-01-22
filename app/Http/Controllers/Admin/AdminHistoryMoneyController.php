@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\News;
+use App\Models\RequestMoney;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * Class AdminNewsController
- * @package App\Http\Controllers\Admin
- *
- */
-class AdminNewsController extends Controller
+class AdminHistoryMoneyController extends Controller
 {
+    /**
+     * @param Auth $auth
+     */
     public function __construct(Auth $auth)
     {
         $this->middleware('admin');
@@ -27,9 +25,9 @@ class AdminNewsController extends Controller
      */
     public function index()
     {
-        $news = News::orderBy('id', 'desc')->paginate(10);
+        $requests = RequestMoney::orderBy('id', 'desc')->paginate(15);
 
-        return view('admin.news.index', compact('news'));
+        return view('admin.money.index', compact('requests'));
     }
 
     /**
@@ -37,24 +35,20 @@ class AdminNewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(News $news)
+    public function create()
     {
-        return view('admin.news.create', compact('news'));
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param News $news
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, News $news)
+    public function store(Request $request)
     {
-        $news->fill($request->all());
-        $news->save();
-
-        return redirect()->route('admin.news.index');
+        //
     }
 
     /**
@@ -71,43 +65,49 @@ class AdminNewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param News $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function edit(News $news)
+    public function edit($id)
     {
-        return view('admin.news.edit', compact('news'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param News $news
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, $id)
     {
-        $news->fill($request->all());
-        $news->update();
-
-        return redirect()->route('admin.news.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param News $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @throws \Exception
-     * @internal param int $id
      */
-    public function destroy(News $news)
+    public function destroy($id)
     {
-        $news->delete();
+        RequestMoney::findOrfail($id)->delete();
+        return redirect()->back();
+    }
 
-        return redirect()->route('admin.news.index');
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function block($id, Request $request)
+    {
+        $req = RequestMoney::findOrFail($id);
+        $req->approve = $request->input('approve');
+        $req->update();
+
+        return redirect()->back();
     }
 }

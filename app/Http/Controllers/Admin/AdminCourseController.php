@@ -7,9 +7,18 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCourseController extends Controller
 {
+    /**
+     * @param Auth $auth
+     */
+    public function __construct(Auth $auth)
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *

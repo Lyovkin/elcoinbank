@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class AdminModifyController
@@ -14,6 +15,11 @@ use App\Http\Controllers\Controller;
  */
 class AdminModifyController extends Controller
 {
+    public function __construct(Auth $auth)
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

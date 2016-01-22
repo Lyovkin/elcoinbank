@@ -22,14 +22,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-       // dd($request->user());
-       // return $next($request);
-        //if (Auth::user()) {
-        //    if (Auth::user()->hasRole('admin')) {
+        if (Auth::user()) {
+            if (Auth::user()->hasRole('admin')) {
                 return $next($request);
-        //    }
-      //  }
+            }
+        }
 
-       // return redirect('/');
+        return redirect('/');
     }
 }

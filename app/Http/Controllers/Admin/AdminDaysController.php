@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\News;
+use App\Models\Days;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * Class AdminNewsController
- * @package App\Http\Controllers\Admin
- *
- */
-class AdminNewsController extends Controller
+class AdminDaysController extends Controller
 {
+
     public function __construct(Auth $auth)
     {
         $this->middleware('admin');
@@ -27,34 +23,35 @@ class AdminNewsController extends Controller
      */
     public function index()
     {
-        $news = News::orderBy('id', 'desc')->paginate(10);
+        $days = Days::all();
 
-        return view('admin.news.index', compact('news'));
+        return view('admin.days.index', compact('days'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param Days $days
      * @return \Illuminate\Http\Response
      */
-    public function create(News $news)
+    public function create(Days $days)
     {
-        return view('admin.news.create', compact('news'));
+        return view('admin.days.create', compact('days'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param News $news
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     * @param Days $days
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, News $news)
+    public function store(Request $request, Days $days)
     {
-        $news->fill($request->all());
-        $news->save();
+        $days->fill($request->all());
+        $days->save();
 
-        return redirect()->route('admin.news.index');
+        return redirect()->route('admin.days.index');
     }
 
     /**
@@ -71,43 +68,37 @@ class AdminNewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param News $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function edit(News $news)
+    public function edit($id)
     {
-        return view('admin.news.edit', compact('news'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param News $news
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, $id)
     {
-        $news->fill($request->all());
-        $news->update();
-
-        return redirect()->route('admin.news.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param News $news
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @throws \Exception
-     * @internal param int $id
      */
-    public function destroy(News $news)
+    public function destroy($id)
     {
-        $news->delete();
+        Days::findOrFail($id)->delete();
 
-        return redirect()->route('admin.news.index');
+        return redirect()->back();
+
     }
 }

@@ -75,10 +75,10 @@
                         <div class="row">
                             <div class="col-lg-12 ">
 
-                                {!! Form::model($request,['route'=>['request.store'],
+                                {!! Form::model($money,['route'=>['money.store'],
                                 'method' => 'POST',
                                 'class'=>'form-horizontal', 'role'=>'form']) !!}
-                                @include('request._form-create')
+                                @include('request.money_form-create')
                                 {!! Form::close() !!}
                             </div>
                             <!-- /.col-lg-6 (nested) -->

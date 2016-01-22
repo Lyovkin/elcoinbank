@@ -1,21 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Models\Percent;
+use App\Models\RequestMoney;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class AdminPercentController extends Controller
+class RequestMoneyController extends Controller
 {
-
-    public function __construct(Auth $auth)
-    {
-        $this->middleware('admin');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -23,19 +18,18 @@ class AdminPercentController extends Controller
      */
     public function index()
     {
-        $percent = Percent::all();
-
-        return view('admin.percent.index', compact('percent'));
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param RequestMoney $money
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(RequestMoney $money)
     {
-        //
+        return view('request.create', compact('money'));
     }
 
     /**
@@ -46,7 +40,22 @@ class AdminPercentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $req = new RequestMoney();
+        $req->name = $request->input('name');
+        $req->email = $request->input('email');
+        $req->tel = $request->input('tel');
+        $req->days = $request->input('days');
+        $req->course = $request->input('course');
+        $req->percent = $request->input('percent');
+        $req->wallet = $request->input('wallet');
+        $req->amount = $request->input('amount');
+        $req->message = $request->input('message');
+        $req->user_id = Auth::user()->id;
+        $req->save();
+
+        \Session::flash('message', 'Ваша заявка отправлена! Следите за статусом в личном кабинете.');
+
+        return redirect('/profile');
     }
 
     /**
@@ -63,29 +72,24 @@ class AdminPercentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Percent $percent
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function edit(Percent $percent)
+    public function edit($id)
     {
-        return view('admin.percent.edit', compact('percent'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param Percent $percent
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function update(Request $request, Percent $percent)
+    public function update(Request $request, $id)
     {
-        $percent->fill($request->all());
-        $percent->update();
-
-        return redirect()->route('admin.percent.index');
+        //
     }
 
     /**

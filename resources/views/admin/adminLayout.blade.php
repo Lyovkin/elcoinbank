@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
     <title>Admin - @yield('title')</title>
 
@@ -94,7 +95,7 @@
 
                     <li>
                         <a class="" href="{{ route('admin.request.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Заявки</a>
+                                    class="fa fa-list fa-fw"></i> Вопросы</a>
                     </li>
 
                     <li>
@@ -105,15 +106,18 @@
                         <a class="" href="{{ route('admin.course.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Курс</a>
                     </li>
+
+                    <li>
+                        <a class="" href="{{ route('admin.days.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Варианты дней</a>
+                    </li>
+
+
+                    <li>
+                        <a class="" href="{{ route('admin.history.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Заявки на вклады</a>
+                    </li>
                     {{--
-                    <li>
-                        <a class="" href="{{ route('admin.banner.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Баннеры</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('admin.services.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Услуги</a>
-                    </li>
                     <li>
                         <a class=""
                            href="{{ route('admin.categories.index') }}"><i

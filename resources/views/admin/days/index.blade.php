@@ -1,13 +1,14 @@
 @extends('admin.adminLayout')
 @section('title')
-    Заявки
+    Дни
 @stop
+@section('js')
 
+@stop
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Заявки</h1>
-
+            <h1 class="page-header">Дни</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -15,7 +16,15 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Все заявки
+                Все варианты дней
+                <div class="pull-right">
+                    <div class="btn-toolbar  btn-group-xs" role="toolbar" aria-label="...">
+                        <a href="{{route('admin.days.create')}}"
+                            data-toggle="tooltip"
+                            data-original-title="Добавить дни"
+                            class="btn btn-default btn-mini"><i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -24,26 +33,19 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Имя</th>
-                            <th>Email</th>
-                            <th>Телефон</th>
-                            <th>Сообщение</th>
-                            <th>Дата создания</th>
+                            <th>Дни</th>
                             <th>&nbsp;</th>
                         </tr>
+
                         </thead>
                         <tbody>
-                        @foreach($requests as $request)
+                        @foreach($days as $day)
                             <tr>
-                                <td>{{$request->id}}</td>
-                                <td>{{$request->name}}</td>
-                                <td>{{$request->email}}</td>
-                                <td>{{$request->tel}}</td>
-                                <td>{{$request->message}}</td>
-                                <td>{{$request->created_at->format('d.m.Y H:m:s')}}</td>
+                                <td>{{$day->id}}</td>
+                                <td>{{$day->days}}</td>
                                 <td>
                                     <div class="btn-group" style="float: right;" role="group" aria-label="...">
-                                        {!! Form::open(['route'=>['admin.request.delete',$request->id], 'class'=>'form-horizontal confirm',
+                                        {!! Form::open(['route'=>['admin.days.destroy',$day->id], 'class'=>'form-horizontal confirm',
                                         'role'=>'form', 'method' => 'DELETE']) !!}
                                         <button type="submit" class="btn btn-danger confirm-btn" data-toggle="tooltip" data-original-title="Удалить"><i class="fa fa-trash-o"></i></button>
                                         {!! Form::close() !!}
@@ -60,10 +62,6 @@
                 <!-- /.table-responsive -->
             </div>
             <!-- /.panel-body -->
-
-            <div class="panel-footer">
-                <div class="text-center">{!! $requests->render() !!}</div>
-            </div>
         </div>
         <!-- /.panel -->
         <!-- /.panel -->
