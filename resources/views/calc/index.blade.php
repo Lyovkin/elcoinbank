@@ -397,7 +397,7 @@
              $duration = $( "#slider2" ).slider( "value" );
              */
 
-            $total =  (parseInt(course) * (parseInt($amount) +  (parseInt($duration) * percent)));
+            $total =  (parseInt(course) * (parseInt($amount) +  (parseInt($duration) * (parseInt($amount) * percent / 100))));
             $( "#convert" ).text($convert);
             $( "#amount" ).val($amount);
             $( "#amount-label" ).text($amount);
