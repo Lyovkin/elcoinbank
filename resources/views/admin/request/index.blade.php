@@ -1,12 +1,12 @@
 @extends('admin.adminLayout')
 @section('title')
-    Заявки
+    Вопросы
 @stop
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Заявки</h1>
+            <h1 class="page-header">Вопросы</h1>
 
         </div>
         <!-- /.col-lg-12 -->

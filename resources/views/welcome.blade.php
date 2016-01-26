@@ -50,90 +50,6 @@
     </div>
 </section>
 
-<!-- Portfolio Grid Section -->
-<section id="portfolio" class="bg-light-gray">
-    <div class="container">
-        <div class="row text-center">
-            <h3>Планы вкладов</h3>
-        </div>
-        <div class="row db-padding-btm db-attached">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <div class="db-wrapper">
-                    <div class="db-pricing-eleven db-bk-color-one">
-                        <div class="price">
-                            <sup></sup>#
-                            <small>элькоинов</small>
-                        </div>
-                        <div class="type">
-                            SMALL
-                        </div>
-                        <ul>
-
-                            <li><i class="fa fa-percent"></i># процентов</li>
-                            <li><i class="fa fa-calendar-times-o"></i>Легкий старт</li>
-                            <li><i class="fa fa-money"></i>Небольшой заработок</li>
-                        </ul>
-                        <div class="pricing-footer">
-
-                            <a href="#" class="btn db-button-color-square btn-lg">Заказать</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <div class="db-wrapper">
-                    <div class="db-pricing-eleven db-bk-color-two popular">
-                        <div class="price">
-                            <sup></sup>#
-                            <small>элькоинов</small>
-                        </div>
-                        <div class="type">
-                            MEDIUM
-                        </div>
-                        <ul>
-
-                            <li><i class="fa fa-percent"></i># процентов</li>
-                            <li><i class="fa fa-calendar-times-o"></i>Отличный старт</li>
-                            <li><i class="fa fa-money"></i>Хороший заработок</li>
-                        </ul>
-                        <div class="pricing-footer">
-
-                            <a href="#" class="btn db-button-color-square btn-lg">Заказать</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <div class="db-wrapper">
-                    <div class="db-pricing-eleven db-bk-color-three">
-                        <div class="price">
-                            <sup></sup>#
-                            <small>элькоинов</small>
-                        </div>
-                        <div class="type">
-                            ADVANCE
-                        </div>
-                        <ul>
-
-                            <li><i class="fa fa-percent"></i># процентов</li>
-                            <li><i class="fa fa-calendar-times-o"></i>Великолепный старт</li>
-                            <li><i class="fa fa-money"></i>Большой заработок</li>
-                        </ul>
-                        <div class="pricing-footer">
-
-                            <a href="#" class="btn db-button-color-square btn-lg">Заказать</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    </div>
-
-</section>
-
 <!-- About Section -->
 <section id="about">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -142,7 +58,7 @@
     <div class="container">
         <div class="row">
             <!-- COLUMN ONE -->
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 col-lg-offset-2">
                 <!--
                    ****** LINE CHART WIDGET *******
                    -->

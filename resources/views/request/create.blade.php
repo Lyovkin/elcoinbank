@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.profile_layout')
 @section('title')
     Создать заявку на перевод
 @stop
@@ -57,19 +57,21 @@
         box-shadow: 20px 20px 40px #887;
     }
 </style>
+<link href="/css/profile.css" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 
-    <div class="container" style="padding-top: 130px;">
+    <div class="container" style="padding-top: 80px;">
+        @include('partials.head_profile')
         @if (Session::has('message'))
             <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
         <!-- /.row -->
         <div class="row">
-            <div class="col-lg-12 ">
+            <div class="col-lg-8" style="margin-top: 20px">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Заявка на перевод
+                        Сделать вклад
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -88,6 +90,11 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
+            </div>
+            <div class="col-lg-4" style="margin-top: 50px">
+                <div class="phone">
+                    <img class="img-responsive img-rounded" src="/img/phone.jpeg">
+                </div>
             </div>
         </div>
     </div>

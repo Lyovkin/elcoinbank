@@ -19,6 +19,7 @@ class RequestMoney extends Model
         'amount',
         'message',
         'approve' => 0,
-        'user_id'
+        'user_id',
+        'conclusion'
     ];
 }

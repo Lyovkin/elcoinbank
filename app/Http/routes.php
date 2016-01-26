@@ -45,6 +45,22 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/money', 'RequestMoneyController');
 
     Route::get('/history', 'HistoryMoneyController@index');
+
+    Route::get('/calc', 'CalcController@index');
+
+    Route::get('/offers', 'OfferController@index');
+
+    Route::get('/conclusion/{id}', 'ConclusionController@getDeposit');
+    Route::get('/conclusion', 'ConclusionController@index');
+    Route::post('/conclusion', array(
+        'uses' => 'ConclusionController@store',
+        'as' => 'conclusion.store'
+    ));
+
+    Route::post('/profile/{id}/update',
+        array(
+            'uses' => 'ProfileController@update',
+            'as' => 'profiles.update'));
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'], function () {
@@ -86,6 +102,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'
     Route::post('history/{req}/block', array(
         'uses' => 'AdminHistoryMoneyController@block',
         'as' => 'admin.money.block',
+    ));
+
+    Route::get('conclusion', array(
+        'uses' => 'AdminConclusionController@index',
+        'as' => 'admin.conclusion.index',
+    ));
+
+    Route::delete('conclusion/{id}', array(
+        'uses' => 'AdminConclusionController@delete',
+        'as' => 'admin.conclusion.destroy',
+    ));
+
+    Route::post('conclusion/{id}/success', array(
+        'uses' => 'AdminConclusionController@success',
+        'as' => 'admin.conclusion.success',
     ));
 });
 

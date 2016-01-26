@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.profile_layout')
 @section('title')
-    Профиль
+    Редактировать профиль
 @endsection
 @section('js')
 
@@ -23,7 +23,7 @@
                 <div class="">
                     <div class="">
 
-                        {!! Form::model($profile, ['route'=> ['profiles.update', 'id'=>$profile->user->id]]) !!}
+                        {!! Form::model($profile,['route'=> ['profiles.update', 'id'=>$profile->user->id]]) !!}
                         <div class="form-group">
 
                             <label>Имя</label>
@@ -49,7 +49,7 @@
                         </div>
                         <label>Обо мне</label>
                         <div class='form-group'>
-                            {!! Form::textarea('about', $profile->user->about, ['class'=>'form-control', 'placeholder'=>'Обо мне']) !!}
+                            {!! Form::textarea('about', $profile->user->about, ['class'=>'form-control', 'placeholder'=>'Обо мне', 'rows' => 4]) !!}
                         </div>
                         <input name="id" type="hidden" value="{{ $profile->user->id }}">
                         {!! Form::submit('Сохранить', ['class'=>'btn btn-primary']) !!}

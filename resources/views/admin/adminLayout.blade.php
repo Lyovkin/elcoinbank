@@ -89,14 +89,14 @@
                     </li>
 
                     <li>
-                        <a class="" href="{{ route('admin.news.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Новости</a>
+                        <a class="" href="{{ route('admin.history.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Вклады</a>
+                    </li>
+                    <li>
+                        <a class="" href="{{ route('admin.conclusion.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Заявки на вывод</a>
                     </li>
 
-                    <li>
-                        <a class="" href="{{ route('admin.request.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Вопросы</a>
-                    </li>
 
                     <li>
                         <a class="" href="{{ route('admin.percent.index') }}"><i
@@ -111,12 +111,17 @@
                         <a class="" href="{{ route('admin.days.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Варианты дней</a>
                     </li>
-
+                    <li>
+                        <a class="" href="{{ route('admin.news.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Новости</a>
+                    </li>
 
                     <li>
-                        <a class="" href="{{ route('admin.history.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Заявки на вклады</a>
+                        <a class="" href="{{ route('admin.request.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Вопросы</a>
                     </li>
+
+
                     {{--
                     <li>
                         <a class=""

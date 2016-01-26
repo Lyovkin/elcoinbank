@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequestMoneyTable extends Migration
+class CreateConclusionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateRequestMoneyTable extends Migration
      */
     public function up()
     {
-        Schema::create('request_money', function (Blueprint $table) {
+        Schema::create('conclusion', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email');
@@ -20,13 +20,15 @@ class CreateRequestMoneyTable extends Migration
             $table->integer('days');
             $table->double('percent');
             $table->integer('course');
-            $table->string('wallet');
+            $table->string('wallet1');
+            $table->string('wallet2')->nullable();
+            $table->string('wallet3')->nullable();
             $table->string('amount');
+            $table->string('total');
             $table->text('message')->nullable();
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('status');
-            $table->timestamp('conclusion');
             $table->timestamps();
         });
     }
@@ -38,6 +40,6 @@ class CreateRequestMoneyTable extends Migration
      */
     public function down()
     {
-        Schema::drop('request');
+        Schema::drop('conclusion');
     }
 }

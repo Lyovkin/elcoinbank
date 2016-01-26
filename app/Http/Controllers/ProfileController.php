@@ -52,14 +52,9 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * @Post("/profile/{id}/update", as="profiles.update")
-     * @param Request $request
-     * @return
-     * @internal param Profile $profile
-     */
-    public function update( Request $request)
+    public function update(Request $request)
     {
+        //dd($request);
         $profile = Profile::where('user_id', $request->input('id'))->first();
         $profile->user_id = $request->input('id');
         $profile->name = $request->input('name');
@@ -68,7 +63,7 @@ class ProfileController extends Controller
         $profile->wallet = $request->input('wallet');
         $profile->about = $request->input('about');
         $profile->update();
-        return redirect()->route('profile.index');
+        return redirect('/profile');
     }
 
 

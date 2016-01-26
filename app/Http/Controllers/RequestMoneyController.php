@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\RequestMoney;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -40,22 +42,34 @@ class RequestMoneyController extends Controller
      */
     public function store(Request $request)
     {
-        $req = new RequestMoney();
-        $req->name = $request->input('name');
-        $req->email = $request->input('email');
-        $req->tel = $request->input('tel');
-        $req->days = $request->input('days');
-        $req->course = $request->input('course');
-        $req->percent = $request->input('percent');
-        $req->wallet = $request->input('wallet');
-        $req->amount = $request->input('amount');
-        $req->message = $request->input('message');
-        $req->user_id = Auth::user()->id;
-        $req->save();
+        if ((int) $request->input('amount') > Auth::user()->balance) {
+            \Session::flash('message', 'Недостаточно средств!');
+            return redirect('/profile');
+        }
+        else {
+            $req = new RequestMoney();
+            $req->name = Auth::user()->name;
+            $req->email = Auth::user()->email;
+            $req->tel = $request->input('tel');
+            $req->days = $request->input('days');
+            $req->course = $request->input('course');
+            $req->percent = $request->input('percent');
+            $req->wallet = $request->input('wallet');
+            $req->amount = $request->input('amount');
+            $req->message = $request->input('message');
+            $req->user_id = Auth::user()->id;
+            $req->conclusion = Carbon::now()->addDays((int)$request->input('days'));
+            $req->status = 1;
+            $user = Auth::user();
+            $user->balance -=  (int) $request->input('amount');
+            $user->update();
+            $req->save();
 
-        \Session::flash('message', 'Ваша заявка отправлена! Следите за статусом в личном кабинете.');
+            \Session::flash('message', 'Вы успешно сделали вклад!');
 
-        return redirect('/profile');
+            return redirect('/profile');
+        }
+
     }
 
     /**
