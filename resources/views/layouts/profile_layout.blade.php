@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="your,keywords">
     <meta name="description" content="Short explanation about this website">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <!-- END META -->
 
     <!-- BEGIN STYLESHEETS -->
@@ -139,9 +140,16 @@
                 <!-- END DASHBOARD -->
 
                 <li>
-                    <a href="{{ url("/offers") }}" >
-                        <div class="gui-icon"><i class="fa fa-area-chart"></i></div>
-                        <span class="title">Предложения</span>
+                    <a href="https://join.skype.com/mwMuaLR3b16h" >
+                        <div class="gui-icon"><i class="fa fa-arrow-up"></i></div>
+                        <span class="title">Пополнить баланс</span>
+                    </a>
+                </li><!--end /menu-li -->
+
+                <li>
+                    <a href="https://exmoney.me/" >
+                        <div class="gui-icon"><i class="fa fa-arrow-down"></i></div>
+                        <span class="title">Обменять сейчас</span>
                     </a>
                 </li><!--end /menu-li -->
 
