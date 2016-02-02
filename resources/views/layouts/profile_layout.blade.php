@@ -147,7 +147,7 @@
                 </li><!--end /menu-li -->
 
                 <li>
-                    <a href="https://exmoney.me/" >
+                    <a href="https://exmoney.me/" target="_blank">
                         <div class="gui-icon"><i class="fa fa-arrow-down"></i></div>
                         <span class="title">Обменять сейчас</span>
                     </a>
