@@ -162,7 +162,7 @@ return [
          * Debugbar
          */
         Barryvdh\Debugbar\ServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+       // Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /*
          * Admin
