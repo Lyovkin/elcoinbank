@@ -74,6 +74,26 @@
         li.applicationStatusNoGood:after {
             border-left: 30px solid #4FA929; }
         a.list-group-item-success { color: #000; }
+
+        @media screen and (max-width: 480px) {
+            #about {
+                display: none;
+            }
+            #c_video {
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%;
+            }
+            .video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
     </style>
 @endsection
 
@@ -106,9 +126,9 @@
                         <li>Низкие комиссии за транзакцию</li>
                     </ul>
                 </div>
-                <div class="col-md-offset-7" style="margin-top: 20px;">
+                <div class="col-md-offset-7" style="margin-top: 20px;" id="c_video">
                     <iframe width="550" height="350" src="https://www.youtube.com/embed/vRNWfmrZQx8"
-                            frameborder="0" ></iframe>
+                            frameborder="0" allowfullscreen class="video"></iframe>
                 </div>
             </div>
         </div>
