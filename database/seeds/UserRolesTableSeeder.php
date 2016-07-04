@@ -18,6 +18,10 @@ class UserRolesTableSeeder extends Seeder
             'updated_at' => 'NOW()'),
             array('user_id' => '2','role_id' => 2,'created_at' => 'NOW()',
                 'updated_at' => 'NOW()'),
+            array('user_id' => '3','role_id' => 2,'created_at' => 'NOW()',
+                'updated_at' => 'NOW()'),
+            array('user_id' => '4','role_id' => 3,'created_at' => 'NOW()',
+                'updated_at' => 'NOW()'),
         ));
 
         Model::reguard();

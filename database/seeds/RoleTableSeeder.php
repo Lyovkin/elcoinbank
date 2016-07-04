@@ -13,6 +13,7 @@ class RoleTableSeeder extends Seeder
         Model::unguard();
 
         \App\Models\Role::create(['name' => 'admin']);
+        \App\Models\Role::create(['name' => 'supervisor']);
         \App\Models\Role::create(['name' => 'user']);
 
         Model::reguard();

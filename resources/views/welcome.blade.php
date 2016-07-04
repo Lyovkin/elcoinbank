@@ -4,6 +4,79 @@
         Главная
 @endsection
 
+@section('css')
+    <style>
+        .text-muted {font-size: 17px;}
+        #applicationStatus {
+            position: relative;
+            width: auto;
+            height: 140px;
+            left: 40px; }
+
+        .applicationStatus li { /* Added this and moved much code to here */
+            position: relative; /* this was a key property missing from your code */
+            text-indent: 30px;
+            height: 160px;
+            background-color: #96CF49;
+            display: inline-block;
+            /* Dirty IE Hack */
+            zoom: 1;
+            *display: inline;
+            /* margin-right: 30px; Eliminated this */
+            margin-left: 30px;
+            padding: 10px 10px 10px 30px;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            line-height: 150px;
+        }
+
+        ul.applicationStatus { /* this is irrelevant with the HTML you gave, but I added the class */
+            list-style: none; }
+
+        li.applicationStatus:first-child:after, li.applicationStatusGood:after, li.applicationStatusNoGood:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 80px solid transparent;
+            border-left: 30px solid #96CF49;
+            border-bottom: 80px solid transparent;
+            margin: -10px 90px 0 10px;
+        }
+        li.applicationStatus:last-child:before, li.applicationStatusGood:before, li.applicationStatusNoGood:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 0;
+            border-top: 80px solid transparent;
+            border-left: 30px solid white;
+            border-bottom: 80px solid transparent;
+            margin: -10px 0px 0 0px;
+        }
+
+        li.applicationStatus:first-child {
+            padding-left: 10px;
+            margin-left: 0;
+        }
+        li.applicationStatus:last-child {
+            padding-right: 30px;
+        }
+
+        li.applicationStatusGood {
+            background-color: #77a942; }
+        li.applicationStatusGood:after {
+            border-left: 30px solid #77a942; }
+
+        li.applicationStatusNoGood {
+            background-color: #4FA929}
+        li.applicationStatusNoGood:after {
+            border-left: 30px solid #4FA929; }
+        a.list-group-item-success { color: #000; }
+    </style>
+@endsection
+
 @section('header')
     @include('partials.header')
     @if (Session::has('message'))
@@ -13,22 +86,42 @@
 
 @section('content')
         <!-- Services Section -->
-<section id="services">
+<section id="services" style="padding: 70px 0;font-size: 17px;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">О нас</h2>
-                <h3 class="section-subheading text-muted">Время - деньги. Не упусти шанс.</h3>
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <h2>Что такое elCoin?</h2>
+                    <p style="font-size: 17px;">Elephant – это мультифункциональная экономическая платформа,
+                        которая дает возможность создавать и вести бизнес по-новому. В основе проекта лежит
+                        блокчейн криптомонета elCoin. elCoin является децентрализованной криптовалютой, базирующейся
+                        на сети Ethereum.
+                        ElCoin - цифровой токен контракта Elephant в
+                        сети Ethereum. Это расчетная единица, действующая в рамках своего контракта. ElCoin -
+                        Криптовалюта с следующими характеристиками:
+                    </p>
+                    <ul>
+                        <li>Скорость подтверждения транзакции от 12 секунд</li>
+                        <li>PoS вознаграждение до 50% в год на минимальный баланс кошелька за 10 дн.</li>
+                        <li>Низкие комиссии за транзакцию</li>
+                    </ul>
+                </div>
+                <div class="col-md-offset-7" style="margin-top: 20px;">
+                    <iframe width="550" height="350" src="https://www.youtube.com/embed/vRNWfmrZQx8"
+                            frameborder="0" ></iframe>
+                </div>
             </div>
         </div>
-        <div class="row text-center">
+        <div class="row text-center" style="margin-top: 70px;">
+            <p class="h3 text-center">Торговля на бирже криптовалют позволяет приносить хорошую и значительную прибыль.</p>
+            <br />
             <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-money fa-stack-1x fa-inverse"></i>
                     </span>
-                <h4 class="service-heading">Ежедневная прибыль</h4>
-                <p class="text-muted">Торговля на бирже криптовалют позволяет приносить хорошую и значительную прибыль.</p>
+                <h4 class="service-heading">Прибыль</h4>
+                <p class="text-muted" style="font-size: 17px;">Прибыль поступает из биржи криптовалюты + ММВБ акции.</p>
             </div>
             <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -51,89 +144,30 @@
 </section>
 
 <!-- About Section -->
-<section id="about">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Docs at http://www.chartjs.org -->
-    <script src="//www.chartjs.org/assets/Chart.min.js"></script>
-    <div class="container">
-        <div class="row">
-            <!-- COLUMN ONE -->
-            <div class="col-sm-6 col-md-4 col-lg-offset-2">
-                <!--
-                   ****** LINE CHART WIDGET *******
-                   -->
-                <div id="line-chart-widget" class="panel">
-                    <div class="panel-heading">
-                        <h4 class="text-uppercase"><strong>Elcoin Bank</strong><span class="label pull-right">107.26 <i class="fa fa-plus"></i>0.23(0.10%)</span><br><small>ElBank: Elcoin</small></h4>
-                    </div>
-                    <div class="panel-body">
-                        <canvas id="myLineChart"></canvas>
-                    </div>
-                    <div class="panel-footer">
-                        <div class="list-block">
-                            <ul class="text-center legend">
-                                <li>
-                                    <h3>13.5 M</h3>
-                                    Биржа
-                                </li>
-                                <li>
-                                    <h3>28.44 B</h3>
-                                    Криптовалюта
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="chart-block clearfix">
-                            <div class="pull-left">
-                                Месячное скачок
-                                <canvas id="myBarChart"></canvas>
-                            </div>
-                            <div class="pull-right">
-                                Годовой скачок<br>
-                                <div class="change text-center"><i class="fa fa-plus"></i> 86.01</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+<section id="about" style="padding: 10px 10px;">
+    <div class="col-md-12" style="padding-left: 0">
+        <div class="sixteen columns">
+            <div id="applicationStatus">
+                <ul class="applicationStatus">
+                    <li class="applicationStatus">Выбирете какую валюту хотите купить<i class="fa fa-money"></i></li>
+                    <li class="applicationStatusGood">Выберете какой валютой хотите оплатить<i class="fa fa-money"></i></li>
+                    <li class="applicationStatusNoGood">Укажите реквизиты<i class="fa fa-cc-mastercard"></i></li>
+                    <li class="applicationStatus" style="background-color:#3B7C1F;">Оплатите удобным для Вас способом - 3 минуты.
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i></li>
+                </ul>
             </div>
-
-            <div class="col-sm-3 col-md-4">
-
-            </div>
-
-            <!-- COLUMN TWO -->
-            <div class="col-sm-6 col-md-4">
-                <!--
-                   ****** CHART WIDGET *******
-                   -->
-                <div id="pie-chart-widget" class="panel">
-                    <div class="panel-heading text-center">
-                        <h5 class="text-uppercase"><strong>Статистика</strong></h5>
-                    </div>
-                    <div class="panel-body">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="panel-footer">
-                        <div class="list-block">
-                            <ul class="text-center legend">
-                                <li class="video" style="margin-right: 1px;">
-                                    Вложили
-                                    <h2>62</h2>
-                                </li>
-                                <li class="photo">
-                                    Вывели
-                                    <h2>21</h2>
-                                </li>
-                                <li class="audio" style="margin-left: 1px;">
-                                    Участников
-                                    <h2>{{ $user_count }}</h2>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+    <div class="col-md-offset-3 col-md-6" style="margin-top: 100px; font-size: 17px;">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-success" >Возможность использования различных биржевых инструментов
+             и простой выпуск новых уникальных в 2 клика.</a>
+            <a class="list-group-item list-group-item-success" >Возможность привлечения инвестиций под свою бизнес-идею.</a>
+            <a class="list-group-item list-group-item-success">Легкое инвестирование даже одного цента в надежные и доходные инвестиционные фонды.</a>
+            <a class="list-group-item list-group-item-success">Новые уникальные иструменты для ведения частного бизнеса.</a>
+            <a class="list-group-item list-group-item-success">Безрисковые контракты без привлечения третьей стороны.</a>
+            <a class="list-group-item list-group-item-success">Множество способов получить доход в проекте.</a>
+            <a class="list-group-item list-group-item-success">Уникальная бизнес-площадка для реализации идей.</a>
         </div>
     </div>
 </section>

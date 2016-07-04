@@ -21,11 +21,11 @@ class ProfileTableSeeder extends Seeder
 
         \App\Models\Profile::create(array(
             'user_id' => 1,
-            'name' => 'Василий',
-            'last_name' => 'Иванов',
-            'phone' => '0634406666',
-            'wallet' => '32jk2knk2nr2rnr2r23r',
-            'about' => 'Site admin'
+            'name' => 'Test',
+            'last_name' => 'User',
+            'phone' => '06300200031',
+            'wallet' => 'elcoinwallet1234567890',
+            'about' => 'Admin'
         ));
 
         Model::reguard();
