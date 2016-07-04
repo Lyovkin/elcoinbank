@@ -76,7 +76,7 @@
         a.list-group-item-success { color: #000; }
 
         @media screen and (max-width: 480px) {
-            #about {
+            #banner {
                 display: none;
             }
             #c_video {
@@ -165,7 +165,7 @@
 
 <!-- About Section -->
 <section id="about" style="padding: 10px 10px;">
-    <div class="col-md-12" style="padding-left: 0">
+    <div class="col-md-12" style="padding-left: 0" id="banner">
         <div class="sixteen columns">
             <div id="applicationStatus">
                 <ul class="applicationStatus">
