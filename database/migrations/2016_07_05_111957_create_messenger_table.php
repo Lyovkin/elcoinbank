@@ -15,7 +15,7 @@ class CreateMessengerTable extends Migration
         Schema::create('messenger', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->text('message');
             $table->timestamp('createdAt');
         });
