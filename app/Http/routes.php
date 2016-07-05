@@ -64,6 +64,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/messenger', 'ChatController@index');
     Route::post('/sendmessage', 'ChatController@sendMessage');
+    Route::post('/deletemessage', 'ChatController@deleteMessage');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'], function () {

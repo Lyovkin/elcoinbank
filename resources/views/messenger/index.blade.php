@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Чат
+@endsection
+
 @section('content')
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js"></script>
@@ -25,11 +29,29 @@
 
                         <div class="row">
                             <div class="col-lg-8" >
-                                <div id="messages" ></div>
+                                <div id="messages" >
+                                    @foreach($messages as $message)
+                                        <strong>{{ $message->user->name }}</strong>
+                                    @if(Auth::user()->hasRole('admin'))
+                                            <form id="del" action="deletemessage" method="POST">
+                                                <input type="hidden" name="id" value="{{ $message->id}}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                                                <a href="javascript:;" id="del_msg" style="float: right; text-decoration: none;
+                                                color: #0a0c0e;
+                                                margin-left: 5px;" onclick="document.getElementById('del').submit();">&cross;</a>
+                                            </form>
+                                    @endif
+                                        <span id="time" style="float: right">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $message->createdAt }}
+                                        </span>
+                                        <p>{{ $message->message }}</p>
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="col-lg-8" >
                                 <form action="sendmessage" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                                    <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="user" value="{{ Auth::user()->name }}" >
                                     <textarea class="form-control msg"></textarea>
                                     <br/>
@@ -48,12 +70,24 @@
         var socket = io.connect('http://localhost:8890');
         socket.on('message', function (data) {
             data = jQuery.parseJSON(data);
-            console.log(data.user);
-            $( "#messages" ).append( "<strong>"+data.user+":</strong>"+data.message+"" );
+            //console.log(data.user);
+            $( "#messages" ).append( "<strong>"+data.user+":</strong><p>"+data.message+"</p>" );
         });
+
+        $("#del_msg").click(function(e) {
+            e.preventDefault();
+            var id = $("input[name='id']").val();
+            $.ajax({
+                type: "POST",
+                url: '{!! URL::to("deletemessage") !!}',
+                data: {'_token':token, 'id': id}
+            })
+        });
+
         $(".send-msg").click(function(e){
             e.preventDefault();
             var token = $("input[name='_token']").val();
+            var id = $("input[name='id']").val();
             var user = $("input[name='user']").val();
             var msg = $(".msg").val();
             if(msg != ''){
@@ -61,14 +95,14 @@
                     type: "POST",
                     url: '{!! URL::to("sendmessage") !!}',
                     dataType: "json",
-                    data: {'_token':token,'message':msg,'user':user},
+                    data: {'_token':token,'message':msg,'user':user, 'id': id},
                     success:function(data){
                         console.log(data);
                         $(".msg").val('');
                     }
                 });
             }else{
-                alert("Please Add Message.");
+                alert("Пожалуйста, введите сообщение!");
             }
         })
     </script>

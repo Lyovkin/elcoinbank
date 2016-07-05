@@ -39,6 +39,9 @@
                     </li>
                 @else
                     <li>
+                        <a class="page-scroll" href="{{ url('/messenger') }}">Чат</a>
+                    </li>
+                    <li>
                         <a class="page-scroll" href="{{ url('/profile') }}">Мой кабинет</a>
                     </li>
                     <li>
