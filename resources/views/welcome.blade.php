@@ -82,7 +82,7 @@
             <div id="applicationStatus">
                 <ul class="applicationStatus">
                     <li class="applicationStatus">Укажите валюту для покупки<i class="fa fa-money"></i></li>
-                    <li class="applicationStatusGood">Укахжите валюту для оплаты<i class="fa fa-money"></i></li>
+                    <li class="applicationStatusGood">Укажите валюту для оплаты<i class="fa fa-money"></i></li>
                     <li class="applicationStatusNoGood">Укажите реквизиты<i class="fa fa-cc-mastercard"></i></li>
                     <li class="applicationStatus" style="background-color:#3B7C1F;">Оплатите удобным для Вас способом
                         <i class="fa fa-check-square-o" aria-hidden="true"></i></li>

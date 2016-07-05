@@ -61,6 +61,9 @@ Route::group(['middleware' => 'web'], function () {
         array(
             'uses' => 'ProfileController@update',
             'as' => 'profiles.update'));
+
+    Route::get('/messenger', 'ChatController@index');
+    Route::post('/sendmessage', 'ChatController@sendMessage');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'], function () {
