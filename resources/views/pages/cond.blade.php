@@ -20,7 +20,9 @@
             <li>срочный рынок (фьючерсные контракты)</li>
             <li>рынок криптовалют</li>
         </ul>
+       <br />
+        <p class="h3">Мы заботимся о Ваших вкладах. </p>
         <hr />
-        <p class="h3">Мы заботимся о Ваших вкладах. С уважением, команда <strong>ElCoinBank.</strong></p>
+        <p class="h3">С уважением, команда <strong>ElCoinBank.</strong></p>
     </div>
 @endsection
