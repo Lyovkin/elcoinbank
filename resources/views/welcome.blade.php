@@ -5,96 +5,7 @@
 @endsection
 
 @section('css')
-    <style>
-        .text-muted {font-size: 17px;}
-        #applicationStatus {
-            position: relative;
-            width: auto;
-            height: 140px;
-            left: 40px; }
-
-        .applicationStatus li { /* Added this and moved much code to here */
-            position: relative; /* this was a key property missing from your code */
-            text-indent: 30px;
-            height: 160px;
-            background-color: #96CF49;
-            display: inline-block;
-            /* Dirty IE Hack */
-            zoom: 1;
-            *display: inline;
-            /* margin-right: 30px; Eliminated this */
-            margin-left: 30px;
-            padding: 10px 10px 10px 30px;
-            color: white;
-            font-size: 18px;
-            text-align: center;
-            line-height: 150px;
-        }
-
-        ul.applicationStatus { /* this is irrelevant with the HTML you gave, but I added the class */
-            list-style: none; }
-
-        li.applicationStatus:first-child:after, li.applicationStatusGood:after, li.applicationStatusNoGood:after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-top: 80px solid transparent;
-            border-left: 30px solid #96CF49;
-            border-bottom: 80px solid transparent;
-            margin: -10px 90px 0 10px;
-        }
-        li.applicationStatus:last-child:before, li.applicationStatusGood:before, li.applicationStatusNoGood:before {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            left: 0;
-            border-top: 80px solid transparent;
-            border-left: 30px solid white;
-            border-bottom: 80px solid transparent;
-            margin: -10px 0px 0 0px;
-        }
-
-        li.applicationStatus:first-child {
-            padding-left: 10px;
-            margin-left: 0;
-        }
-        li.applicationStatus:last-child {
-            padding-right: 30px;
-        }
-
-        li.applicationStatusGood {
-            background-color: #77a942; }
-        li.applicationStatusGood:after {
-            border-left: 30px solid #77a942; }
-
-        li.applicationStatusNoGood {
-            background-color: #4FA929}
-        li.applicationStatusNoGood:after {
-            border-left: 30px solid #4FA929; }
-        a.list-group-item-success { color: #000; }
-
-        @media screen and (max-width: 480px) {
-            #banner {
-                display: none;
-            }
-            #c_video {
-                position: relative;
-                width: 100%;
-                height: 0;
-                padding-bottom: 56.25%;
-            }
-            .video {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-        }
-
-    </style>
+    <link href="/css/banner.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('header')
@@ -165,14 +76,15 @@
 
 <!-- About Section -->
 <section id="about" style="padding: 10px 10px;">
-    <div class="col-md-12" style="padding-left: 0" id="banner">
+    <div class="col-md-12" id="banner">
+        <p class="h3 text-center steps">4 простых шага для участия</p>
         <div class="sixteen columns">
             <div id="applicationStatus">
                 <ul class="applicationStatus">
-                    <li class="applicationStatus">Выбирете какую валюту хотите купить<i class="fa fa-money"></i></li>
-                    <li class="applicationStatusGood">Выберете какой валютой хотите оплатить<i class="fa fa-money"></i></li>
+                    <li class="applicationStatus">Укажите валюту для покупки<i class="fa fa-money"></i></li>
+                    <li class="applicationStatusGood">Укахжите валюту для оплаты<i class="fa fa-money"></i></li>
                     <li class="applicationStatusNoGood">Укажите реквизиты<i class="fa fa-cc-mastercard"></i></li>
-                    <li class="applicationStatus" style="background-color:#3B7C1F;">Оплатите удобным для Вас способом - 3 минуты.
+                    <li class="applicationStatus" style="background-color:#3B7C1F;">Оплатите удобным для Вас способом
                         <i class="fa fa-check-square-o" aria-hidden="true"></i></li>
                 </ul>
             </div>

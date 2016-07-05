@@ -40,6 +40,7 @@ elixir(function(mix) {
    paths.bootstrap + 'dist/css/bootstrap.min.css',
    paths.customcss + 'css/agency.css',
    paths.fawesome  + 'css/font-awesome.css',
+   paths.customcss + 'css/banner.css'
  ], 'public/css/app.css');
 });
 
