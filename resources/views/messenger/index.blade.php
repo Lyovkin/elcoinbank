@@ -67,7 +67,7 @@
     </div>
 
     <script>
-        var socket = io.connect('http://elbank24:8890');
+        var socket = io.connect('http://elbank24.ru:8890');
         socket.on('message', function (data) {
             data = jQuery.parseJSON(data);
             //console.log(data.user);
