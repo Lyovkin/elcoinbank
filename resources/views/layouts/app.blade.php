@@ -42,7 +42,6 @@
  @include('partials.navigation')
 <!-- Header -->
 <header>
-    {{--{{ dd(\Illuminate\Support\Facades\Auth::user()->hasRole('admin')) }}--}}
     @yield('header')
 </header>
 

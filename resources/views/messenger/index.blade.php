@@ -36,9 +36,9 @@
                                             <form id="del" action="deletemessage" method="POST">
                                                 <input type="hidden" name="id" value="{{ $message->id}}">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                                                <a href="javascript:;" id="del_msg" style="float: right; text-decoration: none;
-                                                color: #0a0c0e;
-                                                margin-left: 5px;" onclick="document.getElementById('del').submit();">&cross;</a>
+                                                <input id="del_msg" style="float: right;
+                                                color: #0a0c0e; background-color: #fff; border: none;
+                                                margin-left: 5px;" type="submit" value="&cross;">
                                             </form>
                                     @endif
                                         <span id="time" style="float: right">
@@ -51,7 +51,7 @@
                             <div class="col-lg-8" >
                                 <form action="sendmessage" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                                    <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="user" value="{{ Auth::user()->name }}" >
                                     <textarea class="form-control msg"></textarea>
                                     <br/>
@@ -67,7 +67,7 @@
     </div>
 
     <script>
-        var socket = io.connect('http://elbank24.ru:8890');
+        var socket = io.connect({{ env('URL') }}+':8890');
         socket.on('message', function (data) {
             data = jQuery.parseJSON(data);
             //console.log(data.user);
@@ -87,7 +87,7 @@
         $(".send-msg").click(function(e){
             e.preventDefault();
             var token = $("input[name='_token']").val();
-            var id = $("input[name='id']").val();
+            var id = $("input[name='user_id']").val();
             var user = $("input[name='user']").val();
             var msg = $(".msg").val();
             if(msg != ''){
