@@ -68,11 +68,33 @@
 
     <script>
         var socket = io.connect('{{ env('URL') }}:8890');
+       //var socket = io.connect('http://localhost:8890')
         socket.on('message', function (data) {
             data = jQuery.parseJSON(data);
             //console.log(data.user);
             $( "#messages" ).append( "<strong>"+data.user+":</strong><p>"+data.message+"</p>" );
         });
+
+       function sendMessage() {
+           var token = $("input[name='_token']").val();
+           var id = $("input[name='user_id']").val();
+           var user = $("input[name='user']").val();
+           var msg = $(".msg").val();
+           if(msg != ''){
+               $.ajax({
+                   type: "POST",
+                   url: '{!! URL::to("sendmessage") !!}',
+                   dataType: "json",
+                   data: {'_token':token,'message':msg,'user':user, 'id': id},
+                   success:function(data){
+                       console.log(data);
+                       $(".msg").val('');
+                   }
+               });
+           }else{
+               alert("Пожалуйста, введите сообщение!");
+           }
+       }
 
         $("#del_msg").click(function(e) {
             e.preventDefault();
@@ -86,24 +108,14 @@
 
         $(".send-msg").click(function(e){
             e.preventDefault();
-            var token = $("input[name='_token']").val();
-            var id = $("input[name='user_id']").val();
-            var user = $("input[name='user']").val();
-            var msg = $(".msg").val();
-            if(msg != ''){
-                $.ajax({
-                    type: "POST",
-                    url: '{!! URL::to("sendmessage") !!}',
-                    dataType: "json",
-                    data: {'_token':token,'message':msg,'user':user, 'id': id},
-                    success:function(data){
-                        console.log(data);
-                        $(".msg").val('');
-                    }
-                });
-            }else{
-                alert("Пожалуйста, введите сообщение!");
-            }
-        })
+            sendMessage();
+        });
+
+       $('html').keydown(function(e){
+           if (event.keyCode == 13) {
+               e.preventDefault();
+               sendMessage();
+           }
+       });
     </script>
 @endsection
