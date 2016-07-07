@@ -25,7 +25,7 @@ class ProfileService
     /**
      * View profile
      * 
-     * @param Model $model
+     * @param $model
      * @return view
      */
     public static function viewProfile($model)

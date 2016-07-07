@@ -14,6 +14,11 @@
 @endsection
 @section('content')
     <div class="container" style="padding-top: 80px; ">
+
+        @if (Session::has('message'))
+            <div class="alert alert-danger">{{ Session::get('message') }}</div>
+        @endif
+
         @include('partials.head_profile')
         <table class="table table-bordered table-responsive" style="margin-top: 30px;">
             <thead>

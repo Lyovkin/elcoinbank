@@ -9,9 +9,8 @@
 @section('content')
     <div class="container" style="padding-top: 80px;">
 
-
         @if (Session::has('message'))
-            <div class="alert alert-info">{{ Session::get('message') }}</div>
+            <div class="alert alert-danger">{{ Session::get('message') }}</div>
         @endif
 
         @include('partials.head_profile')
@@ -56,7 +55,7 @@
                                         Ваш баланс
                                     </li>
                                     <li class="list-group-item">
-                                            <span style="float:right" >{{ $data->user->created_at->format('d.m.Y')}}</span>
+                                            <span style="float:right" >{{ $data->user->created_at}}</span>
                                         Дата регистрации
                                     </li>
 

@@ -11,7 +11,8 @@
         <div class="row">
             <div class="well">
                 <div class="single-agent">
-                    <div class="counts pull-right"> <strong>Дата регистрации</strong> <span class="h3">{{ Auth::user()->created_at->format('d.m.Y') }}</span></div>
+                    <div class="counts pull-right"> <strong>Дата регистрации</strong> <span class="h3">
+                            {{ Auth::user()->created_at }}</span></div>
                     <h3 class="page-title">{{ Auth::user()->name }}</h3>
                 </div>
                 @if (Session::has('message'))

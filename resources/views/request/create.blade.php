@@ -62,10 +62,10 @@
 @section('content')
 
     <div class="container" style="padding-top: 80px;">
-        @include('partials.head_profile')
         @if (Session::has('message'))
-            <div class="alert alert-info">{{ Session::get('message') }}</div>
-            @endif
+            <div class="alert alert-danger">{{ Session::get('message') }}</div>
+        @endif
+        @include('partials.head_profile')
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-8" style="margin-top: 20px">

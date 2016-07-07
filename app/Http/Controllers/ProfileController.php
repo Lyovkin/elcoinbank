@@ -9,10 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-
 
 /**
  * Class ProfileController
@@ -36,9 +32,12 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return ProfileService::viewProfile(
-            Profile::with('user')->where('user_id', Auth::user()->id)->first());
+       $profile = Profile::userProfile();
+        if($profile->hasWallet())
+            \Session::flash('message', 'Пожалуйста, укажите Elcoin кошелек и полностью заполните профиль, если у Вас нет кошелька,
+            зарегистрируйтесь в системе Elephant: https://elcoin.space');
 
+        return ProfileService::viewProfile($profile);
     }
 
     /**
