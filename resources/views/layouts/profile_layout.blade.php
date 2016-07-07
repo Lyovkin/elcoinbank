@@ -139,11 +139,15 @@
                 </li><!--end /menu-li -->
                 <!-- END DASHBOARD -->
 
-                <li>
-                    <a href="https://join.skype.com/mwMuaLR3b16h" >
-                        <div class="gui-icon"><i class="fa fa-arrow-up"></i></div>
-                        <span class="title">Пополнить баланс</span>
+                <li class="gui-folder">
+                    <a>
+                        <div class="gui-icon"><i class="fa fa-arrow-up "></i></div>
+                        <span class="title">Баланс</span>
                     </a>
+                        <ul>
+                            <li><a href="#"><span class="title">Купить элькоины</span></a></li>
+                            <li><a href="#"><span class="title">Продать элькоины</span></a></li>
+                        </ul>
                 </li><!--end /menu-li -->
 
                 <li>
@@ -170,6 +174,8 @@
             </ul><!--end .main-menu -->
             <!-- END MAIN MENU -->
 
+        </div><!--end #base-->
+
             <div class="menubar-foot-panel">
                 <small class="no-linebreak hidden-folded">
                     <span class="opacity-75">Elcoin Bank &copy; 2016</span> <strong></strong>
@@ -188,7 +194,7 @@
     </div><!--end .offcanvas-->
     <!-- END OFFCANVAS RIGHT -->
 
-</div><!--end #base-->
+
 <!-- END BASE -->
 
 <!-- BEGIN JAVASCRIPT -->

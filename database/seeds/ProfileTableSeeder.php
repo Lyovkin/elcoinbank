@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Profile;
+use App\Models\User;
+use App\Models\Wallet;
 
 /**
  * Class ProfileTableSeeder
@@ -20,29 +21,31 @@ class ProfileTableSeeder extends Seeder
 
         Model::unguard();
 
+        $wallets = Wallet::all()->toArray();
+
         DB::table('profiles')->insert([
             [
                 'user_id' => 1,
-                'name' => 'Admin',
                 'last_name' => 'Admin',
+                'wallet_id' => $wallets[0]['id'],
                 'about' => 'Site administrator.'
             ],
             [
                 'user_id' => 2,
-                'name' => 'Supervisor 1',
                 'last_name' => 'Admin',
+                'wallet_id' => $wallets[1]['id'],
                 'about' => 'Supervisor 1.'
             ],
             [
                 'user_id' => 3,
-                'name' => 'Supervisor 2',
                 'last_name' => 'Admin',
+                'wallet_id' => $wallets[2]['id'],
                 'about' => 'Supervisor 2.'
             ],
             [
                 'user_id' => 4,
-                'name' => 'User',
                 'last_name' => 'Test',
+                'wallet_id' => $wallets[3]['id'],
                 'about' => 'user'
             ]
         ]);

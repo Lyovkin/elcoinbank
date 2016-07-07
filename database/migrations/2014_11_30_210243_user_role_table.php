@@ -32,7 +32,7 @@ class UserRoleTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('users_roles');
 	}
 
 }

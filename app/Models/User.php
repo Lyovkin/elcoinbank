@@ -50,6 +50,4 @@ class User extends Authenticatable
     {
         return in_array($check, array_pluck($this->roles->toArray(), 'name'));
     }
-
-
 }

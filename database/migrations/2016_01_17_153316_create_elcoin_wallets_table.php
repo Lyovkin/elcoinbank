@@ -3,10 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-/**
- * Class CreateProfileTable
- */
-class CreateProfileTable extends Migration
+class CreateElcoinWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,15 +12,11 @@ class CreateProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function(Blueprint $table){
+        Schema::create('wallets', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('last_name')->nullable();
-            $table->string('phone', 12)->nullable();
-            $table->integer('wallet_id')->unsigned()->index();
-            $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
-            $table->text('about')->nullable();
+            $table->string('wallet');
         });
     }
 
@@ -34,6 +27,6 @@ class CreateProfileTable extends Migration
      */
     public function down()
     {
-        Schema::drop('profiles');
+        Schema::drop('wallets');
     }
 }

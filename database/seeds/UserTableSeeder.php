@@ -34,7 +34,5 @@ class UserTableSeeder extends Seeder{
                 'email' => 'user@gmail.com',
                 'password' => bcrypt('secret'),],
         ]);
-
-        //factory(App\Models\User::class, 30)->create();
     }
 }
