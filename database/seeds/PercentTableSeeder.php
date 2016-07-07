@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Percent;
 
 class PercentTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class PercentTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Percent::create(['percent' => 0]);
+        Percent::create(['percent' => 0]);
     }
 }

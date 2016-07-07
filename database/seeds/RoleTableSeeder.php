@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Role;
 
 class RoleTableSeeder extends Seeder
 {
@@ -12,9 +13,9 @@ class RoleTableSeeder extends Seeder
 
         Model::unguard();
 
-        \App\Models\Role::create(['name' => 'admin']);
-        \App\Models\Role::create(['name' => 'supervisor']);
-        \App\Models\Role::create(['name' => 'user']);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'supervisor']);
+        Role::create(['name' => 'user']);
 
         Model::reguard();
     }

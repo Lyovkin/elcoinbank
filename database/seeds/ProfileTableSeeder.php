@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Profile;
 
 /**
  * Class ProfileTableSeeder
@@ -19,14 +20,32 @@ class ProfileTableSeeder extends Seeder
 
         Model::unguard();
 
-        \App\Models\Profile::create(array(
-            'user_id' => 1,
-            'name' => 'Test',
-            'last_name' => 'User',
-            'phone' => '06300200031',
-            'wallet' => 'elcoinwallet1234567890',
-            'about' => 'Admin'
-        ));
+        DB::table('profiles')->insert([
+            [
+                'user_id' => 1,
+                'name' => 'Admin',
+                'last_name' => 'Admin',
+                'about' => 'Site administrator.'
+            ],
+            [
+                'user_id' => 2,
+                'name' => 'Supervisor 1',
+                'last_name' => 'Admin',
+                'about' => 'Supervisor 1.'
+            ],
+            [
+                'user_id' => 3,
+                'name' => 'Supervisor 2',
+                'last_name' => 'Admin',
+                'about' => 'Supervisor 2.'
+            ],
+            [
+                'user_id' => 4,
+                'name' => 'User',
+                'last_name' => 'Test',
+                'about' => 'user'
+            ]
+        ]);
 
         Model::reguard();
     }

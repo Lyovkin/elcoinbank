@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+/**
+ * Class NewsTableSeeder
+ */
 class NewsTableSeeder extends Seeder
 {
     /**
@@ -11,6 +14,6 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-        //factory(\App\Models\News::class, 10)->create();
+       //TODO
     }
 }

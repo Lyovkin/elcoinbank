@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Course;
 
+/**
+ * Class CourseTableSeeder
+ */
 class CourseTableSeeder extends Seeder
 {
     /**
@@ -11,6 +15,6 @@ class CourseTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Course::create(['course' => 0]);
+        Course::create(['course' => 0]);
     }
 }
