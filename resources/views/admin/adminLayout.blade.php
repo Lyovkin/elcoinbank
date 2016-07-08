@@ -89,6 +89,11 @@
                     </li>
 
                     <li>
+                        <a class="" href="{{ route('admin.course.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Курс валют</a>
+                    </li>
+
+                    <li>
                         <a class="" href="{{ route('admin.history.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Вклады</a>
                     </li>
@@ -102,10 +107,7 @@
                         <a class="" href="{{ route('admin.percent.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Процент</a>
                     </li>
-                    <li>
-                        <a class="" href="{{ route('admin.course.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Курс</a>
-                    </li>
+
 
                     <li>
                         <a class="" href="{{ route('admin.days.index') }}"><i
@@ -121,49 +123,6 @@
                                     class="fa fa-list fa-fw"></i> Вопросы</a>
                     </li>
 
-
-                    {{--
-                    <li>
-                        <a class=""
-                           href="{{ route('admin.categories.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Категории</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('admin.pagename.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Заголовки страниц</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{route('admin.tags.index')}}"><i
-                                    class="fa fa-list fa-fw"></i> Теги</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{route('admin.city.index')}}"><i
-                                    class="fa fa-list fa-fw"></i> Города</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{route('admin.questions.index')}}"><i
-                                    class="fa fa-list fa-fw"></i> Вопросы</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('admin.useful-link.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Полезные ссылки</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.page.index') }}">
-                            <i class="fa fa-list fa-fw"></i> Статические страницы</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.gallery.index') }}">
-                            <i class="fa fa-list fa-fw"></i> Галлереи</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.special.index') }}">
-                            <i class="fa fa-list fa-fw"></i> Супер предложения</a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('admin.transactions.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Транзакции</a>
-                    </li>--}}
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

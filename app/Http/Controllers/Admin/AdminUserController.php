@@ -75,7 +75,8 @@ class AdminUserController extends Controller
         $data = $request->all();
 
         // If no one checkbox was checked we need to set 'roleCheck' as empty array to avoid error
-        if (!array_key_exists('roleCheck', $data)) $data['roleCheck'] = [];
+        if (!array_key_exists('roleCheck', $data))
+            $data['roleCheck'] = [];
 
         if ($user->update($data)) {
             $user->roles()->sync($data['roleCheck']);

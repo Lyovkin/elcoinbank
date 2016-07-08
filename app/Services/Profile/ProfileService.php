@@ -28,12 +28,12 @@ class ProfileService
      * @param $model
      * @return view
      */
-    public static function viewProfile($model)
+    public static function viewProfile($model, $data)
     {
-        $view = View::make('profile.profile', ['data'=>$model])->render();
+        $view = View::make('profile.profile', ['data'=>$model, 'courses' => $data])->render();
         if($model->user_id != Auth::user()->id)
         {
-            $view = View::make('profile.user_profile', ['data'=>$model])->render();
+            $view = View::make('profile.user_profile', ['data'=>$model, 'courses' => $data])->render();
 
         }
         return $view;

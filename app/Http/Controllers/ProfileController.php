@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Profile;
 use App\Services\Profile\ProfileService;
 use Illuminate\Foundation\Auth\User;
@@ -33,12 +34,15 @@ class ProfileController extends Controller
 
     public function index()
     {
-       $profile = Profile::userProfile();
+        $profile = Profile::userProfile();
+
+        $courses = Course::with('currency')->get();
+
         if($profile->hasWallet())
             \Session::flash('message', 'Пожалуйста, укажите Elcoin кошелек и полностью заполните профиль, если у Вас нет кошелька,
             зарегистрируйтесь в системе Elephant: https://elcoin.space');
 
-        return ProfileService::viewProfile($profile);
+        return ProfileService::viewProfile($profile, $courses);
     }
 
     /**

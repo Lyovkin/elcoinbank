@@ -93,11 +93,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'
     Route::get('/request', ['uses'=>'AdminRequestController@index', 'as' => 'admin.request.index']);
     Route::delete('/request/{id}', ['uses' => 'AdminRequestController@delete', 'as' => 'admin.request.delete']);
 
-
-
     Route::resource('percent', 'AdminPercentController');
-
-    Route::resource('course', 'AdminCourseController');
 
     Route::resource('days', 'AdminDaysController');
 

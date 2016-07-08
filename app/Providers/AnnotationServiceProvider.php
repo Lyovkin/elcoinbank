@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\AdminCurrencyController;
 use Collective\Annotations\AnnotationsServiceProvider as ServiceProvider;
 
 /**
@@ -23,7 +24,8 @@ class AnnotationServiceProvider extends ServiceProvider
      * @var array
      */
     protected $scanRoutes = [
-        App\Http\Controller\AdminController::class,
+        App\Http\Controllers\Admin\AdminController::class,
+        App\Http\Controllers\Admin\AdminCourseController::class,
     ];
 
     /**
@@ -31,7 +33,10 @@ class AnnotationServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $scanModels = [];
+    protected $scanModels = [
+        App\Models\Currency::class,
+        App\Models\Course::class,
+    ];
 
     /**
      * Determines if we will auto-scan in the local environment.
