@@ -6,6 +6,15 @@
 
 @section('css')
     <link href="/css/banner.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #messages{
+            border: 1px solid black;
+            height: 300px;
+            margin-bottom: 8px;
+            overflow: scroll;
+            padding: 5px;
+        }
+    </style>
 @endsection
 
 @section('header')
@@ -37,9 +46,59 @@
                         <li>Низкие комиссии за транзакцию</li>
                     </ul>
                 </div>
-                <div class="col-md-offset-7" style="margin-top: 20px;" id="c_video">
-                    <iframe width="550" height="350" src="https://www.youtube.com/embed/vRNWfmrZQx8"
-                            frameborder="0" allowfullscreen class="video"></iframe>
+                <div class="col-md-7">
+                    <div class="container spark-screen">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-1">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">ElCoinBank Чат <i class="fa fa-smile-o"></i></div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div id="messages">
+                                                    @if(isset($messages))
+                                                        @foreach($messages as $message)
+                                                            <strong>{{ $message->user->name }}</strong>
+                                                        @if(Auth::check())
+                                                            @if(Auth::user()->hasRole('admin'))
+                                                                <form id="del" action="deletemessage" method="POST">
+                                                                    <input type="hidden" name="id" value="{{ $message->id}}">
+                                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                                                                    <input id="del_msg" style="float: right;
+                                                    color: #0a0c0e; background-color: #fff; border: none;
+                                                    margin-left: 5px;" type="submit" value="&cross;">
+                                                                </form>
+                                                            @endif
+                                                         @endif
+                                                            <span id="time" style="float: right">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $message->createdAt }}
+                                            </span>
+                                                            <p>{{ $message->message }}</p>
+                                                        @endforeach
+                                                        @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <form action="sendmessage" method="POST">
+                                                    @if(Auth::check())
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                        <input type="hidden" name="user" value="{{ Auth::user()->name }}">
+                                                    @endif
+                                                    <textarea class="form-control msg"
+                                                              @if(! Auth::check()) disabled @endif></textarea>
+                                                    <br/>
+                                                    <input type="button" value="Отправить" class="btn btn-success send-msg"
+                                                    @if(! Auth::check()) disabled @endif>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,62 +134,62 @@
 </section>
 
 <!-- About Section -->
-<section id="about" style="padding: 10px 10px;">
-    <div class="col-md-12" id="banner">
-        <p class="h3 text-center steps">4 простых шага для участия</p>
-        <div class="sixteen columns">
-            <div id="applicationStatus">
-                <ul class="applicationStatus">
-                    <li class="applicationStatus">Укажите валюту для покупки<i class="fa fa-money"></i></li>
-                    <li class="applicationStatusGood">Укажите валюту для оплаты<i class="fa fa-money"></i></li>
-                    <li class="applicationStatusNoGood">Укажите реквизиты<i class="fa fa-cc-mastercard"></i></li>
-                    <li class="applicationStatus" style="background-color:#3B7C1F;">Оплатите удобным для Вас способом
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-offset-3 col-md-6" style="margin-top: 100px; font-size: 17px;">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-success" >Возможность использования различных биржевых инструментов
-             и простой выпуск новых уникальных в 2 клика.</a>
-            <a class="list-group-item list-group-item-success" >Возможность привлечения инвестиций под свою бизнес-идею.</a>
-            <a class="list-group-item list-group-item-success">Легкое инвестирование даже одного цента в надежные и доходные инвестиционные фонды.</a>
-            <a class="list-group-item list-group-item-success">Новые уникальные иструменты для ведения частного бизнеса.</a>
-            <a class="list-group-item list-group-item-success">Безрисковые контракты без привлечения третьей стороны.</a>
-            <a class="list-group-item list-group-item-success">Множество способов получить доход в проекте.</a>
-            <a class="list-group-item list-group-item-success">Уникальная бизнес-площадка для реализации идей.</a>
-        </div>
-    </div>
-</section>
+{{--<section id="about" style="padding: 10px 10px;">--}}
+    {{--<div class="col-md-12" id="banner">--}}
+        {{--<p class="h3 text-center steps">4 простых шага для участия</p>--}}
+        {{--<div class="sixteen columns">--}}
+            {{--<div id="applicationStatus">--}}
+                {{--<ul class="applicationStatus">--}}
+                    {{--<li class="applicationStatus">Укажите валюту для покупки<i class="fa fa-money"></i></li>--}}
+                    {{--<li class="applicationStatusGood">Укажите валюту для оплаты<i class="fa fa-money"></i></li>--}}
+                    {{--<li class="applicationStatusNoGood">Укажите реквизиты<i class="fa fa-cc-mastercard"></i></li>--}}
+                    {{--<li class="applicationStatus" style="background-color:#3B7C1F;">Оплатите удобным для Вас способом--}}
+                        {{--<i class="fa fa-check-square-o" aria-hidden="true"></i></li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="col-md-offset-3 col-md-6" style="margin-top: 100px; font-size: 17px;">--}}
+        {{--<div class="list-group">--}}
+            {{--<a class="list-group-item list-group-item-success" >Возможность использования различных биржевых инструментов--}}
+             {{--и простой выпуск новых уникальных в 2 клика.</a>--}}
+            {{--<a class="list-group-item list-group-item-success" >Возможность привлечения инвестиций под свою бизнес-идею.</a>--}}
+            {{--<a class="list-group-item list-group-item-success">Легкое инвестирование даже одного цента в надежные и доходные инвестиционные фонды.</a>--}}
+            {{--<a class="list-group-item list-group-item-success">Новые уникальные иструменты для ведения частного бизнеса.</a>--}}
+            {{--<a class="list-group-item list-group-item-success">Безрисковые контракты без привлечения третьей стороны.</a>--}}
+            {{--<a class="list-group-item list-group-item-success">Множество способов получить доход в проекте.</a>--}}
+            {{--<a class="list-group-item list-group-item-success">Уникальная бизнес-площадка для реализации идей.</a>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</section>--}}
 
 <!-- Clients Aside -->
-<aside class="clients">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <a href="#">
-                    <img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="#">
-                    <img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="#">
-                    <img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="#">
-                    <img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-</aside>
+{{--<aside class="clients">--}}
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-3 col-sm-6">--}}
+                {{--<a href="#">--}}
+                    {{--<img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">--}}
+                {{--</a>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-3 col-sm-6">--}}
+                {{--<a href="#">--}}
+                    {{--<img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">--}}
+                {{--</a>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-3 col-sm-6">--}}
+                {{--<a href="#">--}}
+                    {{--<img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">--}}
+                {{--</a>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-3 col-sm-6">--}}
+                {{--<a href="#">--}}
+                    {{--<img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">--}}
+                {{--</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</aside>--}}
 
 <!-- Contact Section -->
 <section id="contact">
@@ -180,4 +239,62 @@
 
 @include('partials.footer')
 
+@endsection
+
+@section('js')
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+    <script>
+        var socket = io.connect('{{ env('URL') }}:8890');
+        //var socket = io.connect('http://localhost:8890')
+        socket.on('message', function (data) {
+            data = jQuery.parseJSON(data);
+            //console.log(data.user);
+            $( "#messages" ).append( "<strong>"+data.user+":</strong><p>"+data.message+"</p>" );
+        });
+
+        function sendMessage() {
+            var token = $("input[name='_token']").val();
+            var id = $("input[name='user_id']").val();
+            var user = $("input[name='user']").val();
+            var msg = $(".msg").val();
+            if(msg != ''){
+                $.ajax({
+                    type: "POST",
+                    url: '{!! URL::to("sendmessage") !!}',
+                    dataType: "json",
+                    data: {'_token':token,'message':msg,'user':user, 'id': id},
+                    success:function(data){
+                        console.log(data);
+                        $(".msg").val('');
+                    }
+                });
+            }else{
+                alert("Пожалуйста, введите сообщение!");
+            }
+        }
+
+        $("#del_msg").click(function(e) {
+            e.preventDefault();
+            var id = $("input[name='id']").val();
+            $.ajax({
+                type: "POST",
+                url: '{!! URL::to("deletemessage") !!}',
+                data: {'_token':token, 'id': id}
+            })
+        });
+
+        $(".send-msg").click(function(e){
+            e.preventDefault();
+            sendMessage();
+        });
+
+        $('html').keydown(function(e){
+            if (event.keyCode == 13) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
 @endsection

@@ -13,12 +13,6 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $messages = Message::all();
-        return view('messenger.index', compact('messages'));
-    }
-
     public function sendMessage(Request $request)
     {
         $redis = LRedis::connection();

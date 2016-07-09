@@ -62,7 +62,6 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'ProfileController@update',
             'as' => 'profiles.update'));
 
-    Route::get('/messenger', 'ChatController@index');
     Route::post('/sendmessage', 'ChatController@sendMessage');
     Route::post('/deletemessage', 'ChatController@deleteMessage');
 });
