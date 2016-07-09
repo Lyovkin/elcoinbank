@@ -14,6 +14,91 @@
             overflow: scroll;
             padding: 5px;
         }
+        .pricing-table {
+            max-width: 368px;
+            margin: 0 auto;
+            transition: all .3s ease;
+            -o-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -webkit-transition: all .3s ease;
+            border-radius: 0px;
+        }
+        .pricing-table:hover {
+            box-shadow: 0px 0px 30px rgba(0,0,0, .2);
+        }
+        .pricing-table:hover>.panel-footer-landing {
+            box-shadow: 0px 0px 30px rgba(0,0,0, .05) inset;
+            -webkit-transition:  all .3s ease;
+        }
+        .pricing-table:hover>.panel>.panel-body-landing {
+            background: #5CB85C;
+            -webkit-transition:  all .3s ease;
+        }
+        .pricing-table:hover>.panel>.panel-heading-landing-box {
+            background: #f0f0f0 !important;
+            color: #333 !important;
+            -webkit-transition:  all .3s ease;
+        }
+        .pricing-table:hover>.panel>.controle-header {
+            background: #5CB85C !important;
+            /*    border: solid 2px #5CB85C !important;*/
+            -webkit-transition:  all .3s ease;
+        }
+        .pricing-table:hover>.panel>.panel-footer {
+            background: #5CB85C !important;
+            /*    border: solid 2px #5CB85C !important;*/
+            -webkit-transition:  all .3s ease;
+        }
+        .pricing-table:hover>.panel>.panel-footer>.btn {
+            border: solid 1px #fff !important;
+            -webkit-transition:  all .3s ease;
+        }
+        .btn-price:hover {
+            background: #fff !important;
+            color: #5CB85C !important;
+            -webkit-transition:  all .3s ease;
+        }
+        .pricing-table:hover>.panel>.controle-header>.panel-title-landing {
+            color: #fff !important;
+            -webkit-transition:  all .3s ease;
+        }
+        .pricing-table:hover>.panel>.panel-body-landing>.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            color: #fff !important;
+            -webkit-transition:  all .3s ease;
+        }
+        .panel-heading-landing {
+            background: #f7f7f7 !important;
+            padding: 20px !important;
+            border-top-left-radius: 10px !important;
+            border-top-right-radius: 10px !important;
+            border: solid 2px #5CB85C !important;
+            border-bottom: none !important;
+            text-align: center;
+        }
+        .panel-heading-landing-box {
+            background: #5CB85C !important;
+            color: #fff !important;
+            font-size: 16px !important;
+            padding: 3px !important;
+            border: solid 2px #5CB85C !important;
+            border-top: none !important;
+        }
+        .panel-title-landing {
+            color: #626367 !important;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .panel-body-landing {
+            border: solid 2px #ccc !important;
+            border-top: none !important;
+            border-bottom: none !important;
+        }
+        .panel-footer-landing {
+            border: solid 2px #ccc !important;
+            border-bottom-left-radius: 10px !important;
+            border-bottom-right-radius: 10px !important;
+            border-top: none !important;
+        }
     </style>
 @endsection
 
@@ -88,8 +173,9 @@
                                                     <textarea class="form-control msg"
                                                               @if(! Auth::check()) disabled @endif></textarea>
                                                     <br/>
-                                                    <input type="button" value="Отправить" class="btn btn-success send-msg"
-                                                    @if(! Auth::check()) disabled @endif>
+                                                    <button type="button" class="btn btn-success send-msg "
+                                                    @if(! Auth::check()) disabled @endif><i class="fa fa-send-o"></i>
+                                                       Отправить </button>
                                                 </form>
                                             </div>
                                         </div>
@@ -102,9 +188,194 @@
                 </div>
             </div>
         </div>
+        <br />
+        <div class="row text-center">
+            <div class="col-md-12">
+                <img src="/img/steps.png" style="width: 100%"/>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center h3">Инвест-планы для вкладчиков</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 20px;">
+                        <div class="pricing-table">
+                            <div class="panel panel-primary" style="border: none;">
+                                <div class="controle-header panel-heading panel-heading-landing">
+                                    <h1 class="panel-title panel-title-landing">
+                                        Легкий 4%
+                                    </h1>
+                                </div>
+                                <div class="panel-body panel-body-landing">
+                                    <table class="table">
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 20px;">
+                        <div class="pricing-table">
+                            <div class="panel panel-primary" style="border: none;">
+                                <div class="controle-header panel-heading panel-heading-landing">
+                                    <h1 class="panel-title panel-title-landing">
+                                        Средний 10%
+                                    </h1>
+                                </div>
+                                <div class="panel-body panel-body-landing">
+                                    <table class="table">
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 20px;">
+                        <div class="pricing-table">
+                            <div class="panel panel-primary" style="border: none;">
+                                <div class="controle-header panel-heading panel-heading-landing">
+                                    <h1 class="panel-title panel-title-landing">
+                                        Премиум 35%
+                                    </h1>
+                                </div>
+                                <div class="panel-body panel-body-landing">
+                                    <table class="table">
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <p class="text-center h3">Инвест-планы для покупателей</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 20px;">
+                        <div class="pricing-table">
+                            <div class="panel panel-primary" style="border: none;">
+                                <div class="controle-header panel-heading panel-heading-landing">
+                                    <h1 class="panel-title panel-title-landing">
+                                        Легкий 4%
+                                    </h1>
+                                </div>
+                                <div class="panel-body panel-body-landing">
+                                    <table class="table">
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 20px;">
+                        <div class="pricing-table">
+                            <div class="panel panel-primary" style="border: none;">
+                                <div class="controle-header panel-heading panel-heading-landing">
+                                    <h1 class="panel-title panel-title-landing">
+                                        Средний 10%
+                                    </h1>
+                                </div>
+                                <div class="panel-body panel-body-landing">
+                                    <table class="table">
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 20px;">
+                        <div class="pricing-table">
+                            <div class="panel panel-primary" style="border: none;">
+                                <div class="controle-header panel-heading panel-heading-landing">
+                                    <h1 class="panel-title panel-title-landing">
+                                        Премиум 35%
+                                    </h1>
+                                </div>
+                                <div class="panel-body panel-body-landing">
+                                    <table class="table">
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
         <div class="row text-center" style="margin-top: 70px;">
             <p class="h3 text-center">Торговля на бирже криптовалют позволяет приносить хорошую и значительную прибыль.</p>
-            <br />
+
             <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -133,35 +404,6 @@
     </div>
 </section>
 
-<!-- About Section -->
-{{--<section id="about" style="padding: 10px 10px;">--}}
-    {{--<div class="col-md-12" id="banner">--}}
-        {{--<p class="h3 text-center steps">4 простых шага для участия</p>--}}
-        {{--<div class="sixteen columns">--}}
-            {{--<div id="applicationStatus">--}}
-                {{--<ul class="applicationStatus">--}}
-                    {{--<li class="applicationStatus">Укажите валюту для покупки<i class="fa fa-money"></i></li>--}}
-                    {{--<li class="applicationStatusGood">Укажите валюту для оплаты<i class="fa fa-money"></i></li>--}}
-                    {{--<li class="applicationStatusNoGood">Укажите реквизиты<i class="fa fa-cc-mastercard"></i></li>--}}
-                    {{--<li class="applicationStatus" style="background-color:#3B7C1F;">Оплатите удобным для Вас способом--}}
-                        {{--<i class="fa fa-check-square-o" aria-hidden="true"></i></li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-offset-3 col-md-6" style="margin-top: 100px; font-size: 17px;">--}}
-        {{--<div class="list-group">--}}
-            {{--<a class="list-group-item list-group-item-success" >Возможность использования различных биржевых инструментов--}}
-             {{--и простой выпуск новых уникальных в 2 клика.</a>--}}
-            {{--<a class="list-group-item list-group-item-success" >Возможность привлечения инвестиций под свою бизнес-идею.</a>--}}
-            {{--<a class="list-group-item list-group-item-success">Легкое инвестирование даже одного цента в надежные и доходные инвестиционные фонды.</a>--}}
-            {{--<a class="list-group-item list-group-item-success">Новые уникальные иструменты для ведения частного бизнеса.</a>--}}
-            {{--<a class="list-group-item list-group-item-success">Безрисковые контракты без привлечения третьей стороны.</a>--}}
-            {{--<a class="list-group-item list-group-item-success">Множество способов получить доход в проекте.</a>--}}
-            {{--<a class="list-group-item list-group-item-success">Уникальная бизнес-площадка для реализации идей.</a>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</section>--}}
 
 <!-- Clients Aside -->
 {{--<aside class="clients">--}}
