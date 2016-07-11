@@ -8,11 +8,13 @@
     <link href="/css/banner.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         #messages{
-            border: 1px solid black;
+            border: 1px solid #e0dbdb;
             height: 300px;
             margin-bottom: 8px;
-            overflow: scroll;
+            overflow-y: scroll;
             padding: 5px;
+            font-style: italic;
+            color: #2d2020;
         }
         .pricing-table {
             max-width: 368px;
@@ -136,14 +138,14 @@
                         <div class="row">
                             <div class="col-md-6 col-md-offset-1">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">ElCoinBank Чат <i class="fa fa-smile-o"></i></div>
+                                    <div class="panel-heading">ElCoinBank Чат <i class="fa fa-comments-o" style="float: right;"></i></div>
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div id="messages">
                                                     @if(isset($messages))
                                                         @foreach($messages as $message)
-                                                            <strong>{{ $message->user->name }}</strong>
+                                                            <span class="label label-info"><strong>{{ $message->user->name }}</strong></span>
                                                         @if(Auth::check())
                                                             @if(Auth::user()->hasRole('admin'))
                                                                 <form id="del" action="deletemessage" method="POST">
@@ -155,7 +157,7 @@
                                                                 </form>
                                                             @endif
                                                          @endif
-                                                            <span id="time" style="float: right">
+                                                            <span id="time" class="badge" style="float: right">
                                                 <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $message->createdAt }}
                                             </span>
                                                             <p>{{ $message->message }}</p>
@@ -404,34 +406,6 @@
     </div>
 </section>
 
-
-<!-- Clients Aside -->
-{{--<aside class="clients">--}}
-    {{--<div class="container">--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-3 col-sm-6">--}}
-                {{--<a href="#">--}}
-                    {{--<img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-3 col-sm-6">--}}
-                {{--<a href="#">--}}
-                    {{--<img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-3 col-sm-6">--}}
-                {{--<a href="#">--}}
-                    {{--<img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-3 col-sm-6">--}}
-                {{--<a href="#">--}}
-                    {{--<img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</aside>--}}
 
 <!-- Contact Section -->
 <section id="contact">
