@@ -94,6 +94,11 @@
                     </li>
 
                     <li>
+                        <a class="" href="{{ route('admin.bank.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Банки</a>
+                    </li>
+
+                    <li>
                         <a class="" href="{{ route('admin.history.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Вклады</a>
                     </li>

@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
          $this->call(UserRolesTableSeeder::class);
          $this->call(CourseTableSeeder::class);
          $this->call(PercentTableSeeder::class);
+         $this->call(BanksTableSeeder::class);
     }
 }

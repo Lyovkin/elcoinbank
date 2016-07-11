@@ -26,6 +26,8 @@ class AnnotationServiceProvider extends ServiceProvider
     protected $scanRoutes = [
         App\Http\Controllers\Admin\AdminController::class,
         App\Http\Controllers\Admin\AdminCourseController::class,
+        App\Http\Controllers\Admin\AdminBanksController::class,
+        App\Http\Controllers\BuyController::class,
     ];
 
     /**
@@ -36,6 +38,8 @@ class AnnotationServiceProvider extends ServiceProvider
     protected $scanModels = [
         App\Models\Currency::class,
         App\Models\Course::class,
+        App\Models\Banks::class,
+        App\Models\Purchase::class,
     ];
 
     /**

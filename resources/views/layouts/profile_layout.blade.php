@@ -152,7 +152,7 @@
                         <span class="title">Баланс</span>
                     </a>
                         <ul>
-                            <li><a href="#"><span class="title">Купить элькоины</span></a></li>
+                            <li><a href="{{ route('buy.create') }}"><span class="title">Купить элькоины</span></a></li>
                             <li><a href="#"><span class="title">Продать элькоины</span></a></li>
                         </ul>
                 </li><!--end /menu-li -->
@@ -172,7 +172,7 @@
                 {{--</li><!--end /menu-li -->--}}
 
                 <li>
-                    <a href="/profile/{{$profile->user->id}}/edit" >
+                    <a href="/profile/{{ Auth::user()->id }}/edit" >
                         <div class="gui-icon"><i class="fa fa-refresh"></i></div>
                         <span class="title">Редактировать профиль</span>
                     </a>

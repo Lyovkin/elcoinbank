@@ -25,8 +25,9 @@ class CreateRequestMoneyTable extends Migration
             $table->integer('amount');
             $table->integer('total');
             $table->text('message')->nullable();
-            $table->boolean('status_moderation');
-            $table->boolean('status_admin');
+            $table->boolean('trust')->default(0);
+            $table->boolean('status_moderation')->default(0);
+            $table->boolean('status_admin')->default(0);
             $table->timestamps();
         });
     }
