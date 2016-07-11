@@ -6,18 +6,15 @@
 
 @endsection
 @section('content')
-
-    <div class="container" style="padding-top: 130px;">
+    <div class="container" style="padding-top: 100px;">
         <div class="row">
+            @if (Session::has('message'))
+                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+            @endif
             <div class="well">
                 <div class="single-agent">
-                    <div class="counts pull-right"> <strong>Дата регистрации</strong> <span class="h3">
-                            {{ Auth::user()->created_at }}</span></div>
-                    <h3 class="page-title">{{ Auth::user()->name }}</h3>
+                    <h3 class="page-title">Редактировать профиль</h3>
                 </div>
-                @if (Session::has('message'))
-                    <div class="alert alert-danger">{{ Session::get('message') }}</div>
-                @endif
                 <div class="block-heading" id="details">
                     <h4><span class="heading-icon"><i class="fa fa-user"></i></span> Профиль ( {{ Auth::user()->name }} )</h4>
                 </div>
@@ -26,16 +23,9 @@
 
                         {!! Form::model($profile,['route'=> ['profiles.update', 'id'=>$profile->user->id]]) !!}
                         <div class="form-group">
-
                             <label>Имя</label>
-                            {!! Form::text('name', $profile->user->name, ['class'=>'form-control first_name',
+                            {!! Form::text('name', $profile->user->name, ['class'=>'form-control',
                                                                                           'placeholder'=>'Имя',
-                                                                                          'required'=>'']) !!}
-                        </div>
-                        <div class="form-group">
-                            <label>Фамилия</label>
-                            {!! Form::text('last_name', $profile->user->last_name, ['class'=>'form-control last_name_name',
-                                                                                          'placeholder'=>'Фамилия',
                                                                                           'required'=>'']) !!}
                         </div>
                         <div class="form-group">
@@ -45,12 +35,12 @@
                         </div>
                         <div class="form-group">
                             <label>Elcoin - кошелек</label>
-                            {!! Form::text('wallet', $profile->user->wallet, ['class'=>'form-control phone',
+                            {!! Form::text('wallet', $profile->wallet->wallet, ['class'=>'form-control phone',
                                                                                           'placeholder'=>'Кошелек',]) !!}
                         </div>
                         <label>Обо мне</label>
                         <div class='form-group'>
-                            {!! Form::textarea('about', $profile->user->about, ['class'=>'form-control', 'placeholder'=>'Обо мне', 'rows' => 4]) !!}
+                            {!! Form::textarea('about', $profile->user->about, ['class'=>'form-control', 'placeholder'=>'Обо мне', 'rows' => 1]) !!}
                         </div>
                         <input name="id" type="hidden" value="{{ $profile->user->id }}">
                         {!! Form::submit('Сохранить', ['class'=>'btn btn-primary']) !!}

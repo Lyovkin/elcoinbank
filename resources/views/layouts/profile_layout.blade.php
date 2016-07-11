@@ -60,8 +60,8 @@
             <ul class="header-nav header-nav-profile">
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-								<span class="profile-info" style="margin-top: 10px;">
-									{{ Auth::user()->profile->name }} {{Auth::user()->profile->last_name}}
+								<span class="profile-info" style="margin-top: 14px;">
+									{{ Auth::user()->name }}
 									<small></small>
 								</span>
                     </a>
@@ -102,6 +102,13 @@
 
             <!-- BEGIN MAIN MENU -->
             <ul id="main-menu" class="gui-controls">
+
+                <li>
+                    <a href="{{ url("/") }}" >
+                        <div class="gui-icon"><i class="fa fa-arrow-left"></i></div>
+                        <span class="title">Главная</span>
+                    </a>
+                </li><!--end /menu-li -->
 
                 <!-- BEGIN DASHBOARD -->
                 <li>
@@ -150,22 +157,22 @@
                         </ul>
                 </li><!--end /menu-li -->
 
-                <li>
-                    <a href="https://exmoney.me/" target="_blank">
-                        <div class="gui-icon"><i class="fa fa-arrow-down"></i></div>
-                        <span class="title">Обменять сейчас</span>
-                    </a>
-                </li><!--end /menu-li -->
+                {{--<li>--}}
+                    {{--<a href="https://exmoney.me/" target="_blank">--}}
+                        {{--<div class="gui-icon"><i class="fa fa-arrow-down"></i></div>--}}
+                        {{--<span class="title">Обменять сейчас</span>--}}
+                    {{--</a>--}}
+                {{--</li><!--end /menu-li -->--}}
+
+                {{--<li>--}}
+                    {{--<a href="{{ url("/calc") }}" >--}}
+                        {{--<div class="gui-icon"><i class="fa fa-calculator"></i></div>--}}
+                        {{--<span class="title">Калькулятор</span>--}}
+                    {{--</a>--}}
+                {{--</li><!--end /menu-li -->--}}
 
                 <li>
-                    <a href="{{ url("/calc") }}" >
-                        <div class="gui-icon"><i class="fa fa-calculator"></i></div>
-                        <span class="title">Калькулятор</span>
-                    </a>
-                </li><!--end /menu-li -->
-
-                <li>
-                    <a href="/profile/{{$data->user->id}}/edit" >
+                    <a href="/profile/{{$profile->user->id}}/edit" >
                         <div class="gui-icon"><i class="fa fa-refresh"></i></div>
                         <span class="title">Редактировать профиль</span>
                     </a>

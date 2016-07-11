@@ -26,25 +26,21 @@ class ProfileTableSeeder extends Seeder
         DB::table('profiles')->insert([
             [
                 'user_id' => 1,
-                'last_name' => 'Admin',
                 'wallet_id' => $wallets[0]['id'],
                 'about' => 'Site administrator.'
             ],
             [
                 'user_id' => 2,
-                'last_name' => 'Admin',
                 'wallet_id' => $wallets[1]['id'],
                 'about' => 'Supervisor 1.'
             ],
             [
                 'user_id' => 3,
-                'last_name' => 'Admin',
                 'wallet_id' => $wallets[2]['id'],
                 'about' => 'Supervisor 2.'
             ],
             [
                 'user_id' => 4,
-                'last_name' => 'Test',
                 'wallet_id' => $wallets[3]['id'],
                 'about' => 'user'
             ]

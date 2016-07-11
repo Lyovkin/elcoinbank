@@ -15,32 +15,36 @@
 @endsection
 
 @section('content')
-    <div class="container" style="padding-top: 80px;">
+    <div style="padding-top: 80px;margin-left: 20px; margin-right: 20px;" >
 
         @if (Session::has('message'))
             <div class="alert alert-danger">{{ Session::get('message') }}</div>
         @endif
 
-        {{--@include('partials.head_profile')--}}
-
         <div class="row">
-            <div class="col-xs-12 col-lg-12" style="padding-top: 50px;">
+            <div class="col-xs-12 col-lg-12">
                 <div class="col-md-6">
+                    <p class="h3" style="margin-bottom: 20px;"> <i class="fa fa-money"> </i> Курсы валют  </p>
                     <div class="table table-hover shadow">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Валюта</th>
-                                <th>Продажа</th>
-                                <th>Покупка</th>
+                                <th>Валюта <i class="fa fa-btc"></i> </th>
+                                <th>Продажа <i class="fa fa-minus"></i> </th>
+                                <th>Покупка <i class="fa fa-plus"></i> </th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($courses as $course)
                             <tr>
                                 <td>Elcoin / {{ $course->currency->name }}</td>
-                                <td>{{ $course->course_purchase }}</td>
-                                <td>{{ $course->course_sell }}</td>
+                                @if($course->currency->name != 'Bitcoin BTC')
+                                    <td>{{ substr($course->course_purchase, 0, 4) }}</td>
+                                    <td>{{ substr($course->course_sell, 0, 4) }}</td>
+                                @else
+                                    <td>{{ $course->course_purchase }}</td>
+                                    <td>{{ $course->course_sell }}</td>
+                                @endif
                             </tr>
                             @endforeach
                             </tbody>
@@ -48,50 +52,44 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <p class="h3" style="margin-bottom: 20px;"><i class="fa fa-list-ul"></i> Профиль {{ $profile->user->name }} </p>
                     <div class="well shadow">
-                        <h3 class="page-title">
-                            <em>
-                                <p class="h4">Добро пожаловать: {{ $data->name }} {{ $data->last_name }}</p>
-                            </em>
-                        </h3>
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <div class="agent-contact-details">
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            @if($data->wallet)
-                                                <span style="float:right" >{{ $data->wallet}}</span>
+                                            @if($profile->wallet->wallet)
+                                                <span style="float:right" >{{ $profile->wallet->wallet}}</span>
                                             @else
-                                                <span style="float:right; "> <a href="/profile/{{$data->user->id}}/edit" style="color:red;">Укажите кошелек</a></span>
+                                                <span style="float:right; "> <a href="/profile/{{$profile->user->id}}/edit" style="color:red;">Укажите кошелек</a></span>
                                             @endif
-                                            Elcoin - кошелек
+                                            Elcoin - кошелек <i class="fa fa-credit-card-alt"></i>
                                         </li>
                                         <li class="list-group-item">
-                                            @if($data->phone)
-                                                <span style="float:right" >{{ $data->phone}}</span>
+                                            @if($profile->phone)
+                                                <span style="float:right" >{{ $profile->phone}}</span>
                                             @else
-                                                <span style="float:right"> <a href="/profile/{{$data->user->id}}/edit" style="color:red;">Укажите телефон</a></span>
+                                                <span style="float:right"> <a href="/profile/{{$profile->user->id}}/edit" style="color:red;">Укажите телефон</a></span>
                                             @endif
-                                            Телефон
+                                            Телефон <i class="fa fa-phone"></i>
                                         </li>
                                         <li class="list-group-item">
 
-                                            <span style="float:right" >{{ $data->user->email}}</span>
-                                            Почта
+                                            <span style="float:right" >{{ $profile->user->email}}</span>
+                                            Почта <i class="fa fa-envelope-o"></i>
+                                        </li>
+                                        <li class="list-group-item"><span style="float:right" >{{$profile->user->balance}} элькоинов </span>
+                                            Ваш баланс <i class="fa fa-btc"></i>
                                         </li>
                                         <li class="list-group-item">
-                          <span style="float:right" >{{$data->user->balance}} elcoins
-                              </span>
-                                            Ваш баланс
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span style="float:right" >{{ $data->user->created_at}}</span>
-                                            Дата регистрации
+                                            <span style="float:right" >{{ $profile->user->created_at}}</span>
+                                            Дата регистрации <i class="fa fa-calendar"></i>
                                         </li>
 
                                         <li class="list-group-item">
-                                            <span style="float:right" >{{ $data->about}}</span>
-                                            Обо мне
+                                            <span style="float:right" >{{ $profile->about}}</span>
+                                            Обо мне <i class="fa fa-user"></i>
                                         </li>
 
                                     </ul>

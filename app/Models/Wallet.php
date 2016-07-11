@@ -11,4 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 class Wallet extends Model
 {
     protected $table = 'wallets';
+
+    protected $fillable = ['wallet'];
+
+    protected $guarded = ['_token'];
+
+    public $timestamps = false;
 }

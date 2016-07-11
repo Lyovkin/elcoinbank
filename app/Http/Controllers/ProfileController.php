@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Profile;
+use App\Models\User;
+use App\Models\Wallet;
 use App\Services\Profile\ProfileService;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProfileController
@@ -19,65 +17,71 @@ use Illuminate\Support\Facades\Auth;
  */
 class ProfileController extends Controller
 {
+
+    protected $profile;
+
     /**
-     * Construct (the captain style)
-     * @param Auth $auth
+     * ProfileController constructor.
+     * @param Profile $profile
      */
-    public function __construct(Auth $auth)
+    public function __construct(Profile $profile)
     {
         $this->middleware('auth');
-        if (Auth::user()) {
-            $this->profile = Auth::user()->profile;
-            $this->user = Auth::user();
-        }
+
+        $this->profile = $profile;
     }
 
     public function index()
     {
-        $profile = Profile::userProfile();
+        $profile = $this->profile->profileWithUser();
 
         $courses = Course::with('currency')->get();
 
         if($profile->hasWallet())
+
             \Session::flash('message', 'Пожалуйста, укажите Elcoin кошелек и полностью заполните профиль, если у Вас нет кошелька,
             зарегистрируйтесь в системе Elephant: https://elcoin.space');
 
-        return ProfileService::viewProfile($profile, $courses);
+        return view('profile.profile', compact('profile', 'courses'));
+
     }
 
     /**
+     * Edit user profile
+     *
      * @Get("/profile/{id}/edit", as="profiles.edit")
      */
     public function edit()
     {
-        return view('profile.update', [
-            'profile' => $this->profile,
-            'user' => $this->user,
-        ]);
+        $profile = \Auth::user()->profile;
+        $user = \Auth::user();
+
+        return view('profile.update', ['profile' => $profile, 'user' => $user]);
     }
 
+    /**
+     * Update user profile
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(Request $request)
     {
-        //dd($request);
-        $profile = Profile::where('user_id', $request->input('id'))->first();
-        $profile->user_id = $request->input('id');
-        $profile->name = $request->input('name');
-        $profile->last_name = $request->input('last_name');
-        $profile->phone = $request->input('phone');
-        $profile->wallet = $request->input('wallet');
-        $profile->about = $request->input('about');
+        $user = User::where('id', $request->input('id'))->first();
+        $user->fill($request->all());
+        $user->update();
+
+        $wallet = Wallet::where('id', $request->input('id'))->first();
+        $wallet->fill($request->all());
+        $wallet->update();
+
+        $profile = Profile::where('id', $request->input('id'))->first();
+        $profile->fill($request->all());
+        $profile->user()->associate($user);
+        $profile->wallet()->associate($wallet);
         $profile->update();
+
         return redirect('/profile');
     }
 
-
-
-    /**
-     * @Get("/profile/{id}/payments", as="profiles.payments")
-     */
-    /*public function transactionShow()
-    {
-        $transactions = Payment::all();
-        return view('transaction.show', compact('transactions'));
-    }*/
 }
