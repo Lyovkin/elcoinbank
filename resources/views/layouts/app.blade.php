@@ -33,10 +33,11 @@
         }
 
         .footer {
+            background-color: rgba(51, 51, 51, 0);
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 0px;
+            height: 53px;
         }
     </style>
     @yield('css')
