@@ -36,7 +36,7 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 40px;
+            height: 0px;
         }
     </style>
     @yield('css')
