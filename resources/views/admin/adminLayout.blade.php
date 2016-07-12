@@ -99,6 +99,11 @@
                     </li>
 
                     <li>
+                        <a class="" href="{{ route('admin.requests.users') }}"><i
+                                    class="fa fa-list fa-fw"></i> Запросы пользователей</a>
+                    </li>
+
+                    <li>
                         <a class="" href="{{ route('admin.history.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Вклады</a>
                     </li>

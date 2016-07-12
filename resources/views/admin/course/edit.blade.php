@@ -22,7 +22,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            {!! Form::model($currency,['route'=>['admin.currency.update','id' => $currency->id],
+                            {!! Form::model($course,['route'=>['admin.course.update','id' => $course->id],
                             'method' => 'PATCH',
                             'class'=>'form-horizontal', 'role'=>'form']) !!}
                             @include('admin.course.form-edit')

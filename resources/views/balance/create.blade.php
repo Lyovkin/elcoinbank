@@ -35,15 +35,15 @@
                                             <input type="text" class="form-control" id="name" name="name" required value="{{ $user->name }}" disabled>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="mail" class="control-label">Почта</label>
-                                            <input type="text" class="form-control" id="mail" name="mail" required value="{{ $user->email }}" disabled>
+                                            <label for="email" class="control-label">Почта</label>
+                                            <input type="text" class="form-control" id="email" name="email" required value="{{ $user->email }}" disabled>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for="from_currency" class="control-label">Отдаете</label>
-                                            <select id="from_currency" class="form-control" name="from_currency">
+                                            <label for="currency_id" class="control-label">Отдаете</label>
+                                            <select id="currency_id" class="form-control" name="currency_id">
                                                 @foreach($currencies as $currency)
                                                     <option value="{{ $currency->id }}">{{ $currency->name }}</option>
                                                 @endforeach
@@ -51,43 +51,43 @@
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="from_amount" class="control-label">Сумма</label>
-                                            <input type="text" class="form-control" id="from_amount" name="from_amount" required />
+                                            <label for="amount" class="control-label">Сумма</label>
+                                            <input type="text" class="form-control" id="amount" name="amount" required />
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-md-12">
-                                            <label for="from_payment" class="control-label">Со счета</label>
-                                            <input type="text" class="form-control" id="from_payment" name="from_payment" required />
+                                            <label for="payment" class="control-label">Со счета</label>
+                                            <input type="text" class="form-control" id="payment" name="payment" required />
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="to_currency" class="control-label">Получаете</label>
-                                            <select id="to_currency" class="form-control" name="to_currency">
+                                            <select id="to_currency" class="form-control">
                                                     <option value="">Elcoin</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="amount" class="control-label">Сумма</label>
-                                            <input type="text" class="form-control" id="amount" name="amount" required disabled />
+                                            <label for="total" class="control-label">Сумма</label>
+                                            <input type="text" class="form-control" id="total" name="total" required />
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <label for="to_payment" class="control-label">На счет</label>
-                                            <input type="text" class="form-control" id="to_payment" name="to_payment" required />
-                                        </div>
-                                    </div>
+                                    {{--<div class="row">--}}
+                                        {{--<div class="form-group col-md-12">--}}
+                                            {{--<label for="to_payment" class="control-label">На счет</label>--}}
+                                            {{--<input type="text" class="form-control" id="to_payment" name="to_payment" required />--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <input type="checkbox" id="trust" name="trust" style="zoom: 130%" required />
-                                            <label for="trust" class="control-label">В доверительное управление</label>
+                                            <input type="checkbox" id="status_trust" name="status_trust" value="true" style="zoom: 130%" />
+                                            <label for="status_trust" class="control-label">В доверительное управление</label>
                                         </div>
                                     </div>
 
@@ -96,6 +96,8 @@
                                             <textarea class="form-control"  id="message" name="message" placeholder="Примечание" maxlength="140" rows="1"></textarea>
                                         </div>
                                     </div>
+
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
 
                                     <div class="form-group col-lg-12">
                                         <button type='submit' id="submit" name="submit" class="btn btn-primary pull-right">Отправить заявку</button>
@@ -120,7 +122,7 @@
         $(document).ready(function(){
             var currency = undefined;
 
-            $('#from_currency').change(function() {
+            $('#currency_id').change(function() {
                 var option = $(this).val();
                 $.post('/get_currency', {"currency": option, "_token": "{{ csrf_token() }}"
                 }, function(data, status) {
@@ -128,10 +130,10 @@
                 });
             });
 
-            $('#from_amount').change(function(){
+            $('#amount').change(function(){
                 var amount = $(this).val();
                 var total = amount * currency.course_purchase;
-                $('#amount').val(total);
+                $('#total').val(total);
 
             })
 

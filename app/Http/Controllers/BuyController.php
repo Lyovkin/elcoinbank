@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Currency;
 use App\Models\Purchase;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 /**
@@ -31,9 +33,29 @@ class BuyController extends Controller
 
     /**
      * @POST("/buy", as="buy.store")
+     * @param Purchase $purchase
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(Purchase $purchase, Request $request)
     {
+        $data = $request->all();
 
+        $user = User::where('id', $request->input('user_id'))->first();
+        $course = Course::where('currency_id', $request->input('currency_id'))->first();
+
+        $data['course'] = $course->course_purchase;
+
+        if($request->input('status_trust') === 'true')
+            $data['status_trust'] = 1;
+
+        $purchase->fill($data);
+        $purchase->user()->associate($user);
+        $purchase->course()->associate($course);
+        $purchase->save();
+
+        \Session::flash('message', 'Заявка сделана');
+
+        return redirect()->route('profile.index');
     }
 }

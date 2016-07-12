@@ -16,8 +16,8 @@ class CreateCourseCashTable extends Migration
            $table->increments('id');
            $table->integer('currency_id')->unsigned()->index();
            $table->foreign('currency_id')->references('id')->on('currency')->onDelete('cascade');
-           $table->double('course_purchase', 10,5);
-           $table->double('course_sell', 10,5);
+           $table->decimal('course_purchase');
+           $table->decimal('course_sell');
         });
     }
 

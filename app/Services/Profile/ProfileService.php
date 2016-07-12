@@ -2,18 +2,17 @@
 
 namespace App\Services\Profile;
 
+use App\Models\User;
 use App\Repositories\Profile\ProfileInterface;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
 use App\Models\Profile;
 
 /**
  * Class ProfileService
  * @package App\Services\Profile
  */
-class ProfileService
+class ProfileService implements ProfileInterface
 {
     protected $profileRepo;
     
@@ -52,6 +51,18 @@ class ProfileService
         $profile->user_id = $id;
         $profile->about = "Моя информация";
         $profile->save();
+    }
+
+    /**
+     * Update user
+     *
+     * @param User $user
+     * @param array $data
+     */
+    public static function update(User $user, $data = array())
+    {
+        $user->fill($data);
+        $user->update();
     }
 }
 

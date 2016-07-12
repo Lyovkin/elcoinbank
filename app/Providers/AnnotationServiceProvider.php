@@ -27,6 +27,7 @@ class AnnotationServiceProvider extends ServiceProvider
         App\Http\Controllers\Admin\AdminController::class,
         App\Http\Controllers\Admin\AdminCourseController::class,
         App\Http\Controllers\Admin\AdminBanksController::class,
+        App\Http\Controllers\Admin\AdminRequestsController::class,
         App\Http\Controllers\BuyController::class,
     ];
 

@@ -17,14 +17,6 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Все Пользователи
-                <div class="pull-right">
-                    {{--<div class="btn-toolbar  btn-group-xs" role="toolbar" aria-label="...">
-                        <a href="{{route('admin.user.create')}}"
-                            data-toggle="tooltip"
-                            data-original-title="Добавить пользователя"
-                            class="btn btn-default btn-mini"><i class="fa fa-plus"></i></a>
-                    </div>--}}
-                </div>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">

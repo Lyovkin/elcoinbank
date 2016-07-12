@@ -51,10 +51,15 @@ class AdminCourseController extends AbstractAdminController
      */
     public function update(Request $request, Course $course)
     {
-//        $course->fill($request->all());
-//        $course->update();
-//
-//        return redirect()->route('admin.currency.index');
+        $currency = Currency::where('id', $course->currency_id)->first();
+        $currency->fill($request->all());
+        $currency->update();
+
+        $course->fill($request->all());
+        $course->currency()->associate($currency);
+        $course->update();
+
+        return redirect()->route('admin.course.index');
     }
 
     /**
@@ -68,7 +73,7 @@ class AdminCourseController extends AbstractAdminController
     }
 
     /**
-     * @param CourseRequest|Request $request
+     * @param Request $request
      * @param Course $course
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -83,7 +88,6 @@ class AdminCourseController extends AbstractAdminController
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
             return redirect()->route('admin.course.create')
                 ->withErrors($validator->errors())
                 ->withInput();
@@ -107,6 +111,9 @@ class AdminCourseController extends AbstractAdminController
      */
     public function destroy(Course $course)
     {
+        $currency = Currency::where('id', $course->currency_id)->first();
+        $currency->delete();
+
         $course->delete();
         return back();
     }

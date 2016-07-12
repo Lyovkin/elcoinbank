@@ -4,23 +4,13 @@
 @endsection
 @section('css')
 <link href="/css/profile.css" rel="stylesheet" type="text/css" />
-    <style>
-        .shadow {
-            -webkit-box-shadow: -2px 2px 42px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: -2px 2px 42px 0px rgba(0,0,0,0.75);
-            box-shadow: -2px 2px 42px 0px rgba(0,0,0,0.75);
-            background-color: white;
-        }
-    </style>
 @endsection
 
 @section('content')
     <div style="padding-top: 80px;margin-left: 20px; margin-right: 20px;" >
-
         @if (Session::has('message'))
             <div class="alert alert-danger">{{ Session::get('message') }}</div>
         @endif
-
         <div class="row">
             <div class="col-xs-12 col-lg-12">
                 <div class="col-md-6">

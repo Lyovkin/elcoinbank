@@ -26,7 +26,7 @@ class ProfileController extends Controller
      */
     public function __construct(Profile $profile)
     {
-        $this->middleware('auth');
+        $this->middleware(['web', 'auth']);
 
         $this->profile = $profile;
     }

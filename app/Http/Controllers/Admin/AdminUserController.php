@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Role;
+use App\Services\Profile\ProfileService;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,7 +67,7 @@ class AdminUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param User $user
-     * @param Requests\UserRequest|Request $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(User $user, Request $request)
@@ -78,12 +78,12 @@ class AdminUserController extends Controller
         if (!array_key_exists('roleCheck', $data))
             $data['roleCheck'] = [];
 
-        if ($user->update($data)) {
-            $user->roles()->sync($data['roleCheck']);
-           // \ProfileService::updateProfile($request, $user->profile);
-        }
+        ProfileService::update($user, $data);
+
+        $user->roles()->sync($data['roleCheck']);
+
         \Session::flash('message', 'Пользователь обновлен');
-        //$page = $request->page;
+
         return redirect()->route('admin.user.index');
     }
 
@@ -97,6 +97,7 @@ class AdminUserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
         return redirect()->back();
     }
 
@@ -106,7 +107,6 @@ class AdminUserController extends Controller
      */
     public function block(User $user)
     {
-       // dd($user);
         $user->blocked = \Illuminate\Support\Facades\Request::input('blocked');
         $user->save();
         return redirect()->back();
