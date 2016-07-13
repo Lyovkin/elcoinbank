@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  * Class BuyController
  * @package App\Http\Controllers
  */
-class BuyController extends Controller
+class PurchaseController extends Controller
 {
     public function __construct()
     {

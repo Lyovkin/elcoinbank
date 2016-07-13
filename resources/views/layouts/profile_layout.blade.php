@@ -19,6 +19,7 @@
     <link type="text/css" rel="stylesheet" href="/css/profile/material-design-iconic-font.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/plans.css" rel="stylesheet" type="text/css" />
 
 
     @yield('css')
@@ -62,7 +63,6 @@
                     <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
 								<span class="profile-info" style="margin-top: 14px;">
 									{{ Auth::user()->name }}
-									<small></small>
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
@@ -110,14 +110,12 @@
                     </a>
                 </li><!--end /menu-li -->
 
-                <!-- BEGIN DASHBOARD -->
                 <li>
-                    <a href="{{ url("/profile") }}" >
+                    <a href="/show_profile">
                         <div class="gui-icon"><i class="fa fa-home"></i></div>
-                        <span class="title">Домой</span>
+                        <span class="title">Профиль</span>
                     </a>
                 </li><!--end /menu-li -->
-                <!-- END DASHBOARD -->
 
                 <!-- BEGIN EMAIL -->
                 <li>
@@ -149,27 +147,16 @@
                 <li class="gui-folder">
                     <a>
                         <div class="gui-icon"><i class="fa fa-arrow-up "></i></div>
-                        <span class="title">Баланс</span>
+                        <span class="title">Пополнение баланса</span>
                     </a>
                         <ul>
                             <li><a href="{{ route('buy.create') }}"><span class="title">Купить элькоины</span></a></li>
-                            <li><a href="#"><span class="title">Продать элькоины</span></a></li>
+                            <li><a href="#"><span class="title">Перевести на баланс</span></a></li>
                         </ul>
                 </li><!--end /menu-li -->
 
-                {{--<li>--}}
-                    {{--<a href="https://exmoney.me/" target="_blank">--}}
-                        {{--<div class="gui-icon"><i class="fa fa-arrow-down"></i></div>--}}
-                        {{--<span class="title">Обменять сейчас</span>--}}
-                    {{--</a>--}}
-                {{--</li><!--end /menu-li -->--}}
 
-                {{--<li>--}}
-                    {{--<a href="{{ url("/calc") }}" >--}}
-                        {{--<div class="gui-icon"><i class="fa fa-calculator"></i></div>--}}
-                        {{--<span class="title">Калькулятор</span>--}}
-                    {{--</a>--}}
-                {{--</li><!--end /menu-li -->--}}
+
 
                 <li>
                     <a href="/profile/{{ Auth::user()->id }}/edit" >

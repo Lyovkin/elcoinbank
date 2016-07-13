@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Purchase extends Model
 {
-    protected $table = 'request_purchase';
+    protected $table = 'purchase';
 
-    protected $fillable = ['payment', 'course', 'amount', 'total', 'message', 'status_trust',
+    protected $fillable = ['payment', 'wallet', 'course', 'amount', 'total', 'message', 'status_trust',
         'status_moderation' => 0, 'status_admin' => 0];
 
     protected $guarded = ['_token'];

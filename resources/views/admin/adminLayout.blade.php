@@ -99,6 +99,11 @@
                     </li>
 
                     <li>
+                        <a class="" href="{{ route('admin.plans.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Планы</a>
+                    </li>
+
+                    <li>
                         <a class="" href="{{ route('admin.requests.users') }}"><i
                                     class="fa fa-list fa-fw"></i> Запросы пользователей</a>
                     </li>

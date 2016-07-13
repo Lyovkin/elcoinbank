@@ -21,7 +21,7 @@ class WalletsTableSeeder extends Seeder
 
         foreach ($users as $user) {
             DB::table('wallets')->insert([
-                ['user_id' => $user->id, 'wallet' => 'teeeeeeessss324324sdqqw33st']
+                ['user_id' => $user->id, 'wallet' => '33234gre4323few2342gre']
             ]);
         }
 

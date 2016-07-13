@@ -84,4 +84,15 @@ class ProfileController extends Controller
         return redirect('/profile');
     }
 
+    /**
+     * @GET("show_profile")
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function profile()
+    {
+        $profile = $this->profile->profileWithUser();
+
+        return view('profile.show', compact('profile'));
+    }
+
 }

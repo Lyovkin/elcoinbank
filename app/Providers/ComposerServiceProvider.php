@@ -19,6 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(['profile.profile', 'request.create', 'partials.head_profile', 'calc.index'], 'App\Composers\CourseComposer');
         View::composer('request.create', 'App\Composers\DaysComposer');
         View::composer('layouts.profile_layout', 'App\Composers\ProfileComposer');
+        View::composer(['profile.profile', 'welcome'], 'App\Composers\PlansComposer');
     }
 
     /**
