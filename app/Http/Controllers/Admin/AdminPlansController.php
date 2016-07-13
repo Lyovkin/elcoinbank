@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Plan;
 use App\Models\PlansType;
 use Illuminate\Http\Request;
-use ZaLaravel\LaravelAdmin\Controllers\AbstractAdminController;
 
 /**
  * Class AdminPlansController
