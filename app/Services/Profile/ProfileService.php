@@ -47,7 +47,6 @@ class ProfileService implements ProfileInterface
     public static function createProfile($data, $id)
     {
         $profile = new Profile;
-        $profile->name = $data['name'];
         $profile->user_id = $id;
         $profile->about = "Моя информация";
         $profile->save();

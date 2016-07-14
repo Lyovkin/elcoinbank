@@ -9,13 +9,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class AdminRequestController
+ * @package App\Http\Controllers\Admin
+ */
 class AdminRequestController extends Controller
 {
     protected $reqService;
     
     public function __construct(RequestService $requestService, Auth $auth)
     {
-        $this->middleware('admin');
         $this->reqService = $requestService;
     }
     

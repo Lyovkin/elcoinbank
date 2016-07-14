@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Auth;
  */
 class Admin
 {
+    protected $auth;
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -22,8 +29,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()) {
-            if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('supervisor')) {
+        $user = $request->user();
+
+        if($user) {
+            if ($user->hasRole('admin') || $user->hasRole('supervisor')) {
                 return $next($request);
             }
         }

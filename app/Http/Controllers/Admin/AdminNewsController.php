@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class AdminNewsController extends Controller
 {
-    public function __construct(Auth $auth)
-    {
-        $this->middleware('admin');
-    }
+
     /**
      * Display a listing of the resource.
      *

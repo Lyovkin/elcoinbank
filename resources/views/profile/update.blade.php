@@ -21,7 +21,7 @@
                 <div class="">
                     <div class="">
 
-                        {!! Form::model($profile,['route'=> ['profiles.update', 'id'=>$profile->user->id]]) !!}
+                        {!! Form::model($profile,['route'=> ['profile.update', 'id'=>$profile->user->id]]) !!}
                         <div class="form-group">
                             <label>Имя</label>
                             {!! Form::text('name', $profile->user->name, ['class'=>'form-control',
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label>Elcoin - кошелек</label>
-                            {!! Form::text('wallet', $profile->wallet->wallet, ['class'=>'form-control phone',
+                            {!! Form::text('wallet', $profile->wallet, ['class'=>'form-control phone',
                                                                                           'placeholder'=>'Кошелек',]) !!}
                         </div>
                         <label>Обо мне</label>

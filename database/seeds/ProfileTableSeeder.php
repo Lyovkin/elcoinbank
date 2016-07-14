@@ -21,27 +21,25 @@ class ProfileTableSeeder extends Seeder
 
         Model::unguard();
 
-        $wallets = Wallet::all()->toArray();
-
         DB::table('profiles')->insert([
             [
                 'user_id' => 1,
-                'wallet_id' => $wallets[0]['id'],
+                'wallet' => 'asdasdadadadadadad',
                 'about' => 'Site administrator.'
             ],
             [
                 'user_id' => 2,
-                'wallet_id' => $wallets[1]['id'],
+                'wallet' => 'asdasdadadadadadad',
                 'about' => 'Supervisor.'
             ],
             [
                 'user_id' => 3,
-                'wallet_id' => $wallets[2]['id'],
+                'wallet' => 'asdasdadadadadadad',
                 'about' => 'Supervisor.'
             ],
             [
                 'user_id' => 4,
-                'wallet_id' => $wallets[3]['id'],
+                'wallet' => 'asdasdadadadadadad',
                 'about' => 'User'
             ]
         ]);

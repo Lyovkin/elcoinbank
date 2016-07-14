@@ -20,16 +20,14 @@
                             <thead>
                             <tr>
                                 <th>Валюта <i class="fa fa-btc"></i> </th>
-                                <th>Продажа <i class="fa fa-minus"></i> </th>
+                                <th>Продажа</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($courses as $course)
                             <tr>
                                 <td>Elcoin / {{ $course->currency->name }}</td>
-
                                 <td>{{ $course->course_purchase }}</td>
-
                             </tr>
                             @endforeach
                             </tbody>
@@ -38,7 +36,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-calc" style="margin-top: 60px;">
-                        <label for="form-calc">Для ресчета вклада введите количество элькоинов</label>
+                        <label for="form-calc">Для рассчета вклада введите количество элькоинов</label>
                         <input type="text" id="form-calc" style="width: 255px;">
                     </div>
                     <div class="col-md-12">
@@ -57,10 +55,10 @@
                                                         Количество дней: <span class="days">{{ $plan->days }}</span>
                                                     </h1>
                                                 </div>
-                                                <div class="panel-body panel-body-landing" style="padding-top: 0">
+                                                <div class="panel-body panel-body-landing" style="padding-top: 0; display: none;">
                                                     <table class="table" style="margin-bottom: 0">
                                                         <tr>
-                                                            <td width="50px"><i class="fa fa-money"></i></td>
+                                                            <td width="50px"><i class="fa fa-money"></i> </td>
                                                             <td class="all"></td>
                                                         </tr>
                                                     </table>
@@ -85,7 +83,7 @@
                                                         Количество дней: <span class="days">{{ $plan->days }}</span>
                                                     </h1>
                                                 </div>
-                                                <div class="panel-body panel-body-landing" style="padding-top: 0">
+                                                <div class="panel-body panel-body-landing" style="padding-top: 0; display: none;">
                                                     <table class="table" style="margin-bottom: 0">
                                                         <tr>
                                                             <td width="50px"><i class="fa fa-money"></i></td>
@@ -109,6 +107,8 @@
     <script>
         $(function(){
             $('#form-calc').change(function() {
+
+                var total = [];
                 var amount = $(this).val();
                 var percents = $(".percent").map(function(){
                     return $.trim($(this).text());
@@ -117,14 +117,13 @@
                     return $.trim($(this).text());
                 }).get();
 
-                var total = [];
-
                 for (var i = 0; i < percents.length; i++) {
-                    total.push((amount * percents[i] / 100) * days[i]);
+                    total.push(((amount * ((percents[i] / days[i])) / 100) * days[i]) + parseInt(amount));
                 }
 
                 $('.all').each(function(i) {
-                    $(this).append(Math.round(total[i]));
+                    $('.panel-body-landing').css({'display':'block'});
+                    $(this).text(total[i].toFixed(20).slice(0,-18));
                 })
 
             });

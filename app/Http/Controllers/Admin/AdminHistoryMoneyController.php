@@ -11,13 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminHistoryMoneyController extends Controller
 {
-    /**
-     * @param Auth $auth
-     */
-    public function __construct(Auth $auth)
-    {
-        $this->middleware('admin');
-    }
+
     /**
      * Display a listing of the resource.
      *

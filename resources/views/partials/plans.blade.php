@@ -14,7 +14,7 @@
                                 <span id="days">Количество дней: {{ $plan->days }}</span>
                             </h1>
                         </div>
-                        <div class="panel-body panel-body-landing" style="padding-top: 0">
+                        <div class="panel-body panel-body-landing" style="padding-top: 0; @if(Request::path() == '/') display:none; @endif">
                             <table class="table" style="margin-bottom: 0">
                                 <tr>
                                     <td width="50px"><i class="fa fa-money"></i></td>
@@ -42,7 +42,7 @@
                                 <span id="days">Количество дней: {{ $plan->days }}</span>
                             </h1>
                         </div>
-                        <div class="panel-body panel-body-landing" style="padding-top: 0">
+                        <div class="panel-body panel-body-landing" style="padding-top: 0; @if(Request::path() == '/') display:none; @endif">
                             <table class="table" style="margin-bottom: 0">
                                 <tr>
                                     <td width="50px"><i class="fa fa-money"></i></td>

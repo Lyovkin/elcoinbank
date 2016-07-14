@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
  */
 class AdminBanksController extends AbstractAdminController
 {
+    public function __construct()
+    {
+        $this->middleware(['web', 'admin']);
+    }
     /**
      * Display a listing of the resource.
      *

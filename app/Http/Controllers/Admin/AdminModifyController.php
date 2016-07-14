@@ -15,11 +15,6 @@ use Illuminate\Support\Facades\Auth;
  */
 class AdminModifyController extends Controller
 {
-    public function __construct(Auth $auth)
-    {
-        $this->middleware('admin');
-    }
-
     /**
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

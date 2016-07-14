@@ -1,13 +1,13 @@
 @extends('admin.adminLayout')
 
 @section('title')
-    Запросы от пользователей
+    Транзакции
 @stop
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Запросы от пользователей</h1>
+            <h1 class="page-header">Транзакции</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -15,15 +15,15 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Запросы от пользователей
+                Транзакции
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Тип</th>
                             <th>Имя</th>
                             <th>Email</th>
                             <th>Покупка за</th>
@@ -32,6 +32,7 @@
                             <th>Сумма</th>
                             <th>К зачислению элькоинов</th>
                             <th>Доверительное управление</th>
+                            <th>Кошелек</th>
                             <th>Сообщение</th>
                             <th>Статус модерации</th>
                             <th>Статус админа</th>
@@ -43,15 +44,16 @@
                         <tbody>
                         @foreach($requests as $request)
                             <tr>
-                                <td>{{ $request->id }}</td>
+                                <td>{{ $request->type->name }}</td>
                                 <td>{{ $request->user->name }}</td>
                                 <td>{{ $request->user->email }}</td>
-                                <td>{{ $request->currency->name }}</td>
-                                <td>{{ $request->payment }}</td>
-                                <td>{{ $request->course }}</td>
+                                <td>{{ $request->payment ? $request->currency->name : '-' }}</td>
+                                <td>{{ $request->payment ? $request->payment : '-' }}</td>
+                                <td>{{ $request->payment ? $request->course : '-' }}</td>
                                 <td>{{ $request->amount }}</td>
-                                <td>{{ $request->total }}</td>
+                                <td>{{ $request->total }} EL</td>
                                 <td>{{ $request->status_trust == 1 ? 'Да' : 'Нет' }}</td>
+                                <td>{{ $request->status_trust == 0 ? $request->user->profile->wallet : '-' }}</td>
                                 <td>{{ $request->message }}</td>
                                 <td>{{ $request->status_moderation == 1 ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $request->status_admin == 1 ? 'Да' : 'Нет' }}</td>
@@ -88,8 +90,6 @@
                                             {!! Form::close() !!}
                                         </div>
                                     @endif
-                                </td>
-                                <td>
                                 </td>
                             </tr>
                         @endforeach

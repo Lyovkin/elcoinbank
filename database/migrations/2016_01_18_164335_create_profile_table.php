@@ -20,8 +20,7 @@ class CreateProfileTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('phone', 12)->nullable();
-            $table->integer('wallet_id')->unsigned()->index();
-            $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
+            $table->string('wallet')->nullable();
             $table->text('about')->nullable();
         });
     }

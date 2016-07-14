@@ -1,7 +1,7 @@
 @extends('layouts.profile_layout')
 
 @section('title')
-    Купить элькоины
+    Перевести элькоины
 @stop
 
 @section('css')
@@ -17,13 +17,13 @@
     <div class="container" style="padding-top: 80px;">
         @if (Session::has('message'))
             <div class="alert alert-danger">{{ Session::get('message') }}</div>
-        @endif
+            @endif
                     <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12" style="margin-top: 20px">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Купить элькоины
+                            Перевести элькоины на баланс
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -42,55 +42,14 @@
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for="currency_id" class="control-label">Отдаете</label>
-                                            <select id="currency_id" class="form-control" name="currency_id">
-                                                @foreach($currencies as $currency)
-                                                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group col-md-6">
                                             <label for="amount" class="control-label">Сумма</label>
                                             <input type="text" class="form-control" id="amount" name="amount" required />
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-6">
                                             <label for="payment" class="control-label">Со счета</label>
-                                            <input type="text" class="form-control" id="payment" name="payment" required />
+                                            <input type="text" class="form-control" id="payment" name="payment" value="{{ $user->profile->wallet }}" disabled required />
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="to_currency" class="control-label">Получаете</label>
-                                            <select id="to_currency" class="form-control">
-                                                    <option value="">Elcoin</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="total" class="control-label">Сумма</label>
-                                            <input type="text" class="form-control" id="total" name="total" required />
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <input type="checkbox" id="status_trust" name="status_trust" value="true" style="zoom: 130%" />
-                                            <label for="status_trust" class="control-label">В доверительное управление</label>
-                                        </div>
-                                    </div>
-
-                                    {{--<div class="row" id="wallet">--}}
-                                        {{--<div class="form-group col-md-12">--}}
-                                            {{--<label for="wallet" class="control-label">На счет</label>--}}
-                                            {{--<input type="text" class="form-control" id="wallet"--}}
-                                                   {{--value="{{ Auth::user()->wallet->wallet }}">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
 
                                     <div class="row">
                                         <div class="form-group col-md-12">
@@ -100,7 +59,7 @@
 
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
 
-
+                                    <input type="hidden" name="currency_id" value=1 />
 
                                     <div class="form-group col-lg-12">
                                         <button type='submit' id="submit" name="submit" class="btn btn-primary pull-right">Отправить заявку</button>

@@ -13,7 +13,7 @@ class Course extends Model
 {
     protected $table = 'course';
 
-    protected $fillable = ['currency_id', 'course_purchase', 'course_sell'];
+    protected $fillable = ['currency_id', 'course_purchase'];
 
     public $timestamps = false;
 

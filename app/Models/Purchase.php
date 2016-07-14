@@ -33,4 +33,9 @@ class Purchase extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function type()
+    {
+        return $this->belongsTo('App\Models\TypePurchase', 'type_id');
+    }
+
 }

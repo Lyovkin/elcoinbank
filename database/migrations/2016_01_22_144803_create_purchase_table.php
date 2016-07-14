@@ -21,7 +21,6 @@ class CreatePurchaseTable extends Migration
             $table->integer('type_id')->unsigned()->index();
             $table->foreign('type_id')->references('id')->on('type_purchases')->onDelete('cascade');
             $table->string('payment');
-            $table->string('wallet')->nullable();
             $table->decimal('course')->nullable();
             $table->integer('amount');
             $table->integer('total');

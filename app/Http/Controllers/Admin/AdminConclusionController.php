@@ -15,13 +15,6 @@ use Illuminate\Support\Facades\Auth;
  */
 class AdminConclusionController extends Controller
 {
-    /**
-     * @param Auth $auth
-     */
-    public function __construct(Auth $auth)
-    {
-        $this->middleware('admin');
-    }
 
     public function index()
     {

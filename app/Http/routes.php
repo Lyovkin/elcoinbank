@@ -34,8 +34,6 @@ Route::group(['middleware' => 'web'], function () {
     });
 
 
-    Route::resource('profile', 'ProfileController');
-
     Route::get('news', 'NewsController@index');
 
     Route::post('/request', ['uses'=>'RequestController@store', 'as'=>'request.store']);
@@ -45,8 +43,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/money', 'RequestMoneyController');
 
     Route::get('/history', 'HistoryMoneyController@index');
-
-    Route::get('/calc', 'CalcController@index');
 
     Route::get('/offers', 'OfferController@index');
 
@@ -66,7 +62,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/deletemessage', 'ChatController@deleteMessage');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['web','admin']], function () {
 
     Route::resource('dashboard', 'AdminController');
 
@@ -91,10 +87,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'web'
 
     Route::get('/request', ['uses'=>'AdminRequestController@index', 'as' => 'admin.request.index']);
     Route::delete('/request/{id}', ['uses' => 'AdminRequestController@delete', 'as' => 'admin.request.delete']);
-
-    Route::resource('percent', 'AdminPercentController');
-
-    Route::resource('days', 'AdminDaysController');
 
     Route::resource('/history', 'AdminHistoryMoneyController');
 

@@ -26,18 +26,22 @@ class ProfileController extends Controller
      */
     public function __construct(Profile $profile)
     {
-        $this->middleware(['web', 'auth']);
+        $this->middleware(['web','auth']);
 
         $this->profile = $profile;
     }
 
+    /**
+     * @GET("/profile", as="profile.index")
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $profile = $this->profile->profileWithUser();
 
         $courses = Course::with('currency')->get();
 
-        if($profile->hasWallet())
+        if(!$profile->wallet)
 
             \Session::flash('message', 'Пожалуйста, укажите Elcoin кошелек и полностью заполните профиль, если у Вас нет кошелька,
             зарегистрируйтесь в системе Elephant: https://elcoin.space');
@@ -50,6 +54,7 @@ class ProfileController extends Controller
      * Edit user profile
      *
      * @Get("/profile/{id}/edit", as="profiles.edit")
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit()
     {
@@ -62,6 +67,7 @@ class ProfileController extends Controller
     /**
      * Update user profile
      *
+     * @POST("profile/{id}/update", as="profile.update")
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -71,21 +77,16 @@ class ProfileController extends Controller
         $user->fill($request->all());
         $user->update();
 
-        $wallet = Wallet::where('id', $request->input('id'))->first();
-        $wallet->fill($request->all());
-        $wallet->update();
-
-        $profile = Profile::where('id', $request->input('id'))->first();
+        $profile = Profile::where('user_id', $request->input('id'))->first();
         $profile->fill($request->all());
         $profile->user()->associate($user);
-        $profile->wallet()->associate($wallet);
         $profile->update();
 
         return redirect('/profile');
     }
 
     /**
-     * @GET("show_profile")
+     * @GET("/profile/show_profile", as="profile.show")
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function profile()

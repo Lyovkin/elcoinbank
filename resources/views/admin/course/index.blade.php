@@ -32,7 +32,6 @@
                         <thead>
                         <tr>
                             <th>Название валюты</th>
-                            <th>Покупка</th>
                             <th>Продажа</th>
                             <th>&nbsp;</th>
                         </tr>
@@ -42,7 +41,6 @@
                             <tr>
                                 <td>Elcoin / {{ $course->currency->name }}</td>
                                 <td>{{ $course->course_purchase }}</td>
-                                <td>{{ $course->course_sell }}</td>
                                 <td></td>
                                 <td>
                                     <div class="btn-group" style="float: right;" role="group" aria-label="...">

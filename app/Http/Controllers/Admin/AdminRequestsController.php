@@ -15,7 +15,7 @@ class AdminRequestsController extends AbstractAdminController
 {
     public function __construct()
     {
-        $this->middleware(['web']);
+        $this->middleware(['web', 'admin']);
     }
 
     /**

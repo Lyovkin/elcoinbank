@@ -111,7 +111,7 @@
                 </li><!--end /menu-li -->
 
                 <li>
-                    <a href="/show_profile">
+                    <a href="/profile/show_profile">
                         <div class="gui-icon"><i class="fa fa-home"></i></div>
                         <span class="title">Профиль</span>
                     </a>
@@ -150,8 +150,8 @@
                         <span class="title">Пополнение баланса</span>
                     </a>
                         <ul>
-                            <li><a href="{{ route('buy.create') }}"><span class="title">Купить элькоины</span></a></li>
-                            <li><a href="#"><span class="title">Перевести на баланс</span></a></li>
+                            <li><a href="{{ route('purchase.create') }}"><span class="title">Купить элькоины</span></a></li>
+                            <li><a href="{{ route('purchase.transfer.create') }}"><span class="title">Перевести на баланс</span></a></li>
                         </ul>
                 </li><!--end /menu-li -->
 

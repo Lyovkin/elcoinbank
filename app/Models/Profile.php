@@ -13,7 +13,7 @@ class Profile extends Model
 {
     protected $table = 'profiles';
 
-    protected $fillable = ['phone', 'about'];
+    protected $fillable = ['phone', 'wallet', 'about'];
 
     protected $guarded = ['_token'];
 
@@ -29,21 +29,10 @@ class Profile extends Model
         return $this->belongsTo('App\Models\Payment');
     }
 
-    /**
-     * @return bool
-     */
-    public function hasWallet()
-    {
-        return \Auth::user()->profile->wallet === null ? true : false;
-    }
 
     public function profileWithUser()
     {
         return Profile::with('user')->where('user_id', \Auth::user()->id)->first();
     }
 
-    public function wallet()
-    {
-        return $this->belongsTo('App\Models\Wallet');
-    }
 }

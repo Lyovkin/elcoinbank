@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
  */
 class AdminPlansController extends AbstractAdminController
 {
+    public function __construct()
+    {
+        $this->middleware(['web', 'admin']);
+    }
     /**
      * @GET("/plans", as="admin.plans.index")
      */

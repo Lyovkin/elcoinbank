@@ -90,22 +90,22 @@
 
                     <li>
                         <a class="" href="{{ route('admin.course.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Курс валют</a>
+                                    class="fa fa-list fa-fw"></i> Курсы валют</a>
                     </li>
 
                     <li>
                         <a class="" href="{{ route('admin.bank.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Банки</a>
+                                    class="fa fa-list fa-fw"></i> Виды банков</a>
                     </li>
 
                     <li>
                         <a class="" href="{{ route('admin.plans.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Планы</a>
+                                    class="fa fa-list fa-fw"></i> Планы вкладов</a>
                     </li>
 
                     <li>
                         <a class="" href="{{ route('admin.requests.users') }}"><i
-                                    class="fa fa-list fa-fw"></i> Запросы пользователей</a>
+                                    class="fa fa-list fa-fw"></i> Транзакции</a>
                     </li>
 
                     <li>
@@ -114,28 +114,17 @@
                     </li>
                     <li>
                         <a class="" href="{{ route('admin.conclusion.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Заявки на вывод</a>
+                                    class="fa fa-list fa-fw"></i> Вывод</a>
                     </li>
 
-
-                    <li>
-                        <a class="" href="{{ route('admin.percent.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Процент</a>
-                    </li>
-
-
-                    <li>
-                        <a class="" href="{{ route('admin.days.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Варианты дней</a>
-                    </li>
                     <li>
                         <a class="" href="{{ route('admin.news.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Новости</a>
+                                    class="fa fa-list fa-fw"></i> Новости сайта</a>
                     </li>
 
                     <li>
                         <a class="" href="{{ route('admin.request.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Вопросы</a>
+                                    class="fa fa-list fa-fw"></i> Вопросы с главной</a>
                     </li>
 
                 </ul>

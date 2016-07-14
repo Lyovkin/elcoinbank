@@ -22,7 +22,7 @@ class AdminCourseController extends AbstractAdminController
      */
     public function __construct()
     {
-        $this->middleware(['web']);
+        $this->middleware(['web', 'admin']);
     }
 
     /**
@@ -83,8 +83,7 @@ class AdminCourseController extends AbstractAdminController
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'course_purchase' => ['required', 'regex:'.$regex],
-            'course_sell' =>     ['required', 'regex:'.$regex]
+            'course_purchase' => ['required', 'regex:'.$regex]
         ]);
 
         if ($validator->fails()) {
