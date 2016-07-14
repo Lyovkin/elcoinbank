@@ -59,6 +59,19 @@ class AdminRequestsController extends AbstractAdminController
 
         } elseif (\Auth::user()->hasRole('admin')) {
 
+            if($purchase->status_trust == 0) {
+                $bank = Banks::where('banks_profiles_id', 1)->first();
+
+                $bank->amount -= $purchase->total;
+                $bank->update();
+
+            } elseif ($purchase->status_trust == 1) {
+                $bank = Banks::where('banks_profiles_id', 2)->first();
+
+                $bank->amount += $purchase->total;
+                $bank->update();
+            }
+
             $purchase->status_admin = $request->input('status_admin');
             $purchase->update();
             return back();
