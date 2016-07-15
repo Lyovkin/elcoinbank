@@ -60,55 +60,56 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/sendmessage', 'ChatController@sendMessage');
     Route::post('/deletemessage', 'ChatController@deleteMessage');
+
+    Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+
+        Route::resource('dashboard', 'AdminController');
+
+        Route::model('news', 'App\\Models\\News');
+        Route::resource('news', 'AdminNewsController');
+
+        Route::model('user', 'App\\Models\\User');
+        Route::resource('user', 'AdminUserController');
+
+        Route::post('user/{user}/block', array(
+            'uses' => 'AdminUserController@block',
+            'as' => 'admin.user.block',
+        ));
+
+        Route::get('/user/{user}/addBalance',
+            array('uses' => 'AdminModifyController@createBalance',
+                'as' => 'admin.user.addmoney'));
+
+        Route::post('/user/storeBalance',
+            array('uses' => 'AdminModifyController@storeBalance',
+                'as' => 'admin.user.storebalance'));
+
+        Route::get('/request', ['uses'=>'AdminRequestController@index', 'as' => 'admin.request.index']);
+        Route::delete('/request/{id}', ['uses' => 'AdminRequestController@delete', 'as' => 'admin.request.delete']);
+
+        Route::resource('/history', 'AdminHistoryMoneyController');
+
+        Route::post('history/{req}/block', array(
+            'uses' => 'AdminHistoryMoneyController@block',
+            'as' => 'admin.money.block',
+        ));
+
+        Route::get('conclusion', array(
+            'uses' => 'AdminConclusionController@index',
+            'as' => 'admin.conclusion.index',
+        ));
+
+        Route::delete('conclusion/{id}', array(
+            'uses' => 'AdminConclusionController@delete',
+            'as' => 'admin.conclusion.destroy',
+        ));
+
+        Route::post('conclusion/{id}/success', array(
+            'uses' => 'AdminConclusionController@success',
+            'as' => 'admin.conclusion.success',
+        ));
+    });
+
+
 });
-
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['web','admin']], function () {
-
-    Route::resource('dashboard', 'AdminController');
-
-    Route::model('news', 'App\\Models\\News');
-    Route::resource('news', 'AdminNewsController');
-
-    Route::model('user', 'App\\Models\\User');
-    Route::resource('user', 'AdminUserController');
-
-    Route::post('user/{user}/block', array(
-        'uses' => 'AdminUserController@block',
-        'as' => 'admin.user.block',
-    ));
-
-    Route::get('/user/{user}/addBalance',
-        array('uses' => 'AdminModifyController@createBalance',
-            'as' => 'admin.user.addmoney'));
-
-    Route::post('/user/storeBalance',
-        array('uses' => 'AdminModifyController@storeBalance',
-            'as' => 'admin.user.storebalance'));
-
-    Route::get('/request', ['uses'=>'AdminRequestController@index', 'as' => 'admin.request.index']);
-    Route::delete('/request/{id}', ['uses' => 'AdminRequestController@delete', 'as' => 'admin.request.delete']);
-
-    Route::resource('/history', 'AdminHistoryMoneyController');
-
-    Route::post('history/{req}/block', array(
-        'uses' => 'AdminHistoryMoneyController@block',
-        'as' => 'admin.money.block',
-    ));
-
-    Route::get('conclusion', array(
-        'uses' => 'AdminConclusionController@index',
-        'as' => 'admin.conclusion.index',
-    ));
-
-    Route::delete('conclusion/{id}', array(
-        'uses' => 'AdminConclusionController@delete',
-        'as' => 'admin.conclusion.destroy',
-    ));
-
-    Route::post('conclusion/{id}/success', array(
-        'uses' => 'AdminConclusionController@success',
-        'as' => 'admin.conclusion.success',
-    ));
-});
-
 

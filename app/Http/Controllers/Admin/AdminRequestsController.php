@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Banks;
 use App\Models\Purchase;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
@@ -37,21 +38,9 @@ class AdminRequestsController extends AbstractAdminController
     public function moderation(Request $request, $id)
     {
         $purchase = Purchase::find($id);
+        $user = User::where('id', $purchase->user_id)->first();
 
         if(\Auth::user()->hasRole('supervisor')) {
-
-            if($purchase->status_trust == 0) {
-                $bank = Banks::where('banks_profiles_id', 1)->first();
-
-                $bank->amount -= $purchase->total;
-                $bank->update();
-
-            } elseif ($purchase->status_trust == 1) {
-                $bank = Banks::where('banks_profiles_id', 2)->first();
-
-                $bank->amount += $purchase->total;
-                $bank->update();
-            }
 
             $purchase->status_moderation = $request->input('status_moderation');
             $purchase->update();
@@ -59,17 +48,23 @@ class AdminRequestsController extends AbstractAdminController
 
         } elseif (\Auth::user()->hasRole('admin')) {
 
-            if($purchase->status_trust == 0) {
+            if($purchase->status_trust == 0 || $purchase->type_id == 3) {
                 $bank = Banks::where('banks_profiles_id', 1)->first();
 
                 $bank->amount -= $purchase->total;
                 $bank->update();
+
+                $user->balance += $purchase->total;
+                $user->update();
 
             } elseif ($purchase->status_trust == 1) {
                 $bank = Banks::where('banks_profiles_id', 2)->first();
 
                 $bank->amount += $purchase->total;
                 $bank->update();
+
+                $user->balance += $purchase->total;
+                $user->update();
             }
 
             $purchase->status_admin = $request->input('status_admin');

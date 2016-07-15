@@ -75,9 +75,8 @@ class PurchaseController extends Controller
             $purchase->save();
         }
 
-        \Session::flash('message', 'Заявка сделана');
 
-        return redirect('/profile');
+        return redirect()->route('profile.index')->with('message', 'Заявка сделана!');
     }
 
     /**
@@ -90,5 +89,6 @@ class PurchaseController extends Controller
         $user = \Auth::user();
         return view('balance.transfer', compact('purchase', 'user'));
     }
+
 
 }

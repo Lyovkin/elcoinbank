@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan;
+use App\Models\Purchase;
 use App\Services\Request\RequestService;
 use Illuminate\Http\Request;
 
@@ -15,6 +17,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class RequestController extends Controller
 {
+
     /**
      * @var RequestService
      */
@@ -25,6 +28,7 @@ class RequestController extends Controller
      */
     public function __construct(RequestService $requestService)
     {
+        $this->middleware('auth');
         $this->req = $requestService;
     }
 
@@ -47,6 +51,14 @@ class RequestController extends Controller
      */
     public function create(\App\Models\Request $request)
     {
-        return view('request.create', compact('request'));
+        $user = \Auth::user();
+
+        if(Purchase::where('user_id', $user->id)->where('type_id', 2)->get()) {
+            $currencies = Plan::where('type_id', 1)->get();
+        } else {
+            $currencies = Plan::where('type_id', 2)->get();
+        }
+
+        return view('request.create', compact('request', 'user', 'currencies'));
     }
 }

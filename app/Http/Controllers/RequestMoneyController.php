@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
+use App\Models\Plan;
+use App\Models\Purchase;
 use App\Models\RequestMoney;
 use App\Models\User;
 use Carbon\Carbon;
@@ -26,44 +29,53 @@ class RequestMoneyController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param RequestMoney $money
+     * @param Deposit $deposit
      * @return \Illuminate\Http\Response
+     * @internal param RequestMoney $money
      */
-    public function create(RequestMoney $money)
+    public function create(Deposit $deposit)
     {
-        return view('request.create', compact('money'));
+        $user = \Auth::user();
+
+        //dd(Purchase::where('user_id', $user->id)->where('type_id', 2)->count() == 0);
+
+        if(Purchase::where('user_id', $user->id)->where('type_id', 2)->count() == 0) {
+            $currencies = Plan::where('type_id', 2)->get();
+        } else {
+            $currencies = Plan::where('type_id', 1)->get();
+        }
+        return view('request.create', compact('deposit', 'currencies', 'user'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Deposit $deposit
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Deposit $deposit, Request $request)
     {
         if ((int) $request->input('amount') > Auth::user()->balance) {
             \Session::flash('message', 'Недостаточно средств!');
             return redirect('/profile');
         }
         else {
-            $req = new RequestMoney();
-            $req->name = Auth::user()->name;
-            $req->email = Auth::user()->email;
-            $req->tel = $request->input('tel');
-            $req->days = $request->input('days');
-            $req->course = $request->input('course');
-            $req->percent = $request->input('percent');
-            $req->wallet = $request->input('wallet');
-            $req->amount = $request->input('amount');
-            $req->message = $request->input('message');
-            $req->user_id = Auth::user()->id;
-            $req->conclusion = Carbon::now()->addDays((int)$request->input('days'));
-            $req->status = 1;
-            $user = Auth::user();
+            $data = $request->all();
+            $data['days'] = $request->input('days');
+            $data['percent'] = $request->input('percent');
+            $data['conclusion'] = Carbon::now()->addDays((int)$request->input('days'));
+
+            $user = User::find($request->input('user_id'));
+            $plan = Plan::find($request->input('currency_id'));
+
+            $deposit->fill($data);
+            $deposit->user()->associate($user);
+            $deposit->plan()->associate($plan);
+
             $user->balance -=  (int) $request->input('amount');
             $user->update();
-            $req->save();
+            $deposit->save();
 
             \Session::flash('message', 'Вы успешно сделали вклад!');
 

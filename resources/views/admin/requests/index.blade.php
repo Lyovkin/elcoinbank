@@ -43,6 +43,7 @@
                         </thead>
                         <tbody>
                         @foreach($requests as $request)
+                            @if($request->status_admin != 1)
                             <tr>
                                 <td>{{ $request->type->name }}</td>
                                 <td>{{ $request->user->name }}</td>
@@ -92,6 +93,7 @@
                                     @endif
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>

@@ -43,7 +43,8 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="currency_id" class="control-label">Отдаете</label>
-                                            <select id="currency_id" class="form-control" name="currency_id">
+                                            <select id="currency_id" class="form-control" name="currency_id" required>
+                                                <option value="">Выберете валюту</option>
                                                 @foreach($currencies as $currency)
                                                     <option value="{{ $currency->id }}">{{ $currency->name }}</option>
                                                 @endforeach
@@ -78,9 +79,9 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <input type="checkbox" id="status_trust" name="status_trust" value="true" style="zoom: 130%" />
-                                            <label for="status_trust" class="control-label">В доверительное управление</label>
+                                            <label for="status_trust" class="control-label">В доверительное управление (при покупке EL вы можете их вложить в ElBank под % по завышенному курсу)</label>
                                         </div>
                                     </div>
 

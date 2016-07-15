@@ -65,7 +65,7 @@
         @if (Session::has('message'))
             <div class="alert alert-danger">{{ Session::get('message') }}</div>
         @endif
-        @include('partials.head_profile')
+        {{--@include('partials.head_profile')--}}
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-8" style="margin-top: 20px">
@@ -76,11 +76,74 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12 ">
-
-                                {!! Form::model($money,['route'=>['money.store'],
-                                'method' => 'POST',
+                                {!! Form::model($deposit,['route'=>['money.store'], 'method' => 'POST',
                                 'class'=>'form-horizontal', 'role'=>'form']) !!}
-                                @include('request.money_form-create')
+                                <div class="row" >
+                                    <div class="form-group col-md-6">
+                                        <label for="name" class="control-label">Имя</label>
+                                        <input type="text" class="form-control" id="name" name="name" required value="{{ $user->name }}" disabled>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="email" class="control-label">Почта</label>
+                                        <input type="text" class="form-control" id="email" name="email" required value="{{ $user->email }}" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="currency_id" class="control-label">Отдаете</label>
+                                        <select id="currency_id" class="form-control" name="currency_id" required>
+                                            <option value="">Выберете план</option>
+                                            @foreach($currencies as $currency)
+                                                <option value="{{ $currency->id }}">{{ $currency->type->name }} {{ $currency->days }} дней / под
+                                                {{ $currency->percent }} %</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="amount" class="control-label">Сумма вклада EL /<strong> Ваш баланс {{ $user->balance }} EL</strong></label>
+                                        <input type="text" class="form-control" id="amount" name="amount" required />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="total" class="control-label">Сумма на выходе EL</label>
+                                        <input type="text" class="form-control" id="total" name="total" required />
+                                    </div>
+                                </div>
+
+
+                                {{--<div class="row" id="wallet">--}}
+                                {{--<div class="form-group col-md-12">--}}
+                                {{--<label for="wallet" class="control-label">На счет</label>--}}
+                                {{--<input type="text" class="form-control" id="wallet"--}}
+                                {{--value="{{ Auth::user()->wallet->wallet }}">--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <textarea class="form-control"  id="message" name="message" placeholder="Примечание" maxlength="140" rows="2"></textarea>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
+
+                                <input type="hidden" id=days name="days"  />
+
+                                <input type="hidden" id=percent name="percent" />
+
+
+
+                                <div class="form-group col-lg-12">
+                                    <button type='submit' id="submit" name="submit" class="btn btn-primary pull-right">Сделать вклад</button>
+                                </div>
+
                                 {!! Form::close() !!}
                             </div>
                             <!-- /.col-lg-6 (nested) -->
@@ -101,3 +164,31 @@
 
 
 @stop
+@section('js')
+    <script>
+        $(document).ready(function() {
+
+            var plan = '';
+
+            $('#currency_id').change(function () {
+                var option = $(this).val();
+                $.post('/get_plan', {
+                    "plan": option, "_token": "{{ csrf_token() }}"
+                }, function (data, status) {
+                    plan = data;
+                });
+
+            });
+
+            console.log(plan);
+            $('#amount').change(function () {
+                var amount = parseInt($(this).val());
+                var total = (amount * ((plan.percent / plan.days) / 100)) * plan.days + parseInt(amount);
+                $('#total').val(total);
+                $('#days').val(plan.days);
+                $('#percent').val(plan.percent);
+            });
+
+        });
+    </script>
+@endsection
