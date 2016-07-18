@@ -79,7 +79,7 @@
                                                             @endif
                                                          @endif
                                                             <span id="time" class="badge" style="float: right">
-                                                <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $message->createdAt }}
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $message->createdAt->diffForHumans() }}
                                             </span>
                                                             <p>{{ $message->message }}</p>
                                                         @endforeach

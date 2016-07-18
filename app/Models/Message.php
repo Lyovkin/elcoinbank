@@ -7,6 +7,8 @@ use Carbon\Carbon;
 
 class Message extends Model
 {
+    use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
+
     protected $table = 'messenger';
 
     protected $fillable = ['user_id', 'message', 'createdAt'];
@@ -20,8 +22,5 @@ class Message extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function getCreatedAtAttribute($date)
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y H:i:s');
-    }
+
 }
