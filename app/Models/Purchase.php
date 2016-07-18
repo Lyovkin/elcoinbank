@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Purchase extends Model
 {
+    use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
+
     protected $table = 'purchase';
 
     protected $fillable = ['payment', 'wallet', 'course', 'amount', 'total', 'message', 'status_trust',

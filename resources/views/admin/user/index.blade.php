@@ -21,7 +21,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-hover" ng-controller="UsersController">
+                    <table class="table table-bordered" ng-controller="UsersController">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -46,7 +46,7 @@
                             </th>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
-                            <th>
+                            <th style="text-align: right;">
                                 <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-original-title="Отфильтровать">
                                     <i class="fa fa-filter"></i>
                                 </button>
@@ -71,7 +71,7 @@
                                         <i class="fa fa-hand-o-up"></i>
                                     @endif
                                 </td>
-                                <td>{{$user->balance}} элькоинов</td>
+                                <td>{{$user->balance}} EL</td>
                                 <td>
                                     <a href="{{route('admin.user.edit',['id'=>$user->id])}}" style=" float: right" data-toggle="tooltip" data-original-title="Редактировать"
                                        class="btn btn-primary"><i class="fa fa-pencil"></i></a>
@@ -97,8 +97,6 @@
                                     <a href="{{route('admin.user.addmoney',['id'=>$user->id])}}"  style=" float: right;" data-toggle="tooltip" data-original-title="Модифицировать баланс"
                                        class="btn btn-success"><i class="fa fa-btc"></i></a>
 
-                                </td>
-                                <td>
                                 </td>
                             </tr>
                         @endforeach

@@ -61,7 +61,7 @@
 @endsection
 @section('content')
 
-    <div class="container" style="padding-top: 80px;">
+    <div class="" style="padding-top: 80px; margin-left: 50px;">
         @if (Session::has('message'))
             <div class="alert alert-danger">{{ Session::get('message') }}</div>
         @endif
@@ -106,25 +106,16 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="amount" class="control-label">Сумма вклада EL /<strong> Ваш баланс {{ $user->balance }} EL</strong></label>
-                                        <input type="text" class="form-control" id="amount" name="amount" required />
+                                        <input type="text" class="form-control" id="amount" name="amount" required  disabled/>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="total" class="control-label">Сумма на выходе EL</label>
-                                        <input type="text" class="form-control" id="total" name="total" required />
+                                        <input type="text" class="form-control" id="total" name="total" required  readonly="readonly" />
                                     </div>
                                 </div>
-
-
-                                {{--<div class="row" id="wallet">--}}
-                                {{--<div class="form-group col-md-12">--}}
-                                {{--<label for="wallet" class="control-label">На счет</label>--}}
-                                {{--<input type="text" class="form-control" id="wallet"--}}
-                                {{--value="{{ Auth::user()->wallet->wallet }}">--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
 
                                 <div class="row">
                                     <div class="form-group col-md-12">
@@ -137,8 +128,6 @@
                                 <input type="hidden" id=days name="days"  />
 
                                 <input type="hidden" id=percent name="percent" />
-
-
 
                                 <div class="form-group col-lg-12">
                                     <button type='submit' id="submit" name="submit" class="btn btn-primary pull-right">Сделать вклад</button>
@@ -154,7 +143,7 @@
                 </div>
                 <!-- /.panel -->
             </div>
-            <div class="col-lg-4" style="margin-top: 50px">
+            <div class="col-lg-3">
                 <div class="phone">
                     <img class="img-responsive img-rounded" src="/img/phone.jpeg">
                 </div>
@@ -178,9 +167,9 @@
                     plan = data;
                 });
 
+                $("#amount").removeAttr("disabled");
             });
 
-            console.log(plan);
             $('#amount').change(function () {
                 var amount = parseInt($(this).val());
                 var total = (amount * ((plan.percent / plan.days) / 100)) * plan.days + parseInt(amount);

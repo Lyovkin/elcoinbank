@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +175,9 @@ return [
 
         //Request Service
         App\Services\Profile\ProfileServiceServiceProvider::class,
+
+        // Localized dates
+        Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider::class,
     ],
 
     /*
@@ -224,6 +227,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'RequestApp'=> App\Services\Request\RequestFacade::class,
+        'LocalizedCarbon'   => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
     ],
 
 ];

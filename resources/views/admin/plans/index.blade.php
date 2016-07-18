@@ -19,7 +19,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>Название</th>
@@ -37,8 +37,6 @@
                                 <td>
                                     <a href="{{route('admin.plans.edit',['id'=>$plan->id])}}" style=" float: right" data-toggle="tooltip" data-original-title="Редактировать"
                                        class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                </td>
-                                <td>
                                 </td>
                             </tr>
                         @endforeach

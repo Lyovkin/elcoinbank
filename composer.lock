@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "89eed3df16aa4135faf6587f2401052f",
-    "content-hash": "00a0a103dca24ed6c3144e43a0d8eba8",
+    "hash": "c759c731b8a076983d8d36bc8715ec8e",
+    "content-hash": "9e4168a40bba0a4df12e9c68229bbf9b",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -885,6 +885,50 @@
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
             "time": "2016-01-27 22:29:54"
+        },
+        {
+            "name": "laravelrus/localized-carbon",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelRUS/localized-carbon.git",
+                "reference": "fc0905b060713c4c1ecba60edf5a479931bb2def"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelRUS/localized-carbon/zipball/fc0905b060713c4c1ecba60edf5a479931bb2def",
+                "reference": "fc0905b060713c4c1ecba60edf5a479931bb2def",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.1.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laravelrus\\LocalizedCarbon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Egorov",
+                    "email": "amego2006@gmail.com"
+                }
+            ],
+            "description": "A localizable version of Carbon",
+            "keywords": [
+                "carbon",
+                "date",
+                "datetime",
+                "laravel",
+                "time"
+            ],
+            "time": "2015-10-27 23:45:13"
         },
         {
             "name": "league/flysystem",
@@ -3802,7 +3846,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "za-laravel/laravel-admin": 20
+        "za-laravel/laravel-admin": 20,
+        "laravelrus/localized-carbon": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

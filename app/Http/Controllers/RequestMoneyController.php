@@ -77,7 +77,7 @@ class RequestMoneyController extends Controller
             $user->update();
             $deposit->save();
 
-            \Session::flash('message', 'Вы успешно сделали вклад!');
+           // \Session::flash('message', 'Вы успешно сделали вклад!');
 
             return redirect('/profile');
         }

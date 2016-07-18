@@ -53,7 +53,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label for="amount" class="control-label">Сумма</label>
-                                            <input type="text" class="form-control" id="amount" name="amount" required />
+                                            <input type="text" class="form-control" id="amount" name="amount" required  disabled />
                                         </div>
                                     </div>
 
@@ -67,14 +67,14 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="to_currency" class="control-label">Получаете</label>
-                                            <select id="to_currency" class="form-control">
+                                            <select id="to_currency" class="form-control" disabled>
                                                     <option value="">Elcoin</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label for="total" class="control-label">Сумма</label>
-                                            <input type="text" class="form-control" id="total" name="total" required />
+                                            <input type="text" class="form-control" id="total" name="total" readonly="readonly" required />
                                         </div>
                                     </div>
 
@@ -85,13 +85,6 @@
                                         </div>
                                     </div>
 
-                                    {{--<div class="row" id="wallet">--}}
-                                        {{--<div class="form-group col-md-12">--}}
-                                            {{--<label for="wallet" class="control-label">На счет</label>--}}
-                                            {{--<input type="text" class="form-control" id="wallet"--}}
-                                                   {{--value="{{ Auth::user()->wallet->wallet }}">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
 
                                     <div class="row">
                                         <div class="form-group col-md-12">
@@ -134,6 +127,7 @@
                 }, function (data, status) {
                     currency = JSON.parse(data);
                 });
+                $("#amount").removeAttr("disabled");
             });
 
             $('#amount').change(function () {

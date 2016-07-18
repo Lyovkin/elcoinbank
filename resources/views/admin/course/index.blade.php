@@ -28,7 +28,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>Название валюты</th>
@@ -41,7 +41,6 @@
                             <tr>
                                 <td>Elcoin / {{ $course->currency->name }}</td>
                                 <td>{{ $course->course_purchase }}</td>
-                                <td></td>
                                 <td>
                                     <div class="btn-group" style="float: right;" role="group" aria-label="...">
                                         {!! Form::open(['route'=>['admin.course.destroy',$course->id], 'class'=>'form-horizontal confirm',
@@ -56,8 +55,7 @@
                                        class="btn btn-primary"><i class="fa fa-pencil"></i>
                                     </a>
                                 </td>
-                                <td>
-                                </td>
+
                             </tr>
                         @endforeach
                         </tbody>

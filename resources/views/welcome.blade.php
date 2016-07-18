@@ -260,5 +260,8 @@
                 sendMessage();
             }
         });
+
+        $("#messages").animate({ scrollTop: $(document).height() }, "slow");
+
     </script>
 @endsection

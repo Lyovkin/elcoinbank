@@ -12,7 +12,8 @@
         "laravelcollective/annotations": "5.2.*",
         "laravelcollective/html": "5.2.*",
         "guzzlehttp/guzzle": "^6.1",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "laravelrus/localized-carbon": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

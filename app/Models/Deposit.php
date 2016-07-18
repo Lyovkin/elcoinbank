@@ -11,9 +11,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Deposit extends Model
 {
+    use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
+
     protected $table = 'deposits';
 
     protected $fillable = ['amount', 'total', 'days', 'percent', 'conclusion','status' => 0];
+
+    protected $dates = ['conclusion'];
 
     public function user()
     {

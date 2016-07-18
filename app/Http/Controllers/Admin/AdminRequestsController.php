@@ -84,4 +84,15 @@ class AdminRequestsController extends AbstractAdminController
 
         return back();
     }
+
+    /**
+     * @GET("/requests/finished", as="admin.requests.finished")
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function finishedTransactions()
+    {
+        $requests = Purchase::where('status_admin', 1)->get();
+
+        return view('admin.requests.finished', compact('requests'));
+    }
 }

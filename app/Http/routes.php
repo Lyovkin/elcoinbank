@@ -42,16 +42,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('/money', 'RequestMoneyController');
 
-    Route::get('/history', 'HistoryMoneyController@index');
-
     Route::get('/offers', 'OfferController@index');
-
-    Route::get('/conclusion/{id}', 'ConclusionController@getDeposit');
-    Route::get('/conclusion', 'ConclusionController@index');
-    Route::post('/conclusion', array(
-        'uses' => 'ConclusionController@store',
-        'as' => 'conclusion.store'
-    ));
 
     Route::post('/profile/{id}/update',
         array(

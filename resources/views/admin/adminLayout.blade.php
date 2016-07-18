@@ -35,6 +35,11 @@
     <!-- At very end: redefines vendor styles -->
     <link rel="stylesheet" href="/pub_admin/css/board.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <style>
+        thead {
+            background: aliceblue;
+        }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -105,17 +110,19 @@
 
                     <li>
                         <a class="" href="{{ route('admin.requests.users') }}"><i
-                                    class="fa fa-list fa-fw"></i> Транзакции</a>
+                                    class="fa fa-list fa-fw"></i> Все транзакции</a>
                     </li>
 
                     <li>
-                        <a class="" href="{{ route('admin.history.index') }}"><i
+                        <a class="" href="{{ route('admin.requests.finished') }}"><i
+                                    class="fa fa-list fa-fw"></i> Зевершенные транзакции</a>
+                    </li>
+
+                    <li>
+                        <a class="" href="{{ route('admin.deposits.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Вклады</a>
                     </li>
-                    <li>
-                        <a class="" href="{{ route('admin.conclusion.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Вывод</a>
-                    </li>
+
 
                     <li>
                         <a class="" href="{{ route('admin.news.index') }}"><i

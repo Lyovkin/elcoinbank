@@ -42,7 +42,7 @@
                                                 <span style="float:right" >{{ $profile->user->email}}</span>
                                                 Почта <i class="fa fa-envelope-o"></i>
                                             </li>
-                                            <li class="list-group-item"><span style="float:right" >{{$profile->user->balance}} элькоинов </span>
+                                            <li class="list-group-item"><span style="float:right" >{{$profile->user->balance}} EL </span>
                                                 Ваш баланс <i class="fa fa-btc"></i>
                                             </li>
                                             <li class="list-group-item">

@@ -128,18 +128,18 @@
 
                 <!-- BEGIN EMAIL -->
                 <li>
-                    <a href="{{ url("/history") }}" >
+                    <a href="{{ route('profile.transactions') }}" >
                         <div class="gui-icon"><i class="fa fa-bank"></i></div>
-                        <span class="title">Вклады</span>
+                        <span class="title">Мои операции</span>
                     </a>
                 </li><!--end /menu-li -->
                 <!-- END EMAIL -->
 
                 <!-- BEGIN DASHBOARD -->
                 <li>
-                    <a href="{{ url("/conclusion") }}" >
+                    <a href="{{ route('profile.deposits') }}" >
                         <div class="gui-icon"><i class="fa fa-money"></i></div>
-                        <span class="title">Выводы</span>
+                        <span class="title">Выводы вкладов</span>
                     </a>
                 </li><!--end /menu-li -->
                 <!-- END DASHBOARD -->
@@ -150,7 +150,7 @@
                         <span class="title">Пополнение баланса</span>
                     </a>
                         <ul>
-                            <li><a href="{{ route('purchase.create') }}"><span class="title">Купить элькоины</span></a></li>
+                            <li><a href="{{ route('purchase.create') }}"><span class="title">Купить EL</span></a></li>
                             <li><a href="{{ route('purchase.transfer.create') }}"><span class="title">Перевести на баланс</span></a></li>
                         </ul>
                 </li><!--end /menu-li -->
