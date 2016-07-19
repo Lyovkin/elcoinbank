@@ -15,7 +15,7 @@
 @section('content')
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12" style="margin-top: 80px;">
+            <div class="col-md-12" >
                 <h2 class="header">Покупка EL / Перевод EL</h2>
                 <table class="table table-bordered table-responsive" style="margin-top: 30px;">
                     <thead>
@@ -33,6 +33,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @if(count($purchases) > 0)
                     @foreach($purchases as $purchase)
                         <tr>
                             <td class="success">{{ $purchase->type->name }}</td>
@@ -47,6 +48,9 @@
                             <td class="success">{{ $purchase->created_at->diffForHumans() }}</td>
                         </tr>
                     @endforeach
+                    @else
+                        <p class="h3 text-center">Нет покупок</p>
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -69,6 +73,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @if(count($deposits) > 0)
                     @foreach($deposits as $deposit)
                         <tr>
                             <td class="success">{{ $deposit->plan->type->name }}</td>
@@ -85,9 +90,45 @@
                             <td class="success">{{ $deposit->created_at->diffForHumans() }}</td>
                         </tr>
                     @endforeach
+                        @else
+                            <p class="h3 text-center">Нет вкладов</p>
+                        @endif
                     </tbody>
                 </table>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="header">Мои заявки на вывод</h2>
+                <table class="table table-bordered table-responsive" style="margin-top: 30px;">
+                    <thead>
+                    <tr class="head">
+                        <th>Сумма вывода EL</th>
+                        <th>Статус</th>
+                        <th>Созданa</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if(count($pulloffmoneys) > 0)
+                        @foreach($pulloffmoneys as $pulloffmoney)
+                            <tr>
+                                <td class="success">{{ $pulloffmoney->amount }}</td>
+                                @if($pulloffmoney->status == 0)
+                                    <td class="success">Ожидайте...</td>
+                                @else
+                                    <td class="success">Выполнена</td>
+                                @endif
+                                <td class="success">{{ $pulloffmoney->created_at->diffForHumans() }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <p class="h3 text-center">Нет заявок на вывод</p>
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 @endsection

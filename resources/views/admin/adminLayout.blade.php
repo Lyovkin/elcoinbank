@@ -115,7 +115,7 @@
 
                     <li>
                         <a class="" href="{{ route('admin.requests.finished') }}"><i
-                                    class="fa fa-list fa-fw"></i> Зевершенные транзакции</a>
+                                    class="fa fa-list fa-fw"></i> Завершенные транзакции</a>
                     </li>
 
                     <li>
@@ -123,6 +123,10 @@
                                     class="fa fa-list fa-fw"></i> Вклады</a>
                     </li>
 
+                    <li>
+                        <a class="" href="{{ route('admin.pulloffmoney.index') }}"><i
+                                    class="fa fa-list fa-fw"></i> Заявки на вывод</a>
+                    </li>
 
                     <li>
                         <a class="" href="{{ route('admin.news.index') }}"><i

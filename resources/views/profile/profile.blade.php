@@ -7,10 +7,11 @@
 @endsection
 
 @section('content')
-    <div style="padding-top: 80px;margin-left: 20px; margin-right: 20px;" >
-        @if (Session::has('message'))
-            <div class="alert alert-danger">{{ Session::get('message') }}</div>
-        @endif
+    @if (Session::has('message'))
+        <div class="alert alert-danger">{{ Session::get('message') }}</div>
+    @endif
+    <div style="margin-left: 20px; margin-right: 20px;" >
+
         <div class="row">
             <div class="col-xs-12 col-lg-12">
                 <div class="col-md-6">
@@ -19,7 +20,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Валюта <i class="fa fa-btc"></i> </th>
+                                <th>Валюта</th>
                                 <th>Продажа</th>
                             </tr>
                             </thead>
@@ -35,6 +36,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <p class="h3" style="margin-bottom: 20px;"> <i class="fa fa-bar-chart"> </i> Рассчет прибыли при вкладе  </p>
                     <div class="form-calc" style="margin-top: 60px;">
                         <label for="form-calc">Для рассчета вклада введите количество элькоинов</label>
                         <input type="text" id="form-calc" style="width: 255px;">
@@ -55,7 +57,8 @@
                                                         Количество дней: <span class="days">{{ $plan->days }}</span>
                                                     </h1>
                                                 </div>
-                                                <div class="panel-body panel-body-landing" style="padding-top: 0; display: none;">
+                                                <div class="panel-body panel-body-landing" style="padding-top: 0; display: none;
+                                                padding-bottom: 3px;">
                                                     <table class="table" style="margin-bottom: 0">
                                                         <tr>
                                                             <td width="50px"><i class="fa fa-money"></i> </td>
@@ -83,7 +86,8 @@
                                                         Количество дней: <span class="days">{{ $plan->days }}</span>
                                                     </h1>
                                                 </div>
-                                                <div class="panel-body panel-body-landing" style="padding-top: 0; display: none;">
+                                                <div class="panel-body panel-body-landing" style="padding-top: 0; display: none;
+                                                padding-bottom: 3px;">
                                                     <table class="table" style="margin-bottom: 0">
                                                         <tr>
                                                             <td width="50px"><i class="fa fa-money"></i></td>
@@ -123,7 +127,7 @@
 
                 $('.all').each(function(i) {
                     $('.panel-body-landing').css({'display':'block'});
-                    $(this).text(total[i].toFixed(20).slice(0,-18));
+                    $(this).text('Общая прибыль: ' + total[i].toFixed(20).slice(0,-18) + ' EL');
                 })
 
             });

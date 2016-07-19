@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
+use App\Models\PullOffMoney;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 
@@ -27,8 +28,9 @@ class TransactionController extends Controller
 
         $purchases = Purchase::where('user_id', $user_id)->get();
         $deposits = Deposit::where('user_id', $user_id)->get();
+        $pulloffmoneys = PullOffMoney::where('user_id', $user_id)->get();
 
-        return view('transactions.index', compact('purchases', 'deposits'));
+        return view('transactions.index', compact('purchases', 'deposits', 'pulloffmoneys'));
 
     }
 }

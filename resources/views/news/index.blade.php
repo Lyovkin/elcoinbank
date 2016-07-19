@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="timeline-label">
-                            <h2><a href="#">{{ $new->title }}</a> <p class="">{{ $new->created_at->format('M d Y H:m:s') }}</p></h2>
+                            <h2><a href="#">{{ $new->title }}</a> <p class="">{{ $new->created_at->diffForHumans() }}</p></h2>
                             <p>{{ $new->text }}</p>
                         </div>
                     </div>

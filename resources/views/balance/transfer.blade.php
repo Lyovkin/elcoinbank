@@ -65,6 +65,11 @@
                                         <button type='submit' id="submit" name="submit" class="btn btn-primary pull-right">Отправить заявку</button>
                                     </div>
 
+                                    <div class="form-group col-md-12" id="pay">
+                                        <p><strong>Номер для перевода:<span id="name_check"></span> </strong></p>
+                                        <input type="text" class="form-control" id="check" readonly />
+                                    </div>
+
                                     {!! Form::close() !!}
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -84,29 +89,20 @@
         $(document).ready(function() {
             var currency = {};
 
-            $('#currency_id').change(function () {
-                var option = $(this).val();
-                console.log(option);
-                $.post('/get_currency', {
-                    "currency": option, "_token": "{{ csrf_token() }}"
-                }, function (data, status) {
-                    currency = JSON.parse(data);
-                });
+            $.post('/get_currency_elcoin', {
+                "_token": "{{ csrf_token() }}"
+            }, function (data) {
+                currency = JSON.parse(data);
+                $('#check').val(currency.wallet);
+                $('#name_check').text(currency.currency.name);
             });
-
-            $('#amount').change(function () {
-                var amount = $(this).val();
-                var total = amount * currency.course_purchase;
-                $('#total').val(total);
-            });
-
-//            $('#status_trust').change(function() {
-//                if ($(this).is(':checked')) {
-//                    $('#wallet').hide();
-//                    return;
-//                }
-//                $('#wallet').show();
-//            });
         });
+
+        $('#amount').change(function () {
+            var amount = $(this).val();
+            var total = amount * currency.course_purchase;
+            $('#total').val(total);
+        });
+
     </script>
 @endsection

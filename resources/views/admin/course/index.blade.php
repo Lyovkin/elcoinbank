@@ -33,6 +33,7 @@
                         <tr>
                             <th>Название валюты</th>
                             <th>Продажа</th>
+                            <th>Номер счета</th>
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
@@ -41,7 +42,9 @@
                             <tr>
                                 <td>Elcoin / {{ $course->currency->name }}</td>
                                 <td>{{ $course->course_purchase }}</td>
+                                <td>{{ $course->wallet }}</td>
                                 <td>
+                                    @if($course->id != 11)
                                     <div class="btn-group" style="float: right;" role="group" aria-label="...">
                                         {!! Form::open(['route'=>['admin.course.destroy',$course->id], 'class'=>'form-horizontal confirm',
                                         'role'=>'form', 'method' => 'DELETE']) !!}
@@ -49,7 +52,7 @@
                                                 data-original-title="Удалить"><i class="fa fa-trash-o"></i></button>
                                         {!! Form::close() !!}
                                     </div>
-
+                                    @endif
                                     <a href="{{route('admin.course.edit',['id'=>$course->id])}}" style=" float: right"
                                        data-toggle="tooltip" data-original-title="Редактировать"
                                        class="btn btn-primary"><i class="fa fa-pencil"></i>

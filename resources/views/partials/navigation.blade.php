@@ -30,6 +30,9 @@
                 <li>
                     <a class="page-scroll" href="{{ url('/faq') }}">Вопросы</a>
                 </li>
+                <li>
+                    <a class="page-scroll" href="https://join.skype.com/k7TKH17IHzUC">Skype</a>
+                </li>
                 @if (Auth::guest())
                     <li>
                         <a class="page-scroll" href="{{ url('/login') }}">Вход</a>

@@ -28,7 +28,7 @@
                             <th>Логин</th>
                             <th>Email</th>
                             <th>Заблокирован</th>
-                            <th>Баланс <i class="fa fa-btc"></i></th>
+                            <th>Баланс</th>
                             <th>&nbsp;</th>
                         </tr>
 

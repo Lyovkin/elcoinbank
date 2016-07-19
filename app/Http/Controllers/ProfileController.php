@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Profile;
 use App\Models\User;
-use App\Models\Wallet;
 use App\Services\Profile\ProfileService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +12,7 @@ use App\Http\Controllers\Controller;
 /**
  * Class ProfileController
  * @package App\Http\Controllers
- *
+ * @Middleware("web")
  */
 class ProfileController extends Controller
 {
@@ -26,7 +25,7 @@ class ProfileController extends Controller
      */
     public function __construct(Profile $profile)
     {
-        $this->middleware(['web','auth']);
+        $this->middleware('auth');
 
         $this->profile = $profile;
     }

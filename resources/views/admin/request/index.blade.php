@@ -40,7 +40,7 @@
                                 <td>{{$request->email}}</td>
                                 <td>{{$request->tel}}</td>
                                 <td>{{$request->message}}</td>
-                                <td>{{$request->created_at->format('d.m.Y H:m:s')}}</td>
+                                <td>{{$request->created_at->diffForHumans()}}</td>
                                 <td>
                                     <div class="btn-group" style="float: right;" role="group" aria-label="...">
                                         {!! Form::open(['route'=>['admin.request.delete',$request->id], 'class'=>'form-horizontal confirm',
@@ -49,8 +49,6 @@
                                         {!! Form::close() !!}
 
                                     </div>
-                                </td>
-                                <td>
                                 </td>
                             </tr>
                         @endforeach

@@ -144,8 +144,8 @@
                 <!-- /.panel -->
             </div>
             <div class="col-lg-3">
-                <div class="phone">
-                    <img class="img-responsive img-rounded" src="/img/phone.jpeg">
+                <div class="">
+                    <img class="img-responsive img-rounded" src="/img/iphone.jpg" style="width: 78%; margin-left: 60px; margin-top: 20px;">
                 </div>
             </div>
         </div>

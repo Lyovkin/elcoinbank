@@ -26,7 +26,8 @@ class CurrencyTableSeeder extends Seeder
             ['name' => 'OKPAY USD'],
             ['name' => 'Perfect Money USD'],
             ['name' => 'OKPAY EUR'],
-            ['name' => 'Bitcoin BTC']
+            ['name' => 'Bitcoin BTC'],
+            ['name' => 'ELCOIN']
         ]);
 
         Model::reguard();

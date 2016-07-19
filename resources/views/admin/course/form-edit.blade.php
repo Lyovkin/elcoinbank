@@ -15,6 +15,14 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('wallet', 'Номер счета', ["class"=>"col-sm-3 control-label"]) !!}
+    <div class="col-sm-6">
+        {!! Form::text('wallet', $course->wallet, ["class"=>"form-control",
+        "placeholder"=>"Номер счета",'required' => 'required' ]) !!}
+    </div>
+</div>
+
+<div class="form-group">
     <div class="col-sm-offset-3 col-sm-3">
         {!! Form::button('<i class="fa fa-btn fa-refresh"></i> Обновить', ['type'=>'submit',
         'class' =>

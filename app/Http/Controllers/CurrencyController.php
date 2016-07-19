@@ -27,4 +27,15 @@ class CurrencyController extends Controller
         return json_encode($course);
 
     }
+
+    /**
+     * @POST("/get_currency_elcoin")
+     * @return string
+     */
+    public function get_elcoin()
+    {
+        $course = Course::with('currency')->where('currency_id', 11)->first()->toArray();
+
+        return json_encode($course);
+    }
 }

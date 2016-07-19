@@ -17,6 +17,7 @@
     <link type="text/css" rel="stylesheet" href="/css/profile/bootstrap.css" />
     <link type="text/css" rel="stylesheet" href="/css/profile/materialadmin.css" />
     <link type="text/css" rel="stylesheet" href="/css/profile/material-design-iconic-font.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="/css/custom.css" rel="stylesheet">
     <link href="/css/plans.css" rel="stylesheet" type="text/css" />
@@ -76,15 +77,20 @@
 <!-- END HEADER-->
 
 <!-- BEGIN BASE-->
-<div id="base">
+<div id="base" >
 
     <!-- BEGIN OFFCANVAS LEFT -->
     <div class="offcanvas">
     </div><!--end .offcanvas-->
     <!-- END OFFCANVAS LEFT -->
 
+    <div style="margin-top: 80px; width: 100%" class="text-center">
+        <img src="/img/elbank.png" />
+    </div>
+    <br/>
     <!-- BEGIN CONTENT-->
    @yield('content')
+
 
            <!--end #content-->
     <!-- END CONTENT -->
@@ -120,7 +126,7 @@
                 <!-- BEGIN EMAIL -->
                 <li>
                     <a href="{{ route('money.create') }}" >
-                        <div class="gui-icon"><i class="fa fa-btc"></i></div>
+                        <div class="gui-icon"><i class="fa fa-cube"></i></div>
                         <span class="title">Сделать вклад</span>
                     </a>
                 </li><!--end /menu-li -->
@@ -165,6 +171,13 @@
                     </a>
                 </li><!--end /menu-li -->
 
+                <li>
+                    <a href="/logout">
+                        <div class="gui-icon"><i class="fa fa-key"></i></div>
+                        <span class="title">Выйти</span>
+                    </a>
+                </li><!--end /menu-li -->
+
             </ul><!--end .main-menu -->
             <!-- END MAIN MENU -->
 
@@ -193,6 +206,7 @@
 
 <!-- BEGIN JAVASCRIPT -->
 <script src="/js/profile/libs/jquery-1.11.2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script src="/js/profile/libs/jquery-migrate-1.2.1.min.js"></script>
 <script src="/js/profile/libs/bootstrap.min.js"></script>
 <script src="/js/profile/libs/spin.min.js"></script>

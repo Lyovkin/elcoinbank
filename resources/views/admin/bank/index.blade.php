@@ -23,7 +23,7 @@
                         <thead>
                         <tr>
                             <th>Тип</th>
-                            <th>Количество элькоинов</th>
+                            <th>Количество EL</th>
                             <th>&nbsp;</th>
                         </tr>
                         </thead>

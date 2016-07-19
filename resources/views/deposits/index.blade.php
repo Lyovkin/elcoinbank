@@ -15,7 +15,7 @@
 @section('content')
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12" style="margin-top: 80px;">
+            <div class="col-md-12" >
                 <h2 class="header">Мои вклады</h2>
                 <table class="table table-bordered table-responsive" style="margin-top: 30px;">
                     <thead>
@@ -32,6 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @if(count($deposits))
                     @foreach($deposits as $deposit)
                         <tr>
                             <td class="success">{{ $deposit->plan->type->name }}</td>
@@ -62,6 +63,9 @@
                             </td>
                         </tr>
                     @endforeach
+                    @else
+                        <p class="h3 text-center">Нет вкладов</p>
+                    @endif
                     </tbody>
                 </table>
             </div>

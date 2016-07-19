@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {
+    use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
+
     protected $table = 'news';
 
     protected $fillable = ['title', 'text'];

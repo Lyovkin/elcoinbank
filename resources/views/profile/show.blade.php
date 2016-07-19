@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div style="padding-top: 80px;margin-left: 20px; margin-right: 20px;" >
+    <div style="padding-top: 50px;margin-left: 20px; margin-right: 20px;" >
         <div class="container">
             <div class="row">
                 @if (Session::has('message'))
@@ -42,8 +42,14 @@
                                                 <span style="float:right" >{{ $profile->user->email}}</span>
                                                 Почта <i class="fa fa-envelope-o"></i>
                                             </li>
-                                            <li class="list-group-item"><span style="float:right" >{{$profile->user->balance}} EL </span>
-                                                Ваш баланс <i class="fa fa-btc"></i>
+                                            <li class="list-group-item"><span style="float:right" >{{$profile->user->balance}} EL
+                                                    @if($profile->user->balance > 0)
+                                                <a href="{{ route('profile.pulloffmoney.create') }}" class="btn btn-default" style="margin-top: -5px;">
+                                                    Вывести
+                                                </a>
+                                                    @endif
+                                                </span>
+                                                Ваш баланс
                                             </li>
                                             <li class="list-group-item">
                                                 <span style="float:right" >{{ $profile->user->created_at}}</span>

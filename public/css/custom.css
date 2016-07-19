@@ -1,5 +1,12 @@
+
+
 .navbar-default .nav li a {
     color: #FED136;
+}
+
+.gui-controls li > a {
+    font-size: 14px;
+
 }
 
 /*=============================================================

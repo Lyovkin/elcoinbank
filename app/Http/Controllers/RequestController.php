@@ -45,20 +45,4 @@ class RequestController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * @param \App\Models\Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create(\App\Models\Request $request)
-    {
-        $user = \Auth::user();
-
-        if(Purchase::where('user_id', $user->id)->where('type_id', 2)->get()) {
-            $currencies = Plan::where('type_id', 1)->get();
-        } else {
-            $currencies = Plan::where('type_id', 2)->get();
-        }
-
-        return view('request.create', compact('request', 'user', 'currencies'));
-    }
 }
