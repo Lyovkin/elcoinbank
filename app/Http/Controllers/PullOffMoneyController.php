@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PullOffMoney;
+use App\Models\Banks;
 use Illuminate\Http\Request;
 
 /**
@@ -46,15 +47,16 @@ class PullOffMoneyController extends Controller
             return back();
         }
         else {
+
             $pulloffmoney->fill($request->all());
             $pulloffmoney->user()->associate($user);
             $pulloffmoney->save();
 
+
             $user->balance -= $request->input('amount');
             $user->update();
 
-            // \Session::flash();
-            return redirect()->route('profile.show')->with('message', 'Заявка на вывод сделана!');
+            return redirect()->route('profile.show')->with('message', 'Заявка на вывод сделана! Спасибо, что доверяете нам!');
         }
     }
 }

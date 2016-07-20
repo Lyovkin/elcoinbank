@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banks;
 use App\Models\Deposit;
 use App\Models\Plan;
 use App\Models\Purchase;
-use App\Models\RequestMoney;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class RequestMoneyController extends Controller
 {
+
+    /**
+     * RequestMoneyController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,8 +44,6 @@ class RequestMoneyController extends Controller
     public function create(Deposit $deposit)
     {
         $user = \Auth::user();
-
-        //dd(Purchase::where('user_id', $user->id)->where('type_id', 2)->count() == 0);
 
         if(Purchase::where('user_id', $user->id)->where('type_id', 2)->count() == 0) {
             $currencies = Plan::where('type_id', 2)->get();
@@ -61,6 +67,9 @@ class RequestMoneyController extends Controller
             return redirect('/profile');
         }
         else {
+
+            $bank = Banks::where('banks_profiles_id', 2)->first();
+
             $data = $request->all();
             $data['days'] = $request->input('days');
             $data['percent'] = $request->input('percent');
@@ -73,11 +82,15 @@ class RequestMoneyController extends Controller
             $deposit->user()->associate($user);
             $deposit->plan()->associate($plan);
 
+            $bank->amount += (int) $request->input('amount');
+            $bank->update();
+
             $user->balance -=  (int) $request->input('amount');
             $user->update();
+
             $deposit->save();
 
-           // \Session::flash('message', 'Вы успешно сделали вклад!');
+            \Session::flash('message', 'Вы успешно сделали вклад! Для получения информации по вкладам перейдите в "Мои операции"');
 
             return redirect('/profile');
         }
