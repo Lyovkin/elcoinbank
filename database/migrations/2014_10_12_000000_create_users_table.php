@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->smallInteger('blocked')->unsigned();
-            $table->integer('balance')->unsigned()->default('0');
+            $table->decimal('balance')->unsigned()->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

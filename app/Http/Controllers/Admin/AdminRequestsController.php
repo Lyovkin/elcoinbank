@@ -48,7 +48,7 @@ class AdminRequestsController extends AbstractAdminController
 
         } elseif (\Auth::user()->hasRole('admin')) {
 
-            if($purchase->status_trust == 0 || $purchase->type_id == 3) {
+            if($purchase->status_trust == 0) {
                 $bank = Banks::where('banks_profiles_id', 1)->first();
 
                 $bank->amount -= $purchase->total;
@@ -62,6 +62,11 @@ class AdminRequestsController extends AbstractAdminController
 
                 $bank->amount += $purchase->total;
                 $bank->update();
+
+                $user->balance += $purchase->total;
+                $user->update();
+
+            } elseif ($purchase->type_id == 3) {
 
                 $user->balance += $purchase->total;
                 $user->update();

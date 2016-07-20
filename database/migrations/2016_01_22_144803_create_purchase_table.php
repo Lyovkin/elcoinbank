@@ -22,8 +22,8 @@ class CreatePurchaseTable extends Migration
             $table->foreign('type_id')->references('id')->on('type_purchases')->onDelete('cascade');
             $table->string('payment');
             $table->decimal('course')->nullable();
-            $table->integer('amount');
-            $table->integer('total');
+            $table->decimal('amount');
+            $table->decimal('total');
             $table->text('message')->nullable();
             $table->boolean('status_trust')->default(0);
             $table->boolean('status_moderation')->default(0);

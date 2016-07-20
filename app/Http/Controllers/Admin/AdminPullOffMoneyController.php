@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Banks;
 use App\Models\PullOffMoney;
 use Illuminate\Http\Request;
 
@@ -37,9 +38,14 @@ class AdminPullOffMoneyController extends AbstractAdminController
      */
     public function status_update($id, Request $request)
     {
+        $bank = Banks::find(1);
+
         $pull = PullOffMoney::findORFail($id);
         $pull->status = $request->input('status');
         $pull->update();
+
+        $bank->amount -= $pull->amount;
+        $bank->update();
 
         return redirect()->back();
     }

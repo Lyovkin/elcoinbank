@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-    @if (Session::has('message'))
-        <div class="alert alert-danger">{{ Session::get('message') }}</div>
-    @endif
-    <div style="margin-left: 20px; margin-right: 20px;" >
 
+    <div style="margin-left: 20px; margin-right: 20px;" >
+        @if (Session::has('message'))
+            <div class="alert alert-danger">{{ Session::get('message') }}</div>
+        @endif
         <div class="row">
             <div class="col-xs-12 col-lg-12">
                 <div class="col-md-6">
@@ -28,7 +28,7 @@
                             @foreach($courses as $course)
                             <tr>
                                 <td>Elcoin / {{ $course->currency->name }}</td>
-                                <td>{{ $course->course_purchase }}</td>
+                                <td>{{ $course->course_purchase + 0}}</td>
                             </tr>
                             @endforeach
                             </tbody>

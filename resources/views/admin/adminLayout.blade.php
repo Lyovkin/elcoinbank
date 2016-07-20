@@ -88,6 +88,7 @@
                         <a class="" href="{{ route('admin.dashboard.index') }}"><i
                                     class="fa fa-dashboard fa-fw"></i> Главная</a>
                     </li>
+                    @if(Auth::user()->hasRole('admin'))
                     <li>
                         <a class="" href="{{ route('admin.user.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Пользователи</a>
@@ -109,35 +110,33 @@
                     </li>
 
                     <li>
-                        <a class="" href="{{ route('admin.requests.users') }}"><i
-                                    class="fa fa-list fa-fw"></i> Все транзакции</a>
-                    </li>
-
-                    <li>
-                        <a class="" href="{{ route('admin.requests.finished') }}"><i
-                                    class="fa fa-list fa-fw"></i> Завершенные транзакции</a>
-                    </li>
-
-                    <li>
                         <a class="" href="{{ route('admin.deposits.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Вклады</a>
                     </li>
+                        <li>
+                            <a class="" href="{{ route('admin.requests.finished') }}"><i
+                                        class="fa fa-list fa-fw"></i> Завершенные транзакции</a>
+                        </li>
 
+
+                        <li>
+                            <a class="" href="{{ route('admin.news.index') }}"><i
+                                        class="fa fa-list fa-fw"></i> Новости сайта</a>
+                        </li>
+
+                        <li>
+                            <a class="" href="{{ route('admin.request.index') }}"><i
+                                        class="fa fa-list fa-fw"></i> Вопросы с главной</a>
+                        </li>
+                    @endif
                     <li>
                         <a class="" href="{{ route('admin.pulloffmoney.index') }}"><i
                                     class="fa fa-list fa-fw"></i> Заявки на вывод</a>
                     </li>
-
                     <li>
-                        <a class="" href="{{ route('admin.news.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Новости сайта</a>
+                        <a class="" href="{{ route('admin.requests.users') }}"><i
+                                    class="fa fa-list fa-fw"></i> Все транзакции</a>
                     </li>
-
-                    <li>
-                        <a class="" href="{{ route('admin.request.index') }}"><i
-                                    class="fa fa-list fa-fw"></i> Вопросы с главной</a>
-                    </li>
-
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

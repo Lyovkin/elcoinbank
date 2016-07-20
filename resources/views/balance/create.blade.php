@@ -99,7 +99,7 @@
                                         <button type='submit' id="submit" name="submit" class="btn btn-primary pull-right">Отправить заявку</button>
                                     </div>
 
-                                    <div class="form-group col-md-12" id="pay">
+                                    <div class="form-group col-md-12" id="pay" style="background-color: aquamarine; color: red;">
                                        <p><strong>Номер для перевода: <span id="name_check"></span> </strong></p>
                                         <input type="text" class="form-control" id="check" readonly />
                                     </div>
@@ -142,7 +142,7 @@
 
             $('#amount').change(function () {
                 var amount = $(this).val();
-                var total = amount * currency.course_purchase;
+                var total = amount / currency.course_purchase;
                 $('#total').val(total);
             });
 

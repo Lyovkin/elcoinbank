@@ -12,12 +12,16 @@ use Illuminate\Http\Request;
 /**
  * Class BuyController
  * @package App\Http\Controllers
+ * @Middleware("web")
  */
 class PurchaseController extends Controller
 {
+    /**
+     * PurchaseController constructor.
+     */
     public function __construct()
     {
-        $this->middleware(['web','auth']);
+        $this->middleware('auth');
     }
 
     /**
@@ -76,7 +80,8 @@ class PurchaseController extends Controller
         }
 
 
-        return redirect()->route('profile.index')->with('message', 'Заявка сделана!');
+        return redirect()->route('profile.index')->with('message', 'Заявка сделана! Свои оперции Вы можете
+        посмотреть в разделе "Мои операции"');
     }
 
     /**

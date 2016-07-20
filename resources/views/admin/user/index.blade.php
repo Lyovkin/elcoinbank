@@ -73,6 +73,7 @@
                                 </td>
                                 <td>{{$user->balance}} EL</td>
                                 <td>
+                                    @if(Auth::user()->hasRole('admin'))
                                     <a href="{{route('admin.user.edit',['id'=>$user->id])}}" style=" float: right" data-toggle="tooltip" data-original-title="Редактировать"
                                        class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                     <div class="btn-group" style="float: right;" role="group" aria-label="...">
@@ -91,11 +92,13 @@
                                         @endif
                                         {!! Form::close() !!}
 
-
                                     </div>
 
+                                    @endif
+
                                     <a href="{{route('admin.user.addmoney',['id'=>$user->id])}}"  style=" float: right;" data-toggle="tooltip" data-original-title="Модифицировать баланс"
-                                       class="btn btn-success"><i class="fa fa-btc"></i></a>
+                                       class="btn btn-success"><i class="fa fa-btc"></i>
+                                    </a>
 
                                 </td>
                             </tr>
