@@ -85,7 +85,7 @@
     <!-- END OFFCANVAS LEFT -->
 
     <div style="margin-top: 80px; width: 100%" class="text-center">
-        <img src="/img/elbank.png" />
+        <img src="/img/elbank.png" style="width: 100%" />
     </div>
     <br/>
     <!-- BEGIN CONTENT-->
