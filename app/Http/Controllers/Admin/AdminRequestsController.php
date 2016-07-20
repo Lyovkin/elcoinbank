@@ -57,10 +57,10 @@ class AdminRequestsController extends AbstractAdminController
 
             } elseif ($purchase->status_trust == 1) {
 
-                $bank = Banks::where('banks_profiles_id', 2)->first();
-
-                $bank->amount += $purchase->total;
-                $bank->update();
+//                $bank = Banks::where('banks_profiles_id', 2)->first();
+//
+//                $bank->amount += $purchase->total;
+//                $bank->update();
 
                 $user->balance += $purchase->total;
                 $user->update();
