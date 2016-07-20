@@ -21,7 +21,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="/css/custom.css" rel="stylesheet">
     <link href="/css/plans.css" rel="stylesheet" type="text/css" />
-
+    <style>
+        @media screen and (max-width: 786px) {
+            .elbank {
+                width: 100%;
+            }
+        }
+    </style>
 
     @yield('css')
     <!-- END STYLESHEETS -->
@@ -85,7 +91,7 @@
     <!-- END OFFCANVAS LEFT -->
 
     <div style="margin-top: 80px; width: 100%" class="text-center">
-        <img src="/img/elbank.png" style="width: 100%" />
+        <img src="/img/elbank.png"  class="elbank" />
     </div>
     <br/>
     <!-- BEGIN CONTENT-->
