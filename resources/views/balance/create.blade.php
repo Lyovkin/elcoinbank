@@ -126,6 +126,8 @@
             $('#pay').hide();
 
             $('#currency_id').change(function () {
+                $("#amount").val('');
+                $("#total").val('');
                 var option = $(this).val();
                 console.log(option);
                 $.post('/get_currency', {
