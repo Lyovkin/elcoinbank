@@ -53,7 +53,8 @@
                                         <form action="/profile/deposits/{{ $deposit->id }}" method="post">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             <input type="hidden" name="status" value="1" />
-                                            @if($deposit->conclusion <= new DateTime())
+
+                                            @if($deposit->conclusion <= new DateTime() && $deposit->status == 0)
                                                 <button type="submit" class="btn btn-default">Вывести на баланс</button>
                                             @elseif($deposit->status == 1)
                                                 <button type="button" class="btn btn-default" disabled>Выведен</button>
