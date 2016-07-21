@@ -58,8 +58,8 @@
                                 <td>{{ $request->message }}</td>
                                 <td>{{ $request->status_moderation == 1 ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $request->status_admin == 1 ? 'Да' : 'Нет' }}</td>
-                                <td>{{ $request->created_at->format('d.m.Y H:m:s') }}</td>
-                                <td>{{ $request->updated_at->format('d.m.Y H:m:s') }}</td>
+                                <td>{{ $request->created_at->format('d.m.Y H:i:s') }}</td>
+                                <td>{{ $request->updated_at->format('d.m.Y H:i:s') }}</td>
                                 <td>
 
                                     @if(Auth::user()->hasRole('supervisor'))
