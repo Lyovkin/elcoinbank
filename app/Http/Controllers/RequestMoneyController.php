@@ -55,9 +55,9 @@ class RequestMoneyController extends Controller
             ->get();
 
         if(count($user_purchases) > 0) {
-            $currencies = Plan::where('type_id', 1)->get();
-        } else {
             $currencies = Plan::where('type_id', 2)->get();
+        } else {
+            $currencies = Plan::where('type_id', 1)->get();
         }
         return view('request.create', compact('deposit', 'currencies', 'user'));
     }
