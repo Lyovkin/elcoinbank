@@ -45,10 +45,19 @@ class RequestMoneyController extends Controller
     {
         $user = \Auth::user();
 
-        if(Purchase::where('user_id', $user->id)->where('type_id', 2)->count() == 0) {
-            $currencies = Plan::where('type_id', 2)->get();
-        } else {
+        $user_purchases = \DB::table('purchase')
+            ->select(\DB::raw('count(purchase.id)'))
+            ->join('users', 'purchase.user_id', '=', 'users.id')
+            ->where('purchase.user_id', $user->id)
+            ->whereNotIn('type_id', [1,3])
+            ->where('purchase.status_admin', 1)
+            ->groupBy('purchase.id')
+            ->get();
+
+        if(count($user_purchases) > 0) {
             $currencies = Plan::where('type_id', 1)->get();
+        } else {
+            $currencies = Plan::where('type_id', 2)->get();
         }
         return view('request.create', compact('deposit', 'currencies', 'user'));
     }
