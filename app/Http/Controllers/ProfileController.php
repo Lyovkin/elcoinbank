@@ -38,7 +38,11 @@ class ProfileController extends Controller
     {
         $profile = $this->profile->profileWithUser();
 
-        $courses = Course::with('currency')->get();
+        $courses_raw = Course::with('currency')->get();
+
+        $courses = $courses_raw->filter(function($value) {
+            return $value->id != 11;
+        });
 
         if(!$profile->wallet)
 

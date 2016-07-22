@@ -42,8 +42,8 @@
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for="amount" class="control-label">Сумма</label>
-                                            <input type="text" class="form-control" id="amount" name="amount" required />
+                                            <label for="amount" class="control-label">Сумма (не меньше 100 EL)</label>
+                                            <input type="number" class="form-control" id="amount" name="amount" min="100" required />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="payment" class="control-label">Со счета</label>
