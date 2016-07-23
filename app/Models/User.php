@@ -51,5 +51,20 @@ class User extends Authenticatable
         return in_array($check, array_pluck($this->roles->toArray(), 'name'));
     }
 
+    /**
+     * Get total sum in user deposit
+     *
+     * @param $userId
+     * @return array|static[]
+     */
+    public function sumInDeposits($userId)
+    {
+        return $deposits = \DB::table('deposits')
+            ->select(\DB::raw('sum(amount) as total'))
+            ->where('user_id', $userId)
+            ->where('status', 1)
+            ->get();
+    }
+
 
 }

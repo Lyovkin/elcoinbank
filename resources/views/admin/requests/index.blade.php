@@ -36,6 +36,8 @@
                             <th>Сообщение</th>
                             <th>Статус модерации</th>
                             <th>Статус админа</th>
+                            <th>Баланс</th>
+                            <th>Сумма во вкладах</th>
                             <th>Дата создания</th>
                             <th>Дата изменения</th>
                             <th>&nbsp;</th>
@@ -58,10 +60,11 @@
                                 <td>{{ $request->message }}</td>
                                 <td>{{ $request->status_moderation == 1 ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $request->status_admin == 1 ? 'Да' : 'Нет' }}</td>
+                                <td>{{ $request->user->balance }} EL</td>
+                                <td>{{ $request->user->sumInDeposits(Auth::user()->id)[0]->total ? $request->user->sumInDeposits(Auth::user()->id)[0]->total : 0 }} EL</td>
                                 <td>{{ $request->created_at->format('d.m.Y H:i:s') }}</td>
                                 <td>{{ $request->updated_at->format('d.m.Y H:i:s') }}</td>
                                 <td>
-
                                     @if(Auth::user()->hasRole('supervisor'))
                                         {!! Form::open(['route'=>['admin.requests.moderation',$request->id], 'class'=>'form-horizontal confirm',
                                             'role'=>'form', 'method' => 'POST']) !!}
@@ -74,22 +77,38 @@
                                         @endif
                                         {!! Form::close() !!}
                                     @elseif(Auth::user()->hasRole('admin'))
-                                        {!! Form::open(['route'=>['admin.requests.moderation',$request->id], 'class'=>'form-horizontal confirm',
+                                        <div class="btn-group-vertical" style="float: right;" role="group" aria-label="...">
+                                        {!! Form::open(['route'=>['admin.requests.moderation',$request->id], 'class'=>'form-horizontal confirm btn-group',
                                            'role'=>'form', 'method' => 'POST']) !!}
                                         @if ($request->status_admin == 0)
                                             {!! Form::hidden('status_admin', 1) !!}
-                                            <button type="submit" style="margin-bottom: 5px;" class="btn btn-success confirm-unblock" data-toggle="tooltip" data-original-title="Подтвердить"><i class="fa fa-check"></i></button>
+                                            <button type="submit" class="btn btn-success confirm-unblock" data-toggle="tooltip" data-original-title="Подтвердить"><i class="fa fa-check"></i></button>
                                         @else
                                             {!! Form::hidden('status_admin', 0) !!}
-                                            <button type="submit" style="margin-bottom: 5px;" class="btn btn-danger confirm-block" data-toggle="tooltip" data-original-title="Заблокировать"><i class="fa fa-times"></i></button>
+                                            <button type="submit"  class="btn btn-danger confirm-block" data-toggle="tooltip" data-original-title="Заблокировать"><i class="fa fa-times"></i></button>
                                         @endif
                                         {!! Form::close() !!}
-                                        <div class="btn-group" style="float: right;" role="group" aria-label="...">
-                                            {!! Form::open(['route'=>['admin.requests.delete',$request->id], 'class'=>'form-horizontal confirm',
+
+                                            {!! Form::open(['route'=>['admin.requests.delete',$request->id], 'class'=>'form-horizontal confirm btn-group',
                                             'role'=>'form', 'method' => 'DELETE']) !!}
                                             <button type="submit" class="btn btn-danger confirm-btn" data-toggle="tooltip" data-original-title="Удалить"><i class="fa fa-trash-o"></i></button>
                                             {!! Form::close() !!}
+
+                                            {{--Minus--}}
+                                            {!! Form::open(['route'=>['admin.requests.moderation',$request->id], 'class'=>'form-horizontal confirm btn-group',
+                                            'role'=>'form', 'method' => 'POST']) !!}
+                                            <input type="hidden" value="{{ $minus->amount }}" name="minus" />
+                                            @if ($request->status_admin == 0)
+                                                {!! Form::hidden('status_admin', 1) !!}
+                                                <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Минус">- {{ $minus->amount }}</button>
+                                            @else
+                                                {!! Form::hidden('status_admin', 0) !!}
+                                                <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Минус">- {{ $minus->amount }}</button>
+                                            @endif
+                                            {!! Form::close() !!}
+                                            {{--Minus--}}
                                         </div>
+
                                     @endif
                                 </td>
                             </tr>

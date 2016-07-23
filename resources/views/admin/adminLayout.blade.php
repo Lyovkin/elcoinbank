@@ -114,6 +114,10 @@
                                     class="fa fa-list fa-fw"></i> Вклады</a>
                     </li>
                         <li>
+                            <a class="" href="{{ route('admin.minus.index') }}"><i
+                                        class="fa fa-list fa-fw"></i> Минус</a>
+                        </li>
+                        <li>
                             <a class="" href="{{ route('admin.requests.finished') }}"><i
                                         class="fa fa-list fa-fw"></i> Завершенные транзакции</a>
                         </li>

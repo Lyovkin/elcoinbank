@@ -32,6 +32,7 @@ class AnnotationServiceProvider extends ServiceProvider
         App\Http\Controllers\Admin\AdminUserController::class,
         App\Http\Controllers\Admin\AdminDepositController::class,
         App\Http\Controllers\Admin\AdminPullOffMoneyController::class,
+        App\Http\Controllers\Admin\AdminMinusController::class,
         App\Http\Controllers\UserProfileController::class,
         App\Http\Controllers\BuyController::class,
         App\Http\Controllers\PlanController::class,
@@ -54,6 +55,7 @@ class AnnotationServiceProvider extends ServiceProvider
         App\Models\Profile::class,
         App\Models\Deposit::class,
         App\Models\PullOffMoney::class,
+        App\Models\Minus::class,
     ];
 
     /**

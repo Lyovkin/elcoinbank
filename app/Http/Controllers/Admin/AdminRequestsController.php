@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Banks;
+use App\Models\Minus;
 use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,12 +12,16 @@ use Illuminate\Http\Request;
  * Class AdminRequestsController
  * @package App\Http\Controllers
  * @Controller(prefix="admin")
+ * @Middleware("web")
  */
 class AdminRequestsController extends AbstractAdminController
 {
+    /**
+     * AdminRequestsController constructor.
+     */
     public function __construct()
     {
-        $this->middleware(['web', 'admin']);
+        $this->middleware('admin');
     }
 
     /**
@@ -26,7 +31,8 @@ class AdminRequestsController extends AbstractAdminController
     public function index()
     {
         $requests = Purchase::all();
-        return view('admin.requests.index', compact('requests'));
+        $minus = Minus::all()->first();
+        return view('admin.requests.index', compact('requests', 'minus'));
     }
 
     /**
@@ -52,28 +58,49 @@ class AdminRequestsController extends AbstractAdminController
 
                 $bank = Banks::where('banks_profiles_id', 1)->first();
 
-                $bank->amount -= $purchase->total;
-                $bank->update();
+                if($minus = $request->input('minus')) {
+                    $total = $purchase->total -= $minus;
+                    $bank->amount -= $total;
+                    $bank->update();
+                }
+                else {
+                    $bank->amount -= $purchase->total;
+                    $bank->update();
+                }
 
             } elseif ($purchase->status_trust == 1) {
 
-//                $bank = Banks::where('banks_profiles_id', 2)->first();
-//
-//                $bank->amount += $purchase->total;
-//                $bank->update();
-
-                $user->balance += $purchase->total;
-                $user->update();
+                if($minus = $request->input('minus')) {
+                    $total = $purchase->total -= $minus;
+                    $user->balance += $total;
+                    $user->update();
+                }
+                else {
+                    $user->balance += $purchase->total;
+                    $user->update();
+                }
 
             } elseif ($purchase->type_id == 3) {
 
                 $bank = Banks::where('banks_profiles_id', 1)->first();
 
-                $bank->amount += $purchase->total;
-                $bank->update();
+                if($minus = $request->input('minus')) {
+                    $total = $purchase->total -= $minus;
 
-                $user->balance += $purchase->total;
-                $user->update();
+                    $bank->amount += $total;
+                    $bank->update();
+
+                    $user->balance += $total;
+                    $user->update();
+                }
+                else {
+                    $bank->amount += $purchase->total;
+                    $bank->update();
+
+                    $user->balance += $purchase->total;
+                    $user->update();
+                }
+
             }
 
             $purchase->status_admin = $request->input('status_admin');
@@ -104,4 +131,5 @@ class AdminRequestsController extends AbstractAdminController
 
         return view('admin.requests.finished', compact('requests'));
     }
+
 }

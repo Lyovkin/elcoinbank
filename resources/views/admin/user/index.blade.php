@@ -29,6 +29,7 @@
                             <th>Email</th>
                             <th>Заблокирован</th>
                             <th>Баланс</th>
+                            <th>Сумма во вкладах</th>
                             <th>&nbsp;</th>
                         </tr>
 
@@ -72,6 +73,7 @@
                                     @endif
                                 </td>
                                 <td>{{$user->balance}} EL</td>
+                                <td>{{ $user->sumInDeposits($user->id)[0]->total ? $user->sumInDeposits($user->id)[0]->total : 0 }} EL</td>
                                 <td>
                                     @if(Auth::user()->hasRole('admin'))
                                     <a href="{{route('admin.user.edit',['id'=>$user->id])}}" style=" float: right" data-toggle="tooltip" data-original-title="Редактировать"
