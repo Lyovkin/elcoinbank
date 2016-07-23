@@ -62,7 +62,7 @@ class User extends Authenticatable
         return $deposits = \DB::table('deposits')
             ->select(\DB::raw('sum(amount) as total'))
             ->where('user_id', $userId)
-            ->where('status', 1)
+            ->where('status', 0)
             ->get();
     }
 

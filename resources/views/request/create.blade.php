@@ -106,7 +106,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="amount" class="control-label">Сумма вклада EL /<strong> Ваш баланс {{ $user->balance }} EL</strong></label>
-                                        <input type="text" class="form-control" id="amount" name="amount" required  disabled/>
+                                        <input type="number" class="form-control" id="amount" name="amount" min="1" required  disabled/>
                                     </div>
                                 </div>
 
