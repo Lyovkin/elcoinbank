@@ -75,6 +75,10 @@ class RequestMoneyController extends Controller
             \Session::flash('message', 'Недостаточно средств!');
             return redirect('/profile');
         }
+        elseif ($request->input('amount') <= 0) {
+            \Session::flash('message', 'Введите сумму корректную сумму!');
+            return back();
+        }
         else {
 
             $bank = Banks::where('banks_profiles_id', 2)->first();
