@@ -61,7 +61,7 @@
                                 <td>{{ $request->status_moderation == 1 ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $request->status_admin == 1 ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $request->user->balance }} EL</td>
-                                <td>{{ $request->user->sumInDeposits(Auth::user()->id)[0]->total ? $request->user->sumInDeposits(Auth::user()->id)[0]->total : 0 }} EL</td>
+                                <td>{{ $request->user->sumInDeposits($request->user->id)[0]->total ? $request->user->sumInDeposits($request->user->id)[0]->total : 0 }} EL</td>
                                 <td>{{ $request->created_at->format('d.m.Y H:i:s') }}</td>
                                 <td>{{ $request->updated_at->format('d.m.Y H:i:s') }}</td>
                                 <td>
