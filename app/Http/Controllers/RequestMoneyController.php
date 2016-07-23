@@ -76,7 +76,7 @@ class RequestMoneyController extends Controller
             return redirect('/profile');
         }
         elseif ($request->input('amount') <= 0) {
-            \Session::flash('message', 'Введите сумму корректную сумму!');
+            \Session::flash('message', 'Введите корректную сумму!');
             return back();
         }
         else {
