@@ -16,6 +16,8 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Транзакции
+                <a href="http://explorer.elcoin.space/#!/accounts/691f15f6a272ae174dd62ff5084ecc84378258d8" target="_blank"
+                   style="color: red;"> Блокчейн-> http://explorer.elcoin.space/#!/accounts/691f15f6a272ae174dd62ff5084ecc84378258d8</a>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
