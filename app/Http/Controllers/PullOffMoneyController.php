@@ -41,9 +41,10 @@ class PullOffMoneyController extends Controller
     public function store(PullOffMoney $pulloffmoney, Request $request)
     {
         $user = \Auth::user();
+        $amount = $request->input('amount');
 
-        if ($request->input('amount') > $user->balance ) {
-            \Session::flash('message', 'Недостаточно средств!');
+        if ($amount > $user->balance && $amount < 1 ) {
+            \Session::flash('message', 'Недостаточно средств или некорректная сумма!');
             return back();
         }
         else {
@@ -53,7 +54,7 @@ class PullOffMoneyController extends Controller
             $pulloffmoney->save();
 
 
-            $user->balance -= $request->input('amount');
+            $user->balance -= $amount;
             $user->update();
 
             return redirect()->route('profile.show')->with('message', 'Заявка на вывод сделана! Спасибо, что доверяете нам!');
