@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="amount" class="control-label">Сумма для вывода</label>
-                                        <input type="text" class="form-control" id="amount" name="amount" required />
+                                        <input type="number" class="form-control" id="amount" name="amount" min="1" required />
                                     </div>
                                 </div>
 

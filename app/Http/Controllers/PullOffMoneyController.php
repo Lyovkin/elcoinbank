@@ -43,7 +43,12 @@ class PullOffMoneyController extends Controller
         $user = \Auth::user();
         $amount = $request->input('amount');
 
-        if ($amount > $user->balance && $amount < 1 ) {
+        if($amount <= 1) {
+            \Session::flash('message', 'Некорректная сумма!');
+            return back();
+        }
+
+        if ($amount > $user->balance) {
             \Session::flash('message', 'Недостаточно средств или некорректная сумма!');
             return back();
         }
