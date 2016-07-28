@@ -54,7 +54,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label for="amount" class="control-label">Сумма</label>
-                                            <input type="text" class="form-control" id="amount" name="amount" required  disabled />
+                                            <input type="number" class="form-control" id="amount" min="1" name="amount" required  disabled />
                                         </div>
                                     </div>
 

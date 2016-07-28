@@ -57,9 +57,9 @@
                                             @if($deposit->conclusion <= new DateTime() && $deposit->status == 0)
                                                 <button type="submit" class="btn btn-default">Вывести на баланс</button>
                                             @elseif($deposit->status == 1)
-                                                <button type="button" class="btn btn-default" disabled>Выведен</button>
+                                                <a href="#" class="btn btn-default" disabled>Выведен</a>
                                             @else
-                                                <button type="submit" class="btn btn-default" disabled>Вывести на баланс</button>
+                                                <a href="#" class="btn btn-default" disabled>Вывести на баланс</a>
                                             @endif
                                         </form>
                                     </td>
