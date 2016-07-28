@@ -45,7 +45,9 @@ class PurchaseController extends Controller
     public function store(Purchase $purchase, Request $request)
     {
         $data = $request->all();
-       // dd($data);
+        if((int) $data['amount'] <= 0) {
+            return redirect()->route('profile.index')->with('message', 'Некорректная сумма вклада!');
+        }
 
         $type1 = TypePurchase::where('id', 1)->first();
         $type2 = TypePurchase::where('id', 2)->first();

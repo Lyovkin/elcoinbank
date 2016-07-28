@@ -45,17 +45,23 @@ class DepositController extends Controller
         $bank = Banks::where('banks_profiles_id', 2)->first();
 
         $deposit = Deposit::findOrFail($id);
-        $deposit->status = $request->input('status');
-        $deposit->update();
 
-        $bank->amount -= $deposit->total;
-        $bank->update();
+        if($deposit->conclusion <= new \DateTime() && $deposit->status == 0) {
+            $deposit->status = $request->input('status');
+            $deposit->update();
 
-        $user->balance += $deposit->total;
-        $user->update();
+            $bank->amount -= $deposit->total;
+            $bank->update();
 
-        \Session::flash('message', 'Вывод успешно завершен! Спасибо, что доверяете нам!');
+            $user->balance += $deposit->total;
+            $user->update();
 
-        return redirect()->route('profile.index');
+            \Session::flash('message', 'Вывод успешно завершен! Спасибо, что доверяете нам!');
+
+            return redirect()->route('profile.index');
+        } else {
+
+            return redirect()->route('profile.index')->with('message', 'Ошибка вывода!');
+        }
     }
 }
